@@ -10,6 +10,30 @@ In practice, institutes usually issue two or more types of certificate upon grad
 
 To customise the certificate views, the institute will have to include their rendering template (written in [React.js](https://reactjs.org/)) in the OpenCerts.io's [website Github repository](https://github.com/GovTechSG/opencerts-website).
 
+## Setup
+
+### Prerequisite
+
+- git
+- node.js
+- yarn
+
+### Running the website locally
+```bash
+# Clone the repository
+git clone https://github.com/GovTechSG/opencerts-website.git
+cd opencerts-website
+
+# Install dependencies
+npm install
+
+# Run the server
+yarn dev
+
+# Open website served at localhost:3000
+open http://localhost:3000
+```
+
 ## Folder Structure
 
 All the certificate templates are stored in the folder `/components/CertificateTemplates/`. Institutes adding new templates will store their template files in the path `/components/CertificateTemplates/<Institute Name>-<Template Name>`. 

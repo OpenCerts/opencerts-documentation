@@ -7,7 +7,7 @@
 - Introduction
 - Creating Certificates
 - Batching Certificates
-- Deploying Certificate Store
+- [Deploying Certificate Store](./deploying_store.md)
 - Issuing Certificates
 - Identity Registry
 - [Custom Certificate Templates](./custom_template.md)
