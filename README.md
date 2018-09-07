@@ -5,7 +5,7 @@
 ## Table of Content
 
 - Introduction
-- Creating Certificates
+- [Creating Certificates](./creating_certificates.md)
 - Batching Certificates
 - [Deploying Certificate Store](./deploying_store.md)
 - Issuing Certificates
