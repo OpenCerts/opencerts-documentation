@@ -8,9 +8,6 @@ At the root level, each file contains information on the schema type (OpenCerts)
 
 What you will be most concern with is the certificate data. All these data are stored in the `data` key on the OpenCerts file and conforms to the [OpenCerts schema](https://github.com/GovTechSG/open-certificate/blob/master/schema/1.3/schema.json).
 
-To facilitate the ease of writing/generating OpenCerts a [npm package](https://www.npmjs.com/package/@govtechsg/open-certificate) and a [CLI tool](https://github.com/GovTechSG/certificate-cli 
-) is provided. 
-
 For this section, we will focus on populating the certificate data that conforms to the schema. 
 
 ## OpenCerts Schema
