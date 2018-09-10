@@ -1,5 +1,7 @@
 # Batching Certificate
 
+![Batching Certificates](./assets/batching-certificates/merkle-root.png)
+
 OpenCerts is able to batch large number of certificates to be issued on the Ethereum blockchain in a single transaction. 
 
 To facilitate the ease of writing/generating OpenCerts a [npm package](https://www.npmjs.com/package/@govtechsg/open-certificate) and a [CLI tool](https://github.com/GovTechSG/certificate-cli 
