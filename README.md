@@ -9,11 +9,11 @@
 - [Batching Certificates](./batching_certificates.md)
 - [Deploying Certificate Store](./deploying_store.md)
 - [Issuing Certificates](./issuing_certificates.md)
-- [Identity Registry (TBD)](./identity_registry.md)
 - [Custom Certificate Templates](./custom_template.md)
-- Secure Key Management (TBD)
-- Certificate Storage (TBD)
+- Identity Registry (TBD)
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
+- Appendix: Certificate Storage Recommendation (TBD)
+- Appendix: Secured Key Management Recommendation (TBD)
 
 ## Getting Help
 
