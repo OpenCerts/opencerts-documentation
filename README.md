@@ -13,6 +13,7 @@
 - [Custom Certificate Templates](./custom_template.md)
 - Secure Key Management
 - Certificate Storage
+- [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
 
 ## Getting Help
 

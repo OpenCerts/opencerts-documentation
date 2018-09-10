@@ -1,6 +1,6 @@
 # Creating Certificates
 
-\<IMG: What is in a cert>
+![Certificate Store](./assets/creating-certificates/inside-certificate.png)
 
 The OpenCerts file is a `.json` file that conforms to the [OpenAttestation](https://github.com/GovTechSG/open-attestation) specification. 
 
@@ -16,11 +16,13 @@ The shape of the certificate object is defined using [JSON Schema](https://json-
 
 ## Using JSON Schema Validator
 
-\<IMG: Validator with error>
-
 An useful online tool to help you understand the JSON schema is the [JSON Schema Validator](https://www.jsonschemavalidator.net/).
 
 Simply paste the content of the schema document on the left panel and you can start writing the certificate data on the right. The tool will instantly validate the certificate data shape and will notify you of potential errors.
+
+![Validation Error](./assets/creating-certificates/validator-error.png)
+
+You can see that the validation failed because of missing properties on JSON Schema Validator
 
 ## The Minimalist Certificate
 
