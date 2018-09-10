@@ -81,7 +81,7 @@ Once you are done with the minimal certificate, you can include more data such a
 {
   "id":"2018091259",
   "name":"Bachelor of Blockchain",
-  "issuedOn":"2018-08-31T23:59:59+08:00",
+  "issuedOn":"2018-08-31T23:59:32+08:00",
   "issuers":[{
     "name":"University of Blockchain",
     "url":"https://universityofblockchain.com",
