@@ -59,7 +59,7 @@ The `name` field is a string that refers to the name of the certificate.
 
 The `issuedOn` field is a date-time string conforming to the [ISO 8601, RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format.
 
-Example of a valid `issuedOn` string is `2018-08-01T00:00:00+08:00`. Where it specifies the date 0000 hr on 01/08/2018, in the timezone GMT +8. 
+Example of a valid `issuedOn` string is `2018-08-31T23:59:32+08:00`. Where it specifies the date-time (HH:MM:SS) 23:59:32, on 31/08/2018, in the timezone GMT +8. 
 
 ### `issuers` field
 
@@ -81,7 +81,7 @@ Once you are done with the minimal certificate, you can include more data such a
 {
   "id":"2018091259",
   "name":"Bachelor of Blockchain",
-  "issuedOn":"2018-08-01T00:00:00+08:00",
+  "issuedOn":"2018-08-31T23:59:32+08:00",
   "issuers":[{
     "name":"University of Blockchain",
     "url":"https://universityofblockchain.com",
