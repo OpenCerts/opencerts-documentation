@@ -4,7 +4,7 @@
 
 OpenCerts is able to batch large number of certificates to be issued on the Ethereum blockchain in a single transaction. 
 
-To facilitate the ease of writing/generating OpenCerts a [npm package](https://www.npmjs.com/package/@govtechsg/open-certificate) and a [CLI tool](https://github.com/GovTechSG/certificate-cli 
+To facilitate the ease of signing and batching OpenCerts, a [npm package](https://www.npmjs.com/package/@govtechsg/open-certificate) and a [CLI tool](https://github.com/GovTechSG/certificate-cli 
 ) is provided. 
 
 ## Prerequisite
@@ -23,13 +23,13 @@ To follow through this section, please have all the certificates generated from 
 
 ### Installing the CLI Tool
 
-Clone the git repository to your local environment
+Clone the certificate-cli source code repository to your deployment environment
 
 > git clone https://github.com/GovTechSG/certificate-cli.git
 
 Navigate into the directory
 
-> mv certificate-cli
+> cd certificate-cli
 
 Install the dependencies for the package
 
@@ -44,7 +44,7 @@ Place the unsigned certificates into a folder
 
 Run the CLI Tool to batch the certificates
 
-> node index.js batch unsgined_certs signed_certs
+> node index.js batch unsigned_certs signed_certs
 
 Sample output:
 
