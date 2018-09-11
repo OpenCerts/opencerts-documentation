@@ -1,6 +1,6 @@
 # Issuing Certificates
 
-Issuing OpenCerts involves a single transaction with the Ethereum blockchain to publish the certificate batch's merkle root obtained in the [batching certificates step](./batching_certificates.md). Once issued, all the certificates in the certificate batch will show that they have been issued and is valid (unless the [identity of the certificate store owner is unknown](identity_registry.md)). 
+After you have obtained the Merkle root from the [previous step](./batching_certificates.md), the next step is to publish this Merkle root on the Ethereum public main net. Once this Merkle root is registered on the blockchain, the OpenCerts.io verifier will recognise all the certificates in the batch as issued. They will show as fully valid (unless the [identity of the certificate store owner is unknown](identity_registry.md)). If the certificate store is unknown, a warning will be shown but the certificate will still be viewable.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ A simple admin interface is provided to allow anyone to issue certificates on th
 
 ### Connecting your wallet
 
-If you are using Metamask, log into your Metamask extension and you will be able to see your current account. 
+If you are using Metamask, log into your Metamask extension and you will be able to see your Ethereum account displayed on the site next to the 'Current Account' label. 
 
 If you are using Ledger Nano, select Ledger Nano from the network selector on the top right. You will see your account after you have logged into your device and selected 'Ethereum' for the Ledger Nano apps.
 
@@ -55,7 +55,7 @@ In this certificate, the merkle root to be used for the entire batch is `0x0be95
 
 ### Transaction confirmation
 
-Once you have entered the merkle root hash and click on "Issue", you will have to confirm the transaction either on Metamask or on the Ledger Nano device (depress both left and right buttons). 
+Once you have entered the Merkle root hash and click on "Issue", you will have to confirm the transaction either on Metamask or on the Ledger Nano device (depress both left and right buttons). 
 
 Upon confirmation of the transaction, the transaction will be published onto the Ethereum network. You may have to wait a few minutes for the block containing that transaction to be mined. 
 
