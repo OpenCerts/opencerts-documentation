@@ -12,6 +12,7 @@
 - [Custom Certificate Templates](./custom_template.md)
 - Identity Registry (TBD)
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
+- [Appendix: Sample Certificate / Custom Template](./appendix_samples.md)
 - Appendix: Certificate Storage Recommendation (TBD)
 - Appendix: Secured Key Management Recommendation (TBD)
 
