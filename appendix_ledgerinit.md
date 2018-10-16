@@ -53,7 +53,7 @@
 	
 	Settings > Security > Auto Lock : 1 Minute
 	
-	![settings security auto lock.jpg](./assets/ledger-initialisation/settings-security-auto-lock.jpg)
+	![settings security auto lock.jpg](./assets/ledger-initialisation/settings-security-auto-lock.JPG)
 	
 9. (PIN holder) Install Ledger Live application on the computer https://www.ledger.com/pages/ledger-live
 
