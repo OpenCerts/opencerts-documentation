@@ -19,7 +19,6 @@
 
 - 1 Ether procured and held in temporary acquisition wallet
 
--
 
 ### Initialisation Procedure 
 
@@ -29,24 +28,24 @@
 ![welcome.JPG](./assets/ledger-initialisation/welcome.JPG)
 
 3. (Wallet device holder) Choose setup as new device
-![configure as new device.JPG](./assets/ledger-initialisation/configure as new device.JPG)
+![configure as new device.JPG](./assets/ledger-initialisation/configure-as-new-device.JPG)
 
 ###### Handover to PIN holder
 
 4. (PIN holder) Set PIN
-![choose a pin code.JPG](./assets/ledger-initialisation/choose a pin code.JPG)
+![choose a pin code.JPG](./assets/ledger-initialisation/choose-a-pin-code.JPG)
 
 5. (PIN holder) Confirm PIN
-![confirm pin code.JPG](./assets/ledger-initialisation/confirm pin code.JPG)
+![confirm pin code.JPG](./assets/ledger-initialisation/confirm-pin-code.JPG)
 
 ###### Handover to recovery words holder
 
 6. (Recovery words holders) Record recovery phrase
-![write down recovery phrase.JPG](./assets/ledger-initialisation/write down recovery phrase.JPG)
+![write down recovery phrase.JPG](./assets/ledger-initialisation/write-down-recovery-phrase.JPG)
 
 1. (Recovery words holders) Confirm recovery phrase
 
-![recovery phrase confirmation prompt.JPG](./assets/ledger-initialisation/recovery phrase confirmation prompt.JPG)
+![recovery phrase confirmation prompt.JPG](./assets/ledger-initialisation/recovery phrase-confirmation-prompt.JPG)
 
 ###### Handover to PIN holder
 
@@ -54,32 +53,31 @@
 	
 	Settings > Security > Auto Lock : 1 Minute
 	
-	![settings security auto lock.jpg](./assets/ledger-initialisation/settings security auto lock.jpg)
+	![settings security auto lock.jpg](./assets/ledger-initialisation/settings security-auto-lock.jpg)
 	
 1. (PIN holder) Install Ledger Live application on the computer https://www.ledger.com/pages/ledger-live
 
 7. (PIN holder) Update firmware using Ledger Live
 
 8. (PIN holder) Install Ethereum app using Ledger Manager included in Ledger Live
-![ethereum app.JPG](./assets/ledger-initialisation/ethereum app.JPG)
+![ethereum app.JPG](./assets/ledger-initialisation/ethereum-app.JPG)
 
 1. (PIN holder) Configure Ethereum App settings as follows:
 	
 	Ethereum > Settings > Contract Data: yes
-	![ethereum app settings contract data.JPG](./assets/ledger-initialisation/ethereum app settings contract data.JPG)
+	![ethereum app settings contract data.JPG](./assets/ledger-initialisation/ethereum-app-settings-contract-data.JPG)
 	
 	Ethereum > Settings > Display Data: yes
-	![ethereum app settings display data.JPG](./assets/ledger-initialisation/ethereum app settings display data.JPG)
+	![ethereum app settings display data.JPG](./assets/ledger-initialisation/ethereum-app-settings-display-data.JPG)
 
 9. Go to Https://admin.opencerts.io , switch selector to Ledger Nano Mainnet or Testnet (Address will be the same on both networks.)
-![opencertsadmin ledger selector.png](./assets/ledger-initialisation/opencertsadmin ledger selector.png)
+![opencertsadmin ledger selector.png](./assets/ledger-initialisation/opencertsadmin-ledger-selector.png)
 
 10. Click on refresh to see your wallet address for transferring ether to. If the wallet address does not show up, check that the Ledger Nano S is unlocked and has the Ethereum App activated.
-![admin opencerts wallet address.png](./assets/ledger-initialisation/admin opencerts wallet address.png)
+![admin opencerts wallet address.png](./assets/ledger-initialisation/admin-opencerts-wallet-address.png)
 
 11. Do experiment with it on Testnet before going live! You can obtain testnet ethers from https://faucet.metamask.io/ if you have Metamask, then send it from your Metamask wallet to your Ledger Nano S wallet address.
 
--
 
 ### Things to try on testnet (Ropsten) before going live:
 
