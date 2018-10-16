@@ -13,8 +13,8 @@
 - Identity Registry (TBD)
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
 - [Appendix: Sample Certificate / Custom Template](./appendix_samples.md)
+- [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
 - Appendix: Certificate Storage Recommendation (TBD)
-- Appendix: Secured Key Management Recommendation (TBD)
 
 ## Getting Help
 
