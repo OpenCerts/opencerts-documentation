@@ -13,7 +13,7 @@ To issue the certificates, please ensure you have:
 
 ![Administrator Interface](./assets/issuing-certificates/interface.png)
 
-A simple admin interface is provided to allow anyone to issue certificates on their own certificate store on https://govtechsg.github.io/certificate-web-ui/admin. 
+A simple admin interface is provided to allow anyone to issue certificates on their own certificate store on https://admin.opencerts.io . 
 
 ## Issuing Certificates
 
