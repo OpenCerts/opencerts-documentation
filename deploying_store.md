@@ -10,7 +10,7 @@ Institutes are recommended to deploy a certificate store on the Ropsten test net
 
 ## Admin Interface
 
-A simple admin interface is provided to allow anyone to deploy an instance of the certificate store on Ethereum at [https://govtechsg.github.io/certificate-web-ui/admin](https://admin.opencerts.io). 
+A simple admin interface is provided to allow anyone to deploy an instance of the certificate store on Ethereum at [https://admin.opencerts.io](https://admin.opencerts.io). 
 
 ![Administrator Interface](./assets/deploying-store/admin.png)
 
