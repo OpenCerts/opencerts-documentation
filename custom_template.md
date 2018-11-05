@@ -206,6 +206,26 @@ const Template = certificate => {
 export default Template;
 ```
 
+## Good Practices
+
+### Conform to the current coding standards
+
+The team is currently using `eslint` to ensure consistency of the coding standards in the repository. 
+
+Prior to submitting a pull request, be sure to run `yarn lint --fix` or `npm run lint --fix`. 
+
+Kindly fix all the errors and warnings flagged by eslint. 
+
+### Refactor your templates
+
+One of the most common issues is repeated code. These components can be functions, constants, and even segments of the templates. 
+
+Try to refactor the common components of the template files to a common folder if necessary.
+
+### Private data
+
+Do take note that the source code of the website is publicly available. Be sure to leave out any private data such as personnel's signatures, access tokens and secret keys.
+
 ## Common Questions
 
 ### Rendering Logic
