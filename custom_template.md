@@ -206,15 +206,21 @@ const Template = certificate => {
 export default Template;
 ```
 
-## Good Practices
-
-### Conform to the current coding standards
+## Coding standards
 
 The team is currently using `eslint` to ensure consistency of the coding standards in the repository. 
 
 Prior to submitting a pull request, be sure to run `yarn lint --fix` or `npm run lint --fix`. 
 
 Kindly fix all the errors and warnings flagged by eslint. 
+
+## Submitting your changes
+
+Once you have added the template for your certificates, check your code against our [pull request checklist](./appendix_pull_request_checklist.md).
+
+Once you have review your code change against the checklist, you can submit a pull request to our maintainer. A complete guide is available at [https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
+
+## Good Practices
 
 ### Refactor your templates
 

@@ -14,6 +14,7 @@
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
 - [Appendix: Sample Certificate / Custom Template](./appendix_samples.md)
 - [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
+- [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
 - Appendix: Certificate Storage Recommendation (TBD)
 
 ## Getting Help
