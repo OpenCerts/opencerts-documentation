@@ -1,6 +1,7 @@
 # Verifying the smart contract code
 
 Etherscan allows anyone to publish the source code associated with a smart contract at a certain address simply by providing the parameters used to compile the source code, as well as the source code itself.
+
 The way it works is that it uses those same parameters to compile the provided contract code and then comparing this output with the bytecode at the given smart contract address. If they are identical then the provided source code is shown under the 'code' tab when viewing the smart contract address.
 
 The following verification configuration is valid as of 5th Dec 2018, for the 2.2.0 version of the DocumentStore smart contract.
