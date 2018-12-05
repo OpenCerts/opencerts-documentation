@@ -17,6 +17,8 @@
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
 - Appendix: Certificate Storage Recommendation (TBD)
 
+- [Verifying the Certificate Store Contract](./verifying_contract.md)
+
 ## Getting Help
 
 If there is any issue that is not addressed in this document, kindly [create an issue on this Github repository](https://github.com/GovTechSG/opencerts-documentation/issues).
