@@ -34,68 +34,48 @@ yarn dev
 open http://localhost:3000
 ```
 
-## Folder Structure
+## Template Directory Structure
 
-All the certificate templates are stored in the folder `/components/CertificateTemplates/`. Institutes adding new templates will store their template files in the path `/components/CertificateTemplates/<Institute Name>-<Template Name>`. 
+All the certificate templates are stored in the folder `/components/CertificateTemplates/`. Institutes adding new templates will store their template files in the path derived from their institute's official domain name. The derivation is simply using [reverse domain name notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) as a prefix.
 
-For example, University of Blockchain might have the following folders for two different types of degree program: 
+| Organisation                      | Domain Name          | Directory Structure                       |   |   |
+|-----------------------------------|----------------------|-------------------------------------------|---|---|
+| GovTech                           | tech.gov.sg          | /sg/gov/tech/TEMPLATE_DESCRIPTOR          |   |   |
+| Ngee Ann Polytechnic              | np.edu.sg            | /sg/edu/np/TEMPLATE_DESCRIPTOR            |   |   |
+| Singapore Institute of Technology | singaporetech.edu.sg | /sg/edu/singaporetech/TEMPLATE_DESCRIPTOR |   |   |
 
-- `/components/CertificateTemplates/UniversityOfBlockchain-Bachelor`
-- `/components/CertificateTemplates/UniversityOfBlockchain-Master`
-- `/components/CertificateTemplates/UniversityOfBlockchain-Doctorate`
+Additionally, we recommend prefixing the template descriptor with the year so as to allow updating templates on at least an annual basis. For example, `/sg/gov/tech/2018-OpenCertsAssociate` or `/sg/gov/tech/2018-12-OpenCertsAssociate`
 
 ## Registering Templates
 
-To allow the OpenCerts viewer to detect the new certificate templates, you will have to register all the new templates in the file `/components/CertificateTemplates/index.js`
+To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair __MUST NOT__ be a duplicate of another pre-existing template's key.
 
-For example, to add the 3 new templates by University Of Blockchain, simply append the 3 lines into the exported templates.
+## Organisation Index
 
-```js
-import DefaultCert from "./Default";
-import UniversityOfBlockchain_Bachelor from "./UniversityOfBlockchain-Bachelor";
-import UniversityOfBlockchain_Master from "./UniversityOfBlockchain-Master";
-import UniversityOfBlockchain_Doctorate from "./UniversityOfBlockchain-Doctorate";
+To provide a performant user experience, we have optimised the OpenCerts build process to only load templates that are relevant to the certificate that was loaded into the viewer. For this process to work, each template must be registered in a specific manner.
 
-const templates = {
-  default: DefaultCert,
-  "UniversityOfBlockchain_Bachelor": UniversityOfBlockchain_Bachelor,
-  "UniversityOfBlockchain_Master": UniversityOfBlockchain_Master,
-  "UniversityOfBlockchain_Doctorate": UniversityOfBlockchain_Doctorate
+Under your organisation's template directory, there should be an index.js that exports your templates accordingly:
+
+```javascript
+import dynamic from "next/dynamic";
+
+const OpenCertsAssociate2018 = dynamic(
+  import("./2018/OpenCertsAssociate" /* webpackChunkName: "GovTechTemplates" */)
+);
+const OpenCertsAssociate2019 = dynamic(
+  import("./2019/OpenCertsAssociate" /* webpackChunkName: "GovTechTemplates" */)
+);
+
+export default {
+  "sg/gov/tech/2018/OpenCertsAssociate": OpenCertsAssociate2018,
+  "sg/gov/tech/2019/OpenCertsAssociate": OpenCertsAssociate2019
 };
-
-export default templates;
 ```
 
-## Template Index
+Ensure that the value for `webbpackChunkName` is the same across all your templates to ensure that they are all bundled together in the build output.
 
-In each template folder, there will be the `index.js` file to export an array of all the different views for the certificate. 
+For each individual template, add it to the exports with the `$template` value as the key in the exported object.
 
-For example:
-
-```js
-import CertificateView from "./certificate";
-import TranscriptView from "./transcript";
-
-const entry = [
-  {
-    id: "certificate",
-    label: "Certificate",
-    template: CertificateView
-  },
-  {
-    id: "transcript",
-    label: "Transcript",
-    template: TranscriptView
-  }
-];
-
-export default entry;
-
-```
-
-In the example above, all certificates rendered using this template will have two views, namely `Certificate` and `Transcript` view. 
-
-These two views are imported from the template `./certificate` and `./transcript` respectively.
 
 ## Writing Certificate Templates
 
@@ -114,7 +94,7 @@ Sample Template:
 ```js
 import { get } from "lodash";
 
-const Template = certificate => {
+const Template = ({ certificate }) => {
   // Declaring what variables will be available to the template from the certificate
   const certificateName = get(certificate, "name");
   const certificateId = get(certificate, "id");
@@ -205,6 +185,58 @@ const Template = certificate => {
 
 export default Template;
 ```
+
+## Template's index.js
+
+In each template folder, there will be the `index.js` file that describes the views present in the template. 
+
+An example of a template with a certificate and transcript view:
+
+```js
+import PropTypes from "prop-types";
+import { approvedAddresses } from "../common";
+import GovTechCert from "./certificate";
+import GovTechTranscript from "./transcript";
+import { MultiCertificateRenderer } from "../../../../../MultiCertificateRenderer";
+
+const templates = [
+  {
+    id: "certificate",
+    label: "Certificate",
+    template: GovTechCert
+  },
+  {
+    id: "transcript",
+    label: "Transcript",
+    template: GovTechTranscript
+  }
+];
+
+const GovTechCert = ({ certificate }) => (
+  <MultiCertificateRenderer
+    certificate={certificate}
+    templates={templates}
+    whitelist={approvedAddresses}
+  />
+);
+
+GovTechCert.propTypes = {
+  certificate: PropTypes.object.isRequired
+};
+
+export default GovTechCert;
+```
+
+In the example above, all certificates rendered using this template will have two views, namely `Certificate` and `Transcript` view. 
+
+These two views are imported from the template `./certificate` and `./transcript` respectively, and rendered by the `<MultiCertificateRenderer>` component.
+
+
+## Address whitelisting
+
+If a whitelist of addresses is provided with the template, then only certificates issued from these contract store addresses will be able to use this certificate. This is to mitigate the possibility of an unauthorised issuer issuing a certificate using your `$template` value, and masquerading as a certificate from your institution.
+
+If no whitelist is provided, anyone can use your certificate template.
 
 ## Coding standards
 
