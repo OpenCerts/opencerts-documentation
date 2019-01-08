@@ -44,11 +44,11 @@ All the certificate templates are stored in the folder `/components/CertificateT
 | Ngee Ann Polytechnic              | np.edu.sg            | /sg/edu/np/TEMPLATE_DESCRIPTOR            |
 | Singapore Institute of Technology | singaporetech.edu.sg | /sg/edu/singaporetech/TEMPLATE_DESCRIPTOR |
 
-Additionally, we recommend prefixing the template descriptor with the year so as to allow updating templates on at least an annual basis. For example, `/sg/gov/tech/2018-OpenCertsAssociate` or `/sg/gov/tech/2018-12-OpenCertsAssociate`
+Additionally, we recommend prefixing the template descriptor with the year so as to allow updating templates on at least an annual basis. For example, `sg/gov/tech/2018-OpenCertsAssociate` or `sg/gov/tech/2018-12-OpenCertsAssociate`
 
 ## Registering Templates
 
-To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair __MUST NOT__ be a duplicate of another existing template's key. The directory structure will be part of the `$template` field, for example: `$template: "/sg/gov/tech/2018-OpenCertsAssociate"`
+To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair __MUST NOT__ be a duplicate of another existing template's key. The directory structure will be part of the `$template` field, for example: `$template: "sg/gov/tech/2018-OpenCertsAssociate"`
 
 ## Organisation Index
 
