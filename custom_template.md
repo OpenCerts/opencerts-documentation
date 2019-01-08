@@ -38,17 +38,17 @@ open http://localhost:3000
 
 All the certificate templates are stored in the folder `/components/CertificateTemplates/`. Institutes adding new templates will store their template files in the path derived from their institute's official domain name. The derivation is simply using [reverse domain name notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) as a prefix.
 
-| Organisation                      | Domain Name          | Directory Structure                       |   |   |
-|-----------------------------------|----------------------|-------------------------------------------|---|---|
-| GovTech                           | tech.gov.sg          | /sg/gov/tech/TEMPLATE_DESCRIPTOR          |   |   |
-| Ngee Ann Polytechnic              | np.edu.sg            | /sg/edu/np/TEMPLATE_DESCRIPTOR            |   |   |
-| Singapore Institute of Technology | singaporetech.edu.sg | /sg/edu/singaporetech/TEMPLATE_DESCRIPTOR |   |   |
+| Organisation                      | Domain Name          | Directory Structure                       |
+|-----------------------------------|----------------------|-------------------------------------------|
+| GovTech                           | tech.gov.sg          | /sg/gov/tech/TEMPLATE_DESCRIPTOR          |
+| Ngee Ann Polytechnic              | np.edu.sg            | /sg/edu/np/TEMPLATE_DESCRIPTOR            |
+| Singapore Institute of Technology | singaporetech.edu.sg | /sg/edu/singaporetech/TEMPLATE_DESCRIPTOR |
 
 Additionally, we recommend prefixing the template descriptor with the year so as to allow updating templates on at least an annual basis. For example, `/sg/gov/tech/2018-OpenCertsAssociate` or `/sg/gov/tech/2018-12-OpenCertsAssociate`
 
 ## Registering Templates
 
-To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair __MUST NOT__ be a duplicate of another pre-existing template's key.
+To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair __MUST NOT__ be a duplicate of another existing template's key. The directory structure will be part of the `$template` field, for example: `$template: "/sg/gov/tech/2018-OpenCertsAssociate"`
 
 ## Organisation Index
 
@@ -60,21 +60,21 @@ Under your organisation's template directory, there should be an index.js that e
 import dynamic from "next/dynamic";
 
 const OpenCertsAssociate2018 = dynamic(
-  import("./2018/OpenCertsAssociate" /* webpackChunkName: "GovTechTemplates" */)
+  import("./2018-OpenCertsAssociate" /* webpackChunkName: "GovTechTemplates" */)
 );
 const OpenCertsAssociate2019 = dynamic(
-  import("./2019/OpenCertsAssociate" /* webpackChunkName: "GovTechTemplates" */)
+  import("./2019-OpenCertsAssociate" /* webpackChunkName: "GovTechTemplates" */)
 );
 
 export default {
-  "sg/gov/tech/2018/OpenCertsAssociate": OpenCertsAssociate2018,
-  "sg/gov/tech/2019/OpenCertsAssociate": OpenCertsAssociate2019
+  "2018-OpenCertsAssociate": OpenCertsAssociate2018,
+  "2019-OpenCertsAssociate": OpenCertsAssociate2019
 };
 ```
 
 Ensure that the value for `webbpackChunkName` is the same across all your templates to ensure that they are all bundled together in the build output.
 
-For each individual template, add it to the exports with the `$template` value as the key in the exported object.
+For each individual template, add it to the exports with the `TEMPLATE_DESCRIPTOR` value as the key in the exported object.
 
 
 ## Writing Certificate Templates
