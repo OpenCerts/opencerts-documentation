@@ -1,5 +1,11 @@
 # Ledger Nano Initialisation Procedure
 
+### Important security notice:
+
+Refrain from using the same physical wallet for development and production environment. Treat the hardware wallet it as how you will treat secret keys. The production wallet should only be handled by authorised staff in your institute and should not be handled by third-parties without the institute's approval and supervision. 
+
+Your institute may want to purchase two hardware wallet for purpose of development. 
+
 ### Pre-requisites to begin procedure:
 
 ###### Required participants 
