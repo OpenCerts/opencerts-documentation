@@ -26,4 +26,4 @@ Should identity verification failed, a warning will be presented to the viewer. 
 
 The team behind OpenCerts believe that associating identities in a decentralised world is a work-in-progress. We are actively seeking to find a balance between decentralisation and providing trusted content for our user.
 
-If you have suggestions on how to do it better, do let us know by opening an issue! 
+If you have suggestions on how to do it better, do let us know by opening an issue or [join us](https://ethernaut.gdshive.io/)!
