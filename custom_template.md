@@ -197,7 +197,7 @@ import PropTypes from "prop-types";
 import { approvedAddresses } from "../common";
 import GovTechCert from "./certificate";
 import GovTechTranscript from "./transcript";
-import { MultiCertificateRenderer } from "../../../../../MultiCertificateRenderer";
+import { MultiCertificateRenderer } from "template-utils/MultiCertificateRenderer";
 
 const templates = [
   {
