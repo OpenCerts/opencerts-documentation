@@ -13,6 +13,7 @@
 - [Identity Registry](./identity_registry.md)
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
 - [Appendix: Sample Certificate / Custom Template](./appendix_samples.md)
+- [Appendix: Data Obfuscation](./appendix_data_obfuscation.md)
 - [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
 - Appendix: Certificate Storage Recommendation (TBD)
