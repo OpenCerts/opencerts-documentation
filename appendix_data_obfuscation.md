@@ -76,15 +76,19 @@ Removing the nric of the student
 handleObfuscation("recipient.nric")
 ```
 
-### Design Recommendation
+### Code References
 
-#### Use Stateful Component
+The implementation of data obfuscation for the default certificate can be found at [https://github.com/OpenCerts/opencerts-website/blob/master/src/components/CertificateTemplates/Default/certificate.js](https://github.com/OpenCerts/opencerts-website/blob/master/src/components/CertificateTemplates/Default/certificate.js).
+
+## Design Recommendation
+
+### Use Stateful Component
 
 Having a stateful component which tracks if the certificate is `editable` will allow two different views of the certificate.
 
 In the default certificate example, we can see it tracking the `editable` state. When the `editable` flag is set, red crosses will appear beside values that the user can obfuscate. When it is not, the certificate appears to be a normal static certificate.  
 
-#### Reuse & Contribute to Common Template Components
+### Reuse & Contribute to Common Template Components
 
 During the design of the default certificate, the `ObfuscatableValue` and `SimplePrivacyFilterBanner` is created to be reused for other certificates. 
 
