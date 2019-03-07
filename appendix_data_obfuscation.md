@@ -103,4 +103,6 @@ We recommend the use of these components. Should they not fulfill the use case, 
 ![Obfuscated Data Hashed in Privacy](./assets/data-obfuscation/obfuscated-data-in-privacy.png)
 
 
-Data in the certificate is not removed in this process. Instead the values are hashed and stored in the `privacy.obfuscatedData` section of the new .opencert file. Storing it in the hashed format allows the certificate's `targetHash` to remain unchanged and prevents reverse engineering of the value (even through rainbow table attacks). 
+During data obfuscation, data in the certificate is replaced with an irreversible hash and stored in the `privacy.obfuscatedData` section of the new .opencert file. 
+
+Storing it in the hashed format allows the certificate's `targetHash` to remain unchanged and prevents reverse engineering of the value (even through rainbow table attacks). 
