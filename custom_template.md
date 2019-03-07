@@ -325,3 +325,7 @@ See example in Additional Data for a sample of where image of the signature can 
 Some of the users will be viewing these certificates from mobile devices, you might want to make sure the template is mobile responsive. 
 
 The certificate template could be optimised for mobile using various classes from bootstrap. 
+
+### Data obfuscation
+
+OpenCerts allow users to obfuscate values in the document. The API to enable data obfuscation on your custom template can be found [in the appendix](./appendix_data_obfuscation.md).
