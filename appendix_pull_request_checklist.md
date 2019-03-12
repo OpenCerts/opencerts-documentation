@@ -3,7 +3,8 @@
 We have prepared the following checklist for you to ensure that your PR is successful. It will also be the checklist that the OpenCerts team will be using to approve your PR.
 
 - Institute is registered with the OpenCerts Consortium
-- Sample certificate provided for all template submited 
+- [Integration test](./integration_test.md) is written for each certificate template
+- Sample certificate provided for all template submited (with the code)
 - Non-conflicting namespace for certificate template name
 - Template has whitelisted your own contract store address
 - Conformance to coding standards Eg. `yarn lint --fix`

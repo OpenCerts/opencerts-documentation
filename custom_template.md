@@ -246,6 +246,12 @@ Prior to submitting a pull request, be sure to run `yarn lint --fix` or `npm run
 
 Kindly fix all the errors and warnings flagged by eslint. 
 
+## Integration test
+
+To ensure that incremental code change does not break your certificate, each template has to be accompanied by it's integration test.
+
+Details on the integration test can be found in the [next chapter](./integration_test.md).
+
 ## Submitting your changes
 
 Once you have added the template for your certificates, check your code against our [pull request checklist](./appendix_pull_request_checklist.md).
