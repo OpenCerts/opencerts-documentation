@@ -11,6 +11,7 @@
 - [Issuing Certificates](./issuing_certificates.md)
 - [Custom Certificate Templates](./custom_template.md)
 - [Testing Custom Certificate Templates](./integration_test.md)
+- [Embedded Certificate Renderer](./embedded_viewer.md)
 - [Identity Registry](./identity_registry.md)
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
 - [Appendix: Sample Certificate / Custom Template](./appendix_samples.md)
