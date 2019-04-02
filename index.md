@@ -2,6 +2,11 @@
 
 # OpenCerts Documentation
 
+## Resources
+
+- [01/10/18 - Technical Training Slides](https://docs.google.com/presentation/d/11QTk76_R_FRc5xrgLrkG-NjsIItYDNcLWG6RgiICm48/edit?usp=sharing)
+- [27/03/19 - Announcements & FAQ](https://docs.google.com/presentation/d/11VDgcPOrhDsXWs_1fVghj138ZxonEDpC-UE39Mx4E30)
+
 ## Table of Content
 
 - Introduction
