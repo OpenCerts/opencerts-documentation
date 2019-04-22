@@ -73,7 +73,7 @@ To issue the certificates, please ensure you have:
 ![Step 11](./assets/issuing-multisig-certificates/img_9.png)
 
 
-12. Now go to [https://admin.opencerts.io](https://admin.opencerts.io) and deploy the new instance of the store using your Ledger Nano S.
+12. Now go to [https://admin.opencerts.io](https://admin.opencerts.io) and deploy the new instance of the store using your Ledger Nano S (follow these instructions [Deploying Store](./deploying_store.md)).
 Once successful you should see a message with store address and transaction ID. Click on the transaction ID or go to [https://ropsten.etherscan.io](https://ropsten.etherscan.io)
 
 
@@ -88,7 +88,7 @@ Once successful you should see a message with store address and transaction ID. 
 
 14. Go to **“Write Contract”** tab. You should see a field with transferOwnership. Connect your Ledger wallet to MetaMask. Select the network type either ropsten or mainnet.
 
-Enter the MultiSig wallet address and click on **“Write”**.
+    Enter the MultiSig wallet address and click on **“Write”**.
 
 
 ![Step 14](./assets/issuing-multisig-certificates/img_12.png)
@@ -120,7 +120,7 @@ Enter the MultiSig wallet address and click on **“Write”**.
 
     **Document :** Enter the certificate batch hash generated from certificate-cli.
 
-Once all the information enter click on the “Send multisig transaction”.
+    Once all the information enter click on the “Send multisig transaction”.
 
 ![Step 17](./assets/issuing-multisig-certificates/img_15.png)
 
