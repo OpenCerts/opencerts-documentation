@@ -1,5 +1,7 @@
 # Issue certificates using MultiSig wallet
 
+This section will guide you through How to use MultiSig Wallet to assign multiple owners to confirm the transaction to issue certificates?
+
 ## Prerequisites
 
 To issue the certificates, please ensure you have:
