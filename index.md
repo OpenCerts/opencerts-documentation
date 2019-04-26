@@ -28,6 +28,29 @@
 
 - [Verifying the Certificate Store Contract](./verifying_contract.md)
 
+
+## Mailing Lists
+
+### For Managers
+
+[http://eepurl.com/gk_OM5](http://eepurl.com/gk_OM5)
+
+This is a channel where the managing staffs behind OpenCerts can reach out to you regarding:
+
+- Consortium meetings
+- Meeting updates
+- Strategic updates
+
+### For Developers
+
+[http://eepurl.com/gk_D3v](http://eepurl.com/gk_D3v)
+
+This is a channel where the core developers behind OpenCerts can reach out to you regarding:
+
+- New features
+- Best practice for development
+- Breaking changes
+
 ## Getting Help
 
 If there is any issue that is not addressed in this document, kindly [create an issue on this Github repository](https://github.com/GovTechSG/opencerts-documentation/issues).
