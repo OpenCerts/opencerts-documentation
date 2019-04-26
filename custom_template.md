@@ -193,11 +193,10 @@ In each template folder, there will be the `index.js` file that describes the vi
 An example of a template with a certificate and transcript view:
 
 ```js
-import PropTypes from "prop-types";
 import { approvedAddresses } from "../common";
 import GovTechCert from "./certificate";
 import GovTechTranscript from "./transcript";
-import { MultiCertificateRenderer } from "template-utils/MultiCertificateRenderer";
+import MultiCertificateRenderer from "template-utils/MultiCertificateRenderer";
 
 const templates = [
   {
@@ -212,17 +211,12 @@ const templates = [
   }
 ];
 
-const GovTechCert = ({ certificate }) => (
+const GovTechCert = () => (
   <MultiCertificateRenderer
-    certificate={certificate}
     templates={templates}
     whitelist={approvedAddresses}
   />
 );
-
-GovTechCert.propTypes = {
-  certificate: PropTypes.object.isRequired
-};
 
 export default GovTechCert;
 ```
