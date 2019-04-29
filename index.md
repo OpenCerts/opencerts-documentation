@@ -10,6 +10,8 @@
 
 ## Table of Content
 
+### Issuing and Customising OpenCerts
+
 - Introduction
 - [Creating Certificates](./creating_certificates.md)
 - [Batching Certificates](./batching_certificates.md)
@@ -17,17 +19,19 @@
 - [Issuing Certificates](./issuing_certificates.md)
 - [Custom Certificate Templates](./custom_template.md)
 - [Testing Custom Certificate Templates](./integration_test.md)
-- [Embedded Certificate Renderer](./embedded_viewer.md)
 - [Identity Registry](./identity_registry.md)
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
 - [Appendix: Sample Certificate / Custom Template](./appendix_samples.md)
 - [Appendix: Data Obfuscation](./appendix_data_obfuscation.md)
 - [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
-- Appendix: Certificate Storage Recommendation (TBD)
+- [Appendix: Verifying the Certificate Store Contract](./verifying_contract.md)
 
-- [Verifying the Certificate Store Contract](./verifying_contract.md)
+### Developing Your Own Product with OpenCerts
 
+- Verifier (TBD)
+- [Embedded Certificate Renderer](./embedded_viewer.md)
+- Transfer (TBD)
 
 ## Mailing Lists
 
