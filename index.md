@@ -17,7 +17,7 @@
 - [Batching Certificates](./batching_certificates.md)
 - [Deploying Certificate Store](./deploying_store.md)
 - [Issuing Certificates](./issuing_certificates.md)
-- [Issuing Certificates (Using MultiSig Wallet)](./issuing_multisig_certificates.md)
+- [Issuing Certificates (Using MultiSig Wallet)](./issuing_multisig_certificate.md)
 - [Custom Certificate Templates](./custom_template.md)
 - [Testing Custom Certificate Templates](./integration_test.md)
 - [Identity Registry](./identity_registry.md)
