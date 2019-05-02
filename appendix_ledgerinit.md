@@ -63,9 +63,11 @@ Your institute may want to purchase two hardware wallet for purpose of developme
 	
 9. (PIN holder) Install Ledger Live application on the computer https://www.ledger.com/pages/ledger-live
 
-10. (PIN holder) Update firmware using Ledger Live
+10. (PIN holder) If necessary, update firmware using Ledger Live
 
-11. (PIN holder) Install Ethereum app using Ledger Manager included in Ledger Live
+11. (PIN holder) Install Ethereum app using Ledger Manager included in Ledger Live.
+
+ **Note: Do NOT use the wallet address designated in Ledger Live, instead use the one on our admin website**
 ![ethereum app.JPG](./assets/ledger-initialisation/ethereum-app.JPG)
 
 12. (PIN holder) Configure Ethereum App settings as follows:
@@ -84,6 +86,7 @@ Your institute may want to purchase two hardware wallet for purpose of developme
 
 15. Do experiment with it on Testnet before going live! You can obtain testnet ethers from https://faucet.metamask.io/ if you have Metamask, then send it from your Metamask wallet to your Ledger Nano S wallet address.
 
+16. Transfer some Ether to your wallet address as shown on the admin website before attempting to deploy a production store.
 
 ### Things to try on testnet (Ropsten) before going live:
 
