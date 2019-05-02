@@ -1,6 +1,13 @@
 # Issue certificates using MultiSig wallet
 
-This section will guide you through How to use MultiSig Wallet to assign multiple owners to confirm the transaction to issue certificates?
+This section will guide you through How to use a 3rd party MultiSig Wallet smart contract to allow multiple owners to confirm the transaction to issue certificates.
+
+This is useful in one of the following scenarios:
+1) You would like to only allow issuance with the consent of multiple parties
+OR
+2) You would like to allow multiple parties to issue from the same document store with each their own Ethereum wallet.
+
+**NOTE: Advanced users only! Do not attempt this if you are not comfortable with the whole OpenCerts basic issuance flow**
 
 ## Prerequisites
 
@@ -9,7 +16,7 @@ To issue the certificates, please ensure you have:
 1. [Access to a certificate store to issue from](./deploying_store.md)
 2. [Merkle root from certificate batch](./batching_certificates.md)
 
-## Issuing Certificates
+### Setting up the MultiSig Wallet
 
 1. Connect and setup your Hardware Ledger Nano S.
 2. Go to [https://wallet.gnosis.pm.](https://wallet.gnosis.pm)
@@ -47,9 +54,9 @@ To issue the certificates, please ensure you have:
 
     **Name :** Wallet name
 
-    **Required confirmations :** The number of approvals needed from the owners (signatories) of the multisignature wallet (not to be confused with transaction confirmation). Here I enter 2, meaning that at least two people need to sign for a transaction.
+    **Required confirmations :** The number of approvals needed from the owners (signatories) of the multi-signature wallet (not to be confused with transaction confirmation). Here I enter 2, meaning that at least two people need to sign for a transaction.
 
-    **Daily limit (ETH) :** A limit which could be withdrawn without the need of required confirmations as configured in Required confirmations.
+    **Daily limit (ETH) :** A limit of ethers that can be withdrawn without the need of required confirmations as configured in Required confirmations.
 
     **ADD :** These are the owner addresses acting as a signatory for changes to the wallet, notably withdrawals, confirmation changes, daily limits, and ownership changes.
 
@@ -69,11 +76,14 @@ To issue the certificates, please ensure you have:
 ![Step 10](./assets/issuing-multisig-certificates/img_8.png)
 
 
-11.Once the transaction was confirmed, we can see the wallet showing up in the Wallets tab. Please check whether your transaction is successful if wallet did not show up.
+11.Once the transaction is confirmed, we can see the wallet showing up in the Wallets tab. Please check whether your transaction is successful if wallet did not show up.
 
 
 ![Step 11](./assets/issuing-multisig-certificates/img_9.png)
 
+### Creating a new Document Store 
+
+(If you have an existing document store that you would like to transfer ownership of to the MultiSig wallet, you may skip this step)
 
 12. Now go to [https://admin.opencerts.io](https://admin.opencerts.io) and deploy the new instance of the store using your Ledger Nano S (follow these instructions [Deploying Store](./deploying_store.md)).
 Once successful you should see a message with store address and transaction ID. Click on the transaction ID or go to [https://ropsten.etherscan.io](https://ropsten.etherscan.io)
@@ -81,6 +91,7 @@ Once successful you should see a message with store address and transaction ID. 
 
 ![Step 12](./assets/issuing-multisig-certificates/img_10.png)
   
+### Transferring Document Store ownership to MultiSig wallet
 
 13. Once you’re on [https://ropsten.etherscan.io](https://ropsten.etherscan.io) search for the store address. 
 
@@ -102,7 +113,9 @@ Once successful you should see a message with store address and transaction ID. 
 ![Step 15](./assets/issuing-multisig-certificates/img_13.png)
 
 
-16. Go back to [https://wallet.gnosis.pm/#/wallets](https://wallet.gnosis.pm/#/wallets). And click on you MultiSig wallet name. You will be redirected to below shown view.
+### Issuing using MultiSig wallet
+
+16. Go back to [https://wallet.gnosis.pm/#/wallets](https://wallet.gnosis.pm/#/wallets). And click on your MultiSig wallet name. You will be redirected to below shown view.
 
 
 ![Step 16](./assets/issuing-multisig-certificates/img_14.png)
@@ -138,7 +151,7 @@ Once successful you should see a message with store address and transaction ID. 
 
 ![Step 20](./assets/issuing-multisig-certificates/img_18.png)
 
-21. For owner 2 go to the url [https://wallet.gnosis.pm](https://wallet.gnosis.pm). Connect you Ledger wallet in the setting tab as described above. Then click on the **“Add”** wallet and select the **“Restore deployed wallet”**.
+21. For owner 2 go to the url [https://wallet.gnosis.pm](https://wallet.gnosis.pm). Connect your Ledger wallet in the setting tab as described above. Then click on the **“Add”** wallet and select the **“Restore deployed wallet”**.
 
 ![Step 21](./assets/issuing-multisig-certificates/img_19.png)
 
@@ -168,7 +181,7 @@ Once successful you should see a message with store address and transaction ID. 
 ![Step 26](./assets/issuing-multisig-certificates/img_24.png)
 
 
-27. Confirm the transaction on you ledger wallet. 
+27. Confirm the transaction on your ledger wallet. 
 
 
 28. Once the transaction is mined and the number of required confirmation matches, you should see the output like below image -
