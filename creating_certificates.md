@@ -6,13 +6,13 @@ The OpenCerts file is a `.json` file that conforms to the [OpenAttestation](http
 
 At the root level, each file contains information on the schema type (OpenCerts), certificate data, hidden data (from privacy filter) and a signature. Details of the OpenAttestation file format can be found on the [Github page](https://github.com/GovTechSG/open-attestation). 
 
-What you will be most concern with is the certificate data. All these data are stored in the `data` key on the OpenCerts file and conforms to the [OpenCerts schema](https://github.com/OpenCerts/open-certificate/blob/master/schema/1.4/schema.json).
+What you will be most concern with is the certificate data. All these data are stored in the `data` key on the OpenCerts file and conforms to the [OpenCerts schema](https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json).
 
 For this section, we will focus on populating the certificate data that conforms to the schema. 
 
 ## OpenCerts Schema
 
-The shape of the certificate object is defined using [JSON Schema](https://json-schema.org/). The definition can be found at [https://github.com/OpenCerts/open-certificate/blob/master/schema/1.4/schema.json](https://github.com/OpenCerts/open-certificate/blob/master/schema/1.4/schema.json). 
+The shape of the certificate object is defined using [JSON Schema](https://json-schema.org/). The definition can be found at [https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json](https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json). 
 
 ## Using JSON Schema Validator
 
