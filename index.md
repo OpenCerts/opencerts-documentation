@@ -26,6 +26,7 @@
 - [Appendix: Data Obfuscation](./appendix_data_obfuscation.md)
 - [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
+- [Appendix: Pull Request Preview](./appendix_pull_request_preview.md)
 - [Appendix: Verifying the Certificate Store Contract](./verifying_contract.md)
 
 ### Developing Your Own Product with OpenCerts
