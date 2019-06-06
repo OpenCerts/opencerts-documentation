@@ -1,6 +1,13 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link rel="stylesheet" href="./search.css">
+
 ![OpenCerts Logo](./assets/logo.png)
 
 # OpenCerts Documentation
+
+<div class="searchbox algolia-autocomplete ds-dropdown-menu">
+  <input type="text" placeholder="Search the docs..." aria-label="Search">
+</div>
 
 ## Resources
 
@@ -60,3 +67,13 @@ This is a channel where the core developers behind OpenCerts can reach out to yo
 ## Getting Help
 
 If there is any issue that is not addressed in this document, kindly [create an issue on this Github repository](https://github.com/GovTechSG/opencerts-documentation/issues).
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '7231563d1db842994698da0a519e93c8',
+// appId: 'S3C08S8B4J',
+indexName: 'opencerts',
+inputSelector: 'input',
+debug: false, // Set debug to true if you want to inspect the dropdown
+}); 
+</script>
