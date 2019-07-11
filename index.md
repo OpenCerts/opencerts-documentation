@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
 />
+=======
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+>>>>>>> master
 <link rel="stylesheet" href="./search.css">
 
 ![OpenCerts Logo](./assets/logo.png)
