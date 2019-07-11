@@ -17,12 +17,12 @@
 
 /* Main category (eg. Getting Started) */
 .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
-  color: darkgray;
+  color: #ff9933;
 }
 
 /* Category (eg. Downloads) */
 .algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
-  color: gray;
+  color: #0099cc;
 }
 
 /* Title (eg. Bootstrap CDN) */
