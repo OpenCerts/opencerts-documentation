@@ -42,6 +42,22 @@ Integration test files in the repository have `.spec.js` file extensions. These 
 
 We recommend having the test file in the same place as the template file, together with a corresponding sample of the `.opencert/.json` file.
 
+Use the **unwrapped** .json file as the test cert, ie.
+
+```js
+{
+  "id": "53b75bbe",
+  "name": "Govtech Demo Certificate",
+  "description": "Govtech Demo Certificate",
+  "issuedOn": "2019-05-29T00:00:00+08:00",
+  "$template": {
+    "name": "GOVTECH_DEMO",
+    "type": "EMBEDDED_RENDERER",
+    "url": "https://demo-renderer.opencerts.io"
+  },
+  ...
+```
+
 ### Code Stucture
 
 Below is a sample code for testing our OpenCerts demo certificate with three template tabs - the certificate, transcript, and media.
@@ -56,7 +72,7 @@ import { getData } from "@govtechsg/open-attestation";
 
 fixture("Frameless Viewer").page`http://localhost:3000/`;
 
-const Certificate = "./Ropsten-Demo.json";
+const Certificate = "./Ropsten-Demo-unwrapped.json";
 const RenderedCertificate = Selector("#rendered-certificate");
 const Media = Selector("#youtube-vid");
 
@@ -84,9 +100,9 @@ test("Govtech Demo certificate is rendered correctly", async t => {
   await t
     .expect(templates)
     .eql([
-      { id: "certificate", label: "Certificate", template: undefined },
-      { id: "transcript", label: "Transcript", template: undefined },
-      { id: "media", label: "Media", template: undefined }
+      { id: "certificate", label: "Certificate" },
+      { id: "transcript", label: "Transcript" },
+      { id: "media", label: "Media" }
     ]);
 
   // Validate content of first tab
