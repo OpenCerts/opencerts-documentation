@@ -76,7 +76,7 @@ Certificate - <code class="highlighter-rouge">certificate.js</code>
 Transcript - <code class="highlighter-rouge">transcript.js</code>
 Media - <code class="highlighter-rouge">media.js</code></p>
 
-<p>Also, there is an <code class="highlighter-rouge">index.js</code> that will map out these files and enable us to switch between the different views later on the opencerts.io website.</p>
+<p>Also, notice that there is a <code class="highlighter-rouge">index.js</code> that you will have to create that will map out these files and enable us to switch between the different views later on the opencerts.io website.</p>
 
 <h3 id="custom-templates">Custom Templates</h3>
 
@@ -84,7 +84,7 @@ Media - <code class="highlighter-rouge">media.js</code></p>
 
 <h3 id="template-indexjs">Template index.js</h3>
 
-<p>Below is an example on how to format your <code class="highlighter-rouge">index.js</code> file within your custom template folder.</p>
+<p>Below is an example on how to format your <code class="highlighter-rouge">index.js</code> file within your custom template folder, in this case the govtechDemoCert folder.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">DemoCert</span> <span class="k">from</span> <span class="s2">"./certificate"</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">DemoTranscript</span> <span class="k">from</span> <span class="s2">"./transcript"</span><span class="p">;</span>
@@ -117,7 +117,7 @@ Media - <code class="highlighter-rouge">media.js</code></p>
 
 <h3 id="renderer-indexjs">Renderer index.js</h3>
 
-<p>To register the templates within the renderer, we have to add the custom template folder to the index.js file of the templates folder, which is located here:
+<p>To register the templates within the renderer, we have to add the custom template folder - govtechDemoCert - to the index.js file of the templates folder, which is located here:
 <img src="/assets/document-renderer/directory2.png" alt="templates index.js screenshot" /></p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">DefaultTemplate</span> <span class="k">from</span> <span class="s2">"./default"</span><span class="p">;</span>
@@ -132,13 +132,13 @@ Media - <code class="highlighter-rouge">media.js</code></p>
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>Import the custom templates folder and export it as a key-value pair.
+<p>Import the govtechDemoCert folder and export it as a key-value pair.
 The key will be used in the .opencerts file later to reference the folder where the templates are stored.
 This key-value pair <strong>MUST NOT</strong> be a duplicate of another existing template’s key.</p>
 
 <h3 id="registering-templates">Registering Templates</h3>
 
-<p>To allow the OpenCerts viewer to detect the new certificate templates, the value used in the <code class="highlighter-rouge">$template.name</code> field must equal the key corresponding to the template folder you have created. For example, the unwrapped version of our custom .opencerts file should look like this:</p>
+<p>To allow the OpenCerts viewer to detect the new certificate templates, the value used in the <code class="highlighter-rouge">$template.name</code> field <strong>must</strong> equal the key corresponding to the template folder you have created. For example, the unwrapped version of our custom .opencerts file should look like this:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">certificate</span> <span class="o">=</span> <span class="p">{</span>
       <span class="na">id</span><span class="p">:</span> <span class="s2">"53b75bbe"</span><span class="p">,</span>

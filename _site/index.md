@@ -22,15 +22,19 @@
 
 ### Issuing and Customising OpenCerts
 
-- [Creating Certificates](./creating_certificates.md)
-- [Deploying Certificate Store](./deploying_store.md)
-- [Creating a Document Renderer](./document_renderer.md)
-- [Testing a Document Renderer](./document_renderer_test.md)
-- [Custom Certificate Templates for OpenCerts v2](./custom_template_v2.md)
-- [Batching Certificates](./batching_certificates.md)
-- [Issuing Certificates](./issuing_certificates.md)
-- [Issuing Certificates (Using MultiSig Wallet)](./issuing_multisig_certificate.md)
-- [Identity Registry](./identity_registry.md)
+| Steps                                                                             | OpenCerts v1.5 | OpenCerts v2.0 |
+| --------------------------------------------------------------------------------- | :------------: | :------------: |
+| [Creating Certificates](./creating_certificates.md)                               |       ✅       |       ✅       |
+| [Deploying Certificate Store](./deploying_store.md)                               |       ✅       |       ✅       |
+| [Creating a Document Renderer](./document_renderer.md)                            |                |       ✅       |
+| [Testing a Document Renderer](./document_renderer_test.md)                        |                |       ✅       |
+| [Custom Certificate Templates for OpenCerts v2](./custom_template_v2.md)          |                |       ✅       |
+| [Custom Certificate Templates](./custom_template.md)                              |       ✅       |                |
+| [Testing Custom Certificate Templates](./integration_test.md)                     |       ✅       |                |
+| [Batching Certificates](./batching_certificates.md)                               |       ✅       |       ✅       |
+| [Issuing Certificates](./issuing_certificates.md)                                 |       ✅       |       ✅       |
+| [Issuing Certificates (Using MultiSig Wallet)](./issuing_multisig_certificate.md) |       ✅       |       ✅       |
+| [Identity Registry](./identity_registry.md)                                       |       ✅       |       ✅       |
 
 ### Appendix
 
@@ -41,11 +45,6 @@
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
 - [Appendix: Pull Request Preview](./appendix_pull_request_preview.md)
 - [Appendix: Verifying the Certificate Store Contract](./verifying_contract.md)
-
-### Legacy: OpenCerts Schema v1.5
-
-- [Custom Certificate Templates](./custom_template.md)
-- [Testing Custom Certificate Templates](./integration_test.md)
 
 ### Developing Your Own Product with OpenCerts
 

@@ -46,7 +46,7 @@ Certificate - `certificate.js`
 Transcript - `transcript.js`
 Media - `media.js`
 
-Also, there is an `index.js` that will map out these files and enable us to switch between the different views later on the opencerts.io website.
+Also, notice that there is a `index.js` that you will have to create that will map out these files and enable us to switch between the different views later on the opencerts.io website.
 
 ### Custom Templates
 
@@ -54,7 +54,7 @@ To customize your own certificates and transcripts, refer to the documentation o
 
 ### Template index.js
 
-Below is an example on how to format your `index.js` file within your custom template folder.
+Below is an example on how to format your `index.js` file within your custom template folder, in this case the govtechDemoCert folder.
 
 ```javascript
 import DemoCert from "./certificate";
@@ -88,7 +88,7 @@ These three views are imported from the template `./certificate`, `./transcript`
 
 ### Renderer index.js
 
-To register the templates within the renderer, we have to add the custom template folder to the index.js file of the templates folder, which is located here:
+To register the templates within the renderer, we have to add the custom template folder - govtechDemoCert - to the index.js file of the templates folder, which is located here:
 ![templates index.js screenshot](./assets/document-renderer/directory2.png)
 
 ```javascript
@@ -104,13 +104,13 @@ export default {
 };
 ```
 
-Import the custom templates folder and export it as a key-value pair.
+Import the govtechDemoCert folder and export it as a key-value pair.
 The key will be used in the .opencerts file later to reference the folder where the templates are stored.
 This key-value pair **MUST NOT** be a duplicate of another existing template's key.
 
 ### Registering Templates
 
-To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template.name` field must equal the key corresponding to the template folder you have created. For example, the unwrapped version of our custom .opencerts file should look like this:
+To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template.name` field **must** equal the key corresponding to the template folder you have created. For example, the unwrapped version of our custom .opencerts file should look like this:
 
 ```javascript
 const certificate = {
