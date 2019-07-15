@@ -15,5 +15,5 @@ bundle exec jekyll serve
 ## Update search index
 
 ```bash
-bundle exec jekyll algolia
+ALGOLIA_API_KEY='your_admin_api_key' bundle exec jekyll algolia
 ```
