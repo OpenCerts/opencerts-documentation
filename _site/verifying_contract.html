@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Verifying the smart contract code | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Verifying the smart contract code" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/verifying_contract.html" />
+<meta property="og:url" content="http://localhost:4000/verifying_contract.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"description":"Documentations for opencerts","url":"http://localhost:4000/verifying_contract.html","@type":"WebPage","headline":"Verifying the smart contract code","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=ca5796d705b2dc7a9ff277fdaa63b9f6f28ed245">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="verifying-the-smart-contract-code">Verifying the smart contract code</h1>
+
+<p>Etherscan allows anyone to publish the source code associated with a smart contract at a certain address simply by providing the parameters used to compile the source code, as well as the source code itself.</p>
+
+<p>The way it works is that it uses those same parameters to compile the provided contract code and then comparing this output with the bytecode at the given smart contract address. If they are identical then the provided source code is shown under the ‘code’ tab when viewing the smart contract address.</p>
+
+<p>The following verification configuration is valid as of 5th Dec 2018, for the 2.2.0 version of the DocumentStore smart contract.</p>
+
+<h1 id="configuration">Configuration:</h1>
+
+<p>Contract Name:	DocumentStore</p>
+
+<p>Compiler Text:	v0.4.25+commit.59dbf8f1</p>
+
+<p>Optimization Enabled:	No</p>
+
+<p>Runs (Optimiser): 	200</p>
+
+<h1 id="constructor-parameters">Constructor Parameters</h1>
+<p>Using: https://abi.hashex.org/#</p>
+
+<ol>
+  <li>Fill in ABI from below</li>
+  <li>Fill in the name entered when deploying the contract store</li>
+  <li>Get ABI encoded parameters and fill it into Etherscan</li>
+</ol>
+
+<h1 id="abi">ABI</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "document",
+				"type": "bytes32"
+			}
+		],
+		"name": "issue",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "document",
+				"type": "bytes32"
+			}
+		],
+		"name": "revoke",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "_name",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "document",
+				"type": "bytes32"
+			}
+		],
+		"name": "DocumentIssued",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "document",
+				"type": "bytes32"
+			}
+		],
+		"name": "DocumentRevoked",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "document",
+				"type": "bytes32"
+			}
+		],
+		"name": "getIssuedBlock",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "document",
+				"type": "bytes32"
+			}
+		],
+		"name": "isIssued",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "document",
+				"type": "bytes32"
+			},
+			{
+				"name": "blockNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "isIssuedBefore",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "document",
+				"type": "bytes32"
+			}
+		],
+		"name": "isRevoked",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "document",
+				"type": "bytes32"
+			},
+			{
+				"name": "blockNumber",
+				"type": "uint256"
+			}
+		],
+		"name": "isRevokedBefore",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "version",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+</code></pre></div></div>
+
+<h1 id="contract-souce">Contract Souce:</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pragma solidity ^0.4.24;
+
+
+/**
+ * @title Ownable
+ * @dev The Ownable contract has an owner address, and provides basic authorization control
+ * functions, this simplifies the implementation of "user permissions".
+ */
+contract Ownable {
+  address public owner;
+
+
+  event OwnershipRenounced(address indexed previousOwner);
+  event OwnershipTransferred(
+    address indexed previousOwner,
+    address indexed newOwner
+  );
+
+
+  /**
+   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+   * account.
+   */
+  constructor() public {
+    owner = msg.sender;
+  }
+
+  /**
+   * @dev Throws if called by any account other than the owner.
+   */
+  modifier onlyOwner() {
+    require(msg.sender == owner);
+    _;
+  }
+
+  /**
+   * @dev Allows the current owner to relinquish control of the contract.
+   * @notice Renouncing to ownership will leave the contract without an owner.
+   * It will not be possible to call the functions with the `onlyOwner`
+   * modifier anymore.
+   */
+  function renounceOwnership() public onlyOwner {
+    emit OwnershipRenounced(owner);
+    owner = address(0);
+  }
+
+  /**
+   * @dev Allows the current owner to transfer control of the contract to a newOwner.
+   * @param _newOwner The address to transfer ownership to.
+   */
+  function transferOwnership(address _newOwner) public onlyOwner {
+    _transferOwnership(_newOwner);
+  }
+
+  /**
+   * @dev Transfers control of the contract to a newOwner.
+   * @param _newOwner The address to transfer ownership to.
+   */
+  function _transferOwnership(address _newOwner) internal {
+    require(_newOwner != address(0));
+    emit OwnershipTransferred(owner, _newOwner);
+    owner = _newOwner;
+  }
+}
+
+
+contract DocumentStore is Ownable {
+  string public name;
+  string public version = "2.2.0";
+
+  /// A mapping of the document hash to the block number that was issued
+  mapping(bytes32 =&gt; uint) documentIssued;
+  /// A mapping of the hash of the claim being revoked to the revocation block number
+  mapping(bytes32 =&gt; uint) documentRevoked;
+
+  event DocumentIssued(bytes32 indexed document);
+  event DocumentRevoked(
+    bytes32 indexed document
+  );
+
+  constructor(
+    string _name
+  ) public
+  {
+    name = _name;
+  }
+
+  function issue(
+    bytes32 document
+  ) public onlyOwner onlyNotIssued(document)
+  {
+    documentIssued[document] = block.number;
+    emit DocumentIssued(document);
+  }
+
+  function getIssuedBlock(
+    bytes32 document
+  ) public onlyIssued(document) view returns (uint)
+  {
+    return documentIssued[document];
+  }
+
+  function isIssued(
+    bytes32 document
+  ) public view returns (bool)
+  {
+    return (documentIssued[document] != 0);
+  }
+
+  function isIssuedBefore(
+    bytes32 document,
+    uint blockNumber
+  ) public view returns (bool)
+  {
+    return documentIssued[document] != 0 &amp;&amp; documentIssued[document] &lt;= blockNumber;
+  }
+
+  function revoke(
+    bytes32 document
+  ) public onlyOwner onlyNotRevoked(document) returns (bool)
+  {
+    documentRevoked[document] = block.number;
+    emit DocumentRevoked(document);
+  }
+
+  function isRevoked(
+    bytes32 document
+  ) public view returns (bool)
+  {
+    return documentRevoked[document] != 0;
+  }
+
+  function isRevokedBefore(
+    bytes32 document,
+    uint blockNumber
+  ) public view returns (bool)
+  {
+    return documentRevoked[document] &lt;= blockNumber &amp;&amp; documentRevoked[document] != 0;
+  }
+
+  modifier onlyIssued(bytes32 document) {
+    require(isIssued(document), "Error: Only issued document hashes can be revoked");
+    _;
+  }
+
+  modifier onlyNotIssued(bytes32 document) {
+    require(!isIssued(document), "Error: Only hashes that have not been issued can be issued");
+    _;
+  }
+
+  modifier onlyNotRevoked(bytes32 claim) {
+    require(!isRevoked(claim), "Error: Hash has been revoked previously");
+    _;
+  }
+}
+</code></pre></div></div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

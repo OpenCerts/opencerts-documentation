@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Identity Registry | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Identity Registry" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/identity_registry.html" />
+<meta property="og:url" content="http://localhost:4000/identity_registry.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"description":"Documentations for opencerts","url":"http://localhost:4000/identity_registry.html","@type":"WebPage","headline":"Identity Registry","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=ca5796d705b2dc7a9ff277fdaa63b9f6f28ed245">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="identity-registry">Identity Registry</h1>
+
+<p>To associate the identity of a contract store owner to that of a physical legal entity, we maintain the records in a registry.</p>
+
+<p>The registry currently a flat .json file located at <a href="https://opencerts.io/static/registry.json">https://opencerts.io/static/registry.json</a></p>
+
+<h2 id="identity-verification">Identity Verification</h2>
+
+<p>Anyone can deploy their own certificate store, therefore it is not suffcient to check the certificate store name on the smart contract.</p>
+
+<p>To ensure that certificates are issued by the right identity, we conduct additional check on the owner of the certificate store. This is done by checking against the flat file.</p>
+
+<p><img src="/assets/identity-registry/unregistered-institute-warning.png" alt="Unregistered Institution Warning" /></p>
+
+<p>Should identity verification failed, a warning will be presented to the viewer. This warning simply means that the identity of the issuer cannot be verified and should be verified through other means. For example, the issuer may publish their certificate store address on their website for viewers of their certificates to check against.</p>
+
+<h2 id="adding-records-to-the-identity-registry">Adding Records to the Identity Registry</h2>
+
+<ol>
+  <li>
+    <p>Checkout the code at <a href="https://github.com/OpenCerts/opencerts-website">OpenCerts Website</a>.</p>
+  </li>
+  <li>
+    <p>Create a new record in the registry file at <code class="highlighter-rouge">static/registry.json</code>.</p>
+  </li>
+  <li>
+    <p>Make a PR to our repository.</p>
+  </li>
+</ol>
+
+<h2 id="a-work-in-progress">A Work in Progress</h2>
+
+<p>The team behind OpenCerts believe that associating identities in a decentralised world is a work-in-progress. We are actively seeking to find a balance between decentralisation and providing trusted content for our user.</p>
+
+<p>If you have suggestions on how to do it better, do let us know by opening an issue or <a href="https://ethernaut.gdshive.io/">join us</a>!</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

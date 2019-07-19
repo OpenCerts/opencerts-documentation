@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Issuing Certificates | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Issuing Certificates" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/issuing_certificates.html" />
+<meta property="og:url" content="http://localhost:4000/issuing_certificates.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"description":"Documentations for opencerts","url":"http://localhost:4000/issuing_certificates.html","@type":"WebPage","headline":"Issuing Certificates","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=ca5796d705b2dc7a9ff277fdaa63b9f6f28ed245">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="issuing-certificates">Issuing Certificates</h1>
+
+<p>After you have obtained the Merkle root from the <a href="/batching_certificates.html">previous step</a>, the next step is to publish this Merkle root on the Ethereum public main net. Once this Merkle root is registered on the blockchain, the OpenCerts.io verifier will recognise all the certificates in the batch as issued. They will show as fully valid (unless the <a href="/identity_registry.html">identity of the certificate store owner is unknown</a>). If the certificate store is unknown, a warning will be shown but the certificate will still be viewable.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>To issue the certificates, please ensure you have:</p>
+
+<ol>
+  <li><a href="/deploying_store.html">Access to a certificate store to issue from</a></li>
+  <li><a href="/batching_certificates.html">Merkle root from certificate batch</a></li>
+</ol>
+
+<h2 id="admin-interface">Admin Interface</h2>
+
+<p><img src="/assets/issuing-certificates/interface.png" alt="Administrator Interface" /></p>
+
+<p>A simple admin interface is provided to allow anyone to issue certificates on their own certificate store on https://admin.opencerts.io .</p>
+
+<h2 id="issuing-certificates-1">Issuing Certificates</h2>
+
+<h3 id="connecting-your-wallet">Connecting your wallet</h3>
+
+<p>If you are using Metamask, log into your Metamask extension and you will be able to see your Ethereum account displayed on the site next to the ‘Current Account’ label.</p>
+
+<p>If you are using Ledger Nano, select Ledger Nano from the network selector on the top right. You will see your account after you have logged into your device and selected ‘Ethereum’ for the Ledger Nano apps.</p>
+
+<p>If your accounts are not shown, click on the refresh icon beside ‘Current account’ to refresh the status.</p>
+
+<h3 id="selecting-your-certificate-store">Selecting your certificate store</h3>
+
+<p>The certificates store address is the smart contract address from the <a href="/deploying_store.html">deploying store</a> step. Do note that this address is NOT your wallet address.</p>
+
+<p>Enter the store address in the field below ‘Store address’.</p>
+
+<h3 id="publishing-the-merkle-root-hash">Publishing the merkle root hash</h3>
+
+<p>The merkle root hash is obtained from the <a href="/batching_certificates.html">batching certificate</a> step.</p>
+
+<p>Alternatively, all the processed certificate files will also have the merkle root hash appended to the file.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHA3MerkleProof"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"targetHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73656dd8850951c5894a8ffb04bb07615f38fcaee2c80941990948b5695d5cb7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"85e3920e54f82b55ed752c495823ce1245b90682dda83df7f1d8fcdc9f1eee6c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"7c8a04b687b7ab1dba1d8a520be956185c14e4888c81dc872339e29e11f0b485"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"merkleRoot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0be956185c14e4888c81dc872339e29e11f0b4857c8a04b687b7ab1dba1d8a52"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In this certificate, the merkle root to be used for the entire batch is <code class="highlighter-rouge">0x0be956185c14e4888c81dc872339e29e11f0b4857c8a04b687b7ab1dba1d8a52</code>. Notice that you have to append <code class="highlighter-rouge">0x</code> to the front of the merkle root.</p>
+
+<h3 id="transaction-confirmation">Transaction confirmation</h3>
+
+<p>Once you have entered the Merkle root hash and click on “Issue”, you will have to confirm the transaction either on Metamask or on the Ledger Nano device (depress both left and right buttons).</p>
+
+<p>Upon confirmation of the transaction, the transaction will be published onto the Ethereum network. You may have to wait a few minutes for the block containing that transaction to be mined.</p>
+
+<h3 id="certificate-check">Certificate check</h3>
+
+<p>Once the transaction is mined, you will see that all the certificates in the same batch of certificates is now issued and valid (except in the case of <a href="/identity_registry.html">unidentified issuer</a>).</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

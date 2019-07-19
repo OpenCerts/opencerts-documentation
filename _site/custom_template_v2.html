@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Custom Templates for Certificates (OpenCerts v2) | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Custom Templates for Certificates (OpenCerts v2)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/custom_template_v2.html" />
+<meta property="og:url" content="http://localhost:4000/custom_template_v2.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"description":"Documentations for opencerts","url":"http://localhost:4000/custom_template_v2.html","@type":"WebPage","headline":"Custom Templates for Certificates (OpenCerts v2)","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=ca5796d705b2dc7a9ff277fdaa63b9f6f28ed245">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="custom-templates-for-certificates-opencerts-v2">Custom Templates for Certificates (OpenCerts v2)</h1>
+
+<p><img src="/assets/custom-templates/overview.png" alt="Certificate Data plus React Template equal Certificate Views" /></p>
+
+<p>OpenCerts.io is able to render any certificate with data that follows the JSON schema specification using the default template. The default template will render all the issuer and recipient information, certificate name, and transcript information.</p>
+
+<p>Issuers who would like to customise the looks of the certificates they issue may customise how their certificates is rendered using custom templates. They may also include multiple views of the same certificate if they wish.</p>
+
+<p>In practice, institutes usually issue two or more types of certificate upon graduation of a student. With multiple views, one OpenCerts file could be used to render multiple different types of views such as the Graduation Certificate, Education Transcript, Co-curriculum Activities Transcript, etc.</p>
+
+<h2 id="setup">Setup</h2>
+
+<h3 id="document-renderer">Document Renderer</h3>
+
+<p>With OpenCerts v2, the institute will have to include their rendering template (written in <a href="https://reactjs.org/">React.js</a>) in their <a href="/document_renderer.html">hosted document renderer repository</a>.</p>
+
+<p>Make sure to follow the step-by-step guide in the document renderer documentation first!</p>
+
+<h2 id="writing-certificate-templates">Writing Certificate Templates</h2>
+
+<p>The template files are written in <a href="https://reactjs.org/">React.js</a> and all CSS styling is up to you.</p>
+
+<p>In the sample template below you can see how:</p>
+
+<ul>
+  <li>data from the certificate is made available to the template</li>
+  <li>objects in an array can be rendered</li>
+  <li>conditional rendering of components</li>
+</ul>
+
+<p>Sample Template:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="kd">get</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'lodash'</span>
+<span class="k">import</span> <span class="s1">'./demoStyles.css'</span> <span class="c1">// Import your own CSS styles and include it in the html className</span>
+
+<span class="kd">const</span> <span class="nx">Template</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">certificate</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Declaring what variables will be available to the template from the certificate</span>
+  <span class="kd">const</span> <span class="nx">certificateName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">certificateId</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">issuedOn</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'issuedOn'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">expiresOn</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'expiresOn'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">admissionDate</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'admissionDate'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">graduationDate</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'graduationDate '</span><span class="p">)</span>
+
+  <span class="kd">const</span> <span class="nx">recipientName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'recipient.name'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">recipientDid</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'recipient.did'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">recipientEmail</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'recipient.email'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">recipientPhone</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'recipient.phone'</span><span class="p">)</span>
+
+  <span class="kd">const</span> <span class="nx">issuerName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'issuers.0.name'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">issuerAddress</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'issuers.0.certificateStore'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">issuerUrl</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'issuers.0.url'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">issuerEmail</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'issuers.0.email'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">issuerDid</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'issuers.0.did'</span><span class="p">)</span>
+
+  <span class="kd">const</span> <span class="nx">transcriptData</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s1">'transcript'</span><span class="p">,</span> <span class="p">[])</span>
+
+  <span class="c1">// Rendering an array of transcript data</span>
+  <span class="kd">const</span> <span class="nx">transcriptSection</span> <span class="o">=</span> <span class="nx">transcriptData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">t</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">tr</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">t</span><span class="p">.</span><span class="nx">courseCode</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">t</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">t</span><span class="p">.</span><span class="nx">grade</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">t</span><span class="p">.</span><span class="nx">courseCredit</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
+</span>  <span class="p">))</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"row"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">certificateName</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"row mb-4"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"w-100"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">certificateId</span> <span class="o">&amp;&amp;</span> <span class="s2">`Serial: </span><span class="p">${</span><span class="nx">certificateId</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"w-100"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">issuedOn</span> <span class="o">&amp;&amp;</span> <span class="s2">`Issued On: </span><span class="p">${</span><span class="nx">issuedOn</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"w-100"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">expiresOn</span> <span class="o">&amp;&amp;</span> <span class="s2">`Expires On: </span><span class="p">${</span><span class="nx">expiresOn</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"w-100"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">admissionDate</span> <span class="o">&amp;&amp;</span> <span class="s2">`Admission Date: </span><span class="p">${</span><span class="nx">admissionDate</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"w-100"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">graduationDate</span> <span class="o">&amp;&amp;</span> <span class="s2">`Graduation Date: </span><span class="p">${</span><span class="nx">graduationDate</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"row mb-4"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"col p-0"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">Recipient</span> <span class="nx">Info</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="p">{</span><span class="nx">recipientDid</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">DID</span><span class="p">:</span> <span class="p">{</span><span class="nx">recipientDid</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>          <span class="p">{</span><span class="nx">recipientName</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Name</span><span class="p">:</span> <span class="p">{</span><span class="nx">recipientName</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>          <span class="p">{</span><span class="nx">recipientEmail</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Email</span><span class="p">:</span> <span class="p">{</span><span class="nx">recipientEmail</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>          <span class="p">{</span><span class="nx">recipientPhone</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Phone</span><span class="p">:</span> <span class="p">{</span><span class="nx">recipientPhone</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"col p-0"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">Issuer</span> <span class="nx">Info</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="p">{</span><span class="nx">issuerAddress</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Certificate</span> <span class="na">Store</span><span class="p">:</span> <span class="p">{</span><span class="nx">issuerAddress</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>          <span class="p">{</span><span class="nx">issuerDid</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">DID</span><span class="p">:</span> <span class="p">{</span><span class="nx">issuerDid</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>          <span class="p">{</span><span class="nx">issuerName</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Name</span><span class="p">:</span> <span class="p">{</span><span class="nx">issuerName</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>          <span class="p">{</span><span class="nx">issuerUrl</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Url</span><span class="p">:</span> <span class="p">{</span><span class="nx">issuerUrl</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>          <span class="p">{</span><span class="nx">issuerEmail</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Email</span><span class="p">:</span> <span class="p">{</span><span class="nx">issuerEmail</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="c1">// Rendering of transcript data if available</span>
+      <span class="p">{</span><span class="nx">transcriptData</span> <span class="o">!==</span> <span class="p">[]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"row mb-4"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">Transcript</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">table</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"w-100"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">tbody</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nx">tr</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Course</span> <span class="nx">Code</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Name</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Grade</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">th</span><span class="o">&gt;</span><span class="nx">Course</span> <span class="nx">Credit</span><span class="o">&lt;</span><span class="sr">/th</span><span class="err">&gt;
+</span>              <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
+</span>              <span class="p">{</span><span class="nx">transcriptSection</span><span class="p">}</span>
+            <span class="o">&lt;</span><span class="sr">/tbody</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/table</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Template</span>
+</code></pre></div></div>
+
+<h2 id="integration-test">Integration test</h2>
+
+<p>To ensure that incremental code change does not break your certificate, each template should be accompanied by it’s integration test.</p>
+
+<p>Details on the integration test can be found in <a href="/document_renderer_test.html">testing your document renderer</a>.</p>
+
+<h2 id="common-questions">Common Questions</h2>
+
+<h3 id="rendering-logic">Rendering Logic</h3>
+
+<p>As the template is written in javascript, you can use custom application logic to render the certificates.</p>
+
+<p>One such example is to group modules in the same semester together.</p>
+
+<p>Do note that the <a href="https://lodash.com">lodash</a> library is available and that functions such as <code class="highlighter-rouge">groupby</code> might come in useful.</p>
+
+<h3 id="additional-data">Additional data</h3>
+
+<p>OpenCerts specifies the certificate schema to allow all certificates to be computer readable. However, it is understood that there might be data that cannot be fitted into the existing schema. To include additional data, simply put these additional data into the <code class="highlighter-rouge">additionalData</code> field in the certificate. These additional data are also made available to the template. However, do note that while it is human readable (via the OpenCerts viewer) it may not be understood by all computers.</p>
+
+<p>Example of custom data:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="s2">"2018-05-27382748"</span><span class="p">,</span>
+  <span class="nx">$template</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">name</span><span class="p">:</span> <span class="s2">"GOVTECH_DEMO"</span><span class="p">,</span>
+        <span class="nx">type</span><span class="p">:</span> <span class="s2">"EMBEDDED_RENDERER"</span><span class="p">,</span>
+        <span class="nx">url</span><span class="p">:</span> <span class="s2">"https://demo-renderer.opencerts.io/"</span>
+      <span class="p">},</span>
+  <span class="nx">issuedOn</span><span class="p">:</span> <span class="s2">"2018-08-01T00:00:00+08:00"</span><span class="p">,</span>
+  <span class="nx">issuers</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">{</span>
+     <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"University of Blockchain"</span><span class="p">,</span>
+     <span class="s2">"certificateStore"</span><span class="p">:</span> <span class="s2">"0xAAAAAAAAAAAAAAAA...AAAAAA"</span>
+   <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nx">recipient</span><span class="p">:</span> <span class="p">{</span>
+  	<span class="s2">"name"</span><span class="p">:</span> <span class="s2">"John Toh"</span>
+  <span class="p">},</span>
+  <span class="nx">name</span><span class="p">:</span> <span class="s2">"Bachelor of Blockchain"</span><span class="p">,</span>
+  <span class="nx">additionalData</span><span class="p">:{</span>
+  	<span class="nl">studentId</span><span class="p">:</span> <span class="s2">"U1234567G"</span><span class="p">,</span>
+  	<span class="nx">signature1</span><span class="p">:</span> <span class="p">{</span>
+  	  <span class="nl">name</span><span class="p">:</span> <span class="s2">"Mr Tan"</span><span class="p">,</span>
+  	  <span class="nx">designation</span><span class="p">:</span> <span class="s2">"Chairman"</span><span class="p">,</span>
+  	  <span class="nx">signature</span><span class="p">:</span> <span class="s2">"data:image/jpeg;base64,....."</span>
+  	<span class="p">},</span>
+  	<span class="nx">signature2</span><span class="p">:</span> <span class="p">{</span>
+  	  <span class="nl">name</span><span class="p">:</span> <span class="s2">"Mrs Low"</span><span class="p">,</span>
+  	  <span class="nx">designation</span><span class="p">:</span> <span class="s2">"President"</span><span class="p">,</span>
+  	  <span class="nx">signature</span><span class="p">:</span> <span class="s2">"data:image/jpeg;base64,....."</span>
+  	<span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="template-data-in-certificate">Template data in certificate</h3>
+
+<p>There are some occasions where it makes sense to have images in the certificate data. One example of this is for signature fields. These signatures can be added to the certificate data in <code class="highlighter-rouge">base64</code> format, together with the signer designation and name. This will allow the institute to reuse the template for different departments and not change the template when the signer leaves the office.</p>
+
+<p>See example in Additional Data for a sample of where image of the signature can be inserted.</p>
+
+<h3 id="rendering-for-mobile">Rendering for Mobile</h3>
+
+<p>Some of the users will be viewing these certificates from mobile devices, you might want to make sure the template is mobile responsive.</p>
+
+<p>The certificate template could be optimised for mobile using various classes from bootstrap.</p>
+
+<h3 id="data-obfuscation">Data obfuscation</h3>
+
+<p>OpenCerts allow users to obfuscate values in the document. The API to enable data obfuscation on your custom template can be found <a href="/appendix_data_obfuscation.html">in the appendix</a>.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

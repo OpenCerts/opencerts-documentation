@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Creating Certificates | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Creating Certificates" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/creating_certificates.html" />
+<meta property="og:url" content="http://localhost:4000/creating_certificates.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"description":"Documentations for opencerts","url":"http://localhost:4000/creating_certificates.html","@type":"WebPage","headline":"Creating Certificates","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=ca5796d705b2dc7a9ff277fdaa63b9f6f28ed245">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="creating-certificates">Creating Certificates</h1>
+
+<p><img src="/assets/creating-certificates/inside-certificate.png" alt="Certificate Store" /></p>
+
+<p>The OpenCerts file is a <code class="highlighter-rouge">.json</code> file that conforms to the <a href="https://github.com/GovTechSG/open-attestation">OpenAttestation</a> specification.</p>
+
+<p>At the root level, each file contains information on the schema type (OpenCerts), certificate data, hidden data (from privacy filter) and a signature. Details of the OpenAttestation file format can be found on the <a href="https://github.com/GovTechSG/open-attestation">Github page</a>.</p>
+
+<p>What you will be most concern with is the certificate data. All these data are stored in the <code class="highlighter-rouge">data</code> key on the OpenCerts file and conforms to the <a href="https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json">OpenCerts schema</a>.</p>
+
+<p>For this section, we will focus on populating the certificate data that conforms to the schema.</p>
+
+<h2 id="opencerts-schema">OpenCerts Schema</h2>
+
+<p>The shape of the certificate object is defined using <a href="https://json-schema.org/">JSON Schema</a>. The definition can be found at <a href="https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json">https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json</a>.</p>
+
+<h2 id="using-json-schema-validator">Using JSON Schema Validator</h2>
+
+<p>An useful online tool to help you understand the JSON schema is the <a href="https://www.jsonschemavalidator.net/">JSON Schema Validator</a>.</p>
+
+<p>Simply paste the content of the schema document on the left panel and you can start writing the certificate data on the right. The tool will instantly validate the certificate data shape and will notify you of potential errors.</p>
+
+<p><img src="/assets/creating-certificates/validator-error.png" alt="Validation Error" /></p>
+
+<p>You can see that the validation failed because of missing properties on JSON Schema Validator</p>
+
+<h2 id="the-minimalist-certificate">The Minimalist Certificate</h2>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018091259"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bachelor of Blockchain"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issuedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-01T00:00:00+08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issuers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"University of Blockchain"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"certificateStore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Snow"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The simplest certificate contains the values for <code class="highlighter-rouge">id</code>, <code class="highlighter-rouge">name</code>, <code class="highlighter-rouge">issuedOn</code>, <code class="highlighter-rouge">issuers</code> and <code class="highlighter-rouge">recipient</code>.</p>
+
+<p>Try creating a minimal certificate using the tool above to get an idea of what goes into a certificate.</p>
+
+<h3 id="id-field"><code class="highlighter-rouge">id</code> Field</h3>
+
+<p>The <code class="highlighter-rouge">id</code> field is a string used to uniquely identify the certificate. In most cases, the serial number of the corresponding physical certificate can be used.</p>
+
+<p>Alternatively, a random <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">uuid</a> can be generated and used here.</p>
+
+<h3 id="name-field"><code class="highlighter-rouge">name</code> field</h3>
+
+<p>The <code class="highlighter-rouge">name</code> field is a string that refers to the name of the certificate.</p>
+
+<h3 id="issuedon-field"><code class="highlighter-rouge">issuedOn</code> field</h3>
+
+<p>The <code class="highlighter-rouge">issuedOn</code> field is a date-time string conforming to the <a href="https://tools.ietf.org/html/rfc3339#section-5.6">ISO 8601, RFC 3339</a> format.</p>
+
+<p>Example of a valid <code class="highlighter-rouge">issuedOn</code> string is <code class="highlighter-rouge">2018-08-31T23:59:32+08:00</code>. Where it specifies the date-time (HH:MM:SS) 23:59:32, on 31/08/2018, in the timezone GMT +8.</p>
+
+<h3 id="issuers-field"><code class="highlighter-rouge">issuers</code> field</h3>
+
+<p>The <code class="highlighter-rouge">issuers</code> is an array of the issuer object. The required fields for each issuer is <code class="highlighter-rouge">name</code> and <code class="highlighter-rouge">certificateStore</code>. Other fields such as <code class="highlighter-rouge">did</code>, <code class="highlighter-rouge">url</code>, <code class="highlighter-rouge">email</code> and <code class="highlighter-rouge">phone</code> are also recognised.</p>
+
+<p>The <code class="highlighter-rouge">name</code> specifies the name of the issuing body while the <code class="highlighter-rouge">certificateStore</code> specifies the smart contract address of the certificate store deployed by the issuing body.</p>
+
+<p>The <code class="highlighter-rouge">certificateStore</code> address can be obtained after <a href="/deploying_store.html">deploying an instance of the smart contract</a>.</p>
+
+<h3 id="recipient-field"><code class="highlighter-rouge">recipient</code> field</h3>
+
+<p>The <code class="highlighter-rouge">recipient</code> is an object of the recipient. The only required field is <code class="highlighter-rouge">name</code> while other properties such as <code class="highlighter-rouge">did</code>, <code class="highlighter-rouge">url</code>, <code class="highlighter-rouge">email</code> and <code class="highlighter-rouge">phone</code> are available.</p>
+
+<h2 id="the-complete-certificate">The Complete Certificate</h2>
+
+<p>Once you are done with the minimal certificate, you can include more data such as <code class="highlighter-rouge">transcript</code> and <code class="highlighter-rouge">additionalData</code> into the certificate.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018091259"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bachelor of Blockchain"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issuedOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-31T23:59:32+08:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"issuers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"University of Blockchain"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://universityofblockchain.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"certificateStore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Snow"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johnsnow@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6588888888"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"transcript"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"History of Blockchain"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B+"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"courseCredit"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"courseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HIST-BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://universityofblockchain.com/sub/hist-btc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Understanding the origins of the blockchain."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum Smart Contracts"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"courseCredit"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"courseCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH-SC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://universityofblockchain.com/sub/eth-sc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Understanding how to write smart contracts on the Ethereum network."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"additionalData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/jpeg;base64...."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="transcript-field"><code class="highlighter-rouge">transcript</code> field</h3>
+
+<p>The <code class="highlighter-rouge">transcript</code> field is an array of transcript objects. Each object is required to have the <code class="highlighter-rouge">name</code> value and can optionally hold values for <code class="highlighter-rouge">grade</code>, <code class="highlighter-rouge">courseCredit</code>, <code class="highlighter-rouge">courseCode</code>, <code class="highlighter-rouge">url</code>, <code class="highlighter-rouge">description</code> and <code class="highlighter-rouge">score</code>.</p>
+
+<p>Additional properties can also be added to the <code class="highlighter-rouge">transcript</code> objects.</p>
+
+<h3 id="additionaldata-field"><code class="highlighter-rouge">additionalData</code> field</h3>
+
+<p>Can’t find any place to insert data into? <code class="highlighter-rouge">additionalData</code> is the right place to put it.</p>
+
+<p>The <code class="highlighter-rouge">additionalData</code> field is an object that allows you to insert any type of data into it. These data will be present for <a href="/custom_template.html">custom certificate templates</a>.</p>
+
+<p>Some examples of data that can be in <code class="highlighter-rouge">additionalData</code> are:</p>
+
+<ul>
+  <li>Signatures to be rendered on the certificate</li>
+  <li>Co-curriculum activities records</li>
+  <li>Awards and accolades</li>
+  <li>Student conduct</li>
+  <li>Testimonies</li>
+</ul>
+
+<h2 id="saving-the-certificate">Saving the Certificate</h2>
+
+<p>Once the certificate data has been created/generated, simply export it as a <code class="highlighter-rouge">.json</code> file. All the certificates will be batched together to be committed onto the blockchain with the <a href="https://github.com/GovTechSG/certificate-cli">CLI tool</a> or your custom node.js application using the <a href="https://www.npmjs.com/package/@govtechsg/open-certificate">npm package</a> later.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

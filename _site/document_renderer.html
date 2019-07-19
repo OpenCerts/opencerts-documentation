@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Document Renderer | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Document Renderer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/document_renderer.html" />
+<meta property="og:url" content="http://localhost:4000/document_renderer.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"description":"Documentations for opencerts","url":"http://localhost:4000/document_renderer.html","@type":"WebPage","headline":"Document Renderer","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=ca5796d705b2dc7a9ff277fdaa63b9f6f28ed245">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="document-renderer">Document Renderer</h1>
+
+<p><img src="/assets/document-renderer/overview.png" alt="Certificate Data plus React Template equal Certificate Views" /></p>
+
+<p>This documentation will provide a step-by-step guide of how to setup one’s own document renderer.</p>
+
+<p>We will be using the Govtech Demo Cert for this tutorial. The code repository can be found at <a href="https://github.com/OpenCerts/demo-opencerts-renderer">https://github.com/OpenCerts/demo-opencerts-renderer</a></p>
+
+<h2 id="setup">Setup</h2>
+
+<h3 id="prerequisite">Prerequisite</h3>
+
+<ul>
+  <li>git</li>
+</ul>
+
+<h3 id="clone-the-document-renderer-repo">Clone the document renderer repo</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone the repository</span>
+git clone https://github.com/TradeTrust/document-renderer.git
+<span class="nb">cd </span>document-renderer
+
+<span class="c"># Install dependencies</span>
+npm install
+
+<span class="c"># Run the server</span>
+yarn start
+
+<span class="c"># Open website served at localhost:3000</span>
+open http://localhost:3000
+</code></pre></div></div>
+
+<p>You should observe a blank page at this point.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="template-directory-structure">Template Directory Structure</h3>
+
+<p>All the certificate templates are stored in the folder <code class="highlighter-rouge">src/components/templates/</code>. You should see 2 existing folders - customTemplate and default.
+Institutes adding new templates will store their template files as a folder in the templates folder.</p>
+
+<p>Take the below as an example:
+<img src="/assets/document-renderer/directory1.png" alt="Custom template index.js screenshot" /></p>
+
+<p>In the new custom folder (govtechDemoCert), there will be the corresponding files to its views, ie.
+Certificate - <code class="highlighter-rouge">certificate.js</code>
+Transcript - <code class="highlighter-rouge">transcript.js</code>
+Media - <code class="highlighter-rouge">media.js</code></p>
+
+<p>Also, notice that there is a <code class="highlighter-rouge">index.js</code> that you will have to create that will map out these files and enable us to switch between the different views later on the opencerts.io website.</p>
+
+<h3 id="custom-templates">Custom Templates</h3>
+
+<p>To customize your own certificates and transcripts, refer to the documentation on <a href="/custom_template_v2.html">creating your custom templates for OpenCerts v2.0</a>.</p>
+
+<h3 id="template-indexjs">Template index.js</h3>
+
+<p>Below is an example on how to format your <code class="highlighter-rouge">index.js</code> file within your custom template folder, in this case the govtechDemoCert folder.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">DemoCert</span> <span class="k">from</span> <span class="s1">'./certificate'</span>
+<span class="k">import</span> <span class="nx">DemoTranscript</span> <span class="k">from</span> <span class="s1">'./transcript'</span>
+<span class="k">import</span> <span class="nx">DemoMedia</span> <span class="k">from</span> <span class="s1">'./media'</span>
+
+<span class="kd">const</span> <span class="nx">templates</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="s1">'certificate'</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="s1">'Certificate'</span><span class="p">,</span>
+    <span class="na">template</span><span class="p">:</span> <span class="nx">DemoCert</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="s1">'transcript'</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="s1">'Transcript'</span><span class="p">,</span>
+    <span class="na">template</span><span class="p">:</span> <span class="nx">DemoTranscript</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="s1">'media'</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="s1">'Media'</span><span class="p">,</span>
+    <span class="na">template</span><span class="p">:</span> <span class="nx">DemoMedia</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">templates</span>
+</code></pre></div></div>
+
+<p>In the example above, the document rendered using this template will have three views, namely <code class="highlighter-rouge">Certificate</code>, <code class="highlighter-rouge">Transcript</code>, and <code class="highlighter-rouge">Media</code> view.</p>
+
+<p>These three views are imported from the template <code class="highlighter-rouge">./certificate</code>, <code class="highlighter-rouge">./transcript</code>, and <code class="highlighter-rouge">./media</code> respectively.</p>
+
+<h3 id="renderer-indexjs">Renderer index.js</h3>
+
+<p>To register the templates within the renderer, we have to add the custom template folder - govtechDemoCert - to the index.js file of the templates folder, which is located here:
+<img src="/assets/document-renderer/directory2.png" alt="templates index.js screenshot" /></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">DefaultTemplate</span> <span class="k">from</span> <span class="s1">'./default'</span>
+<span class="k">import</span> <span class="nx">CustomTemplate</span> <span class="k">from</span> <span class="s1">'./customTemplate'</span>
+<span class="k">import</span> <span class="nx">GovTechDemoCert</span> <span class="k">from</span> <span class="s1">'./govtechDemoCert'</span> <span class="c1">// Added</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">default</span><span class="p">:</span> <span class="nx">DefaultTemplate</span><span class="p">,</span>
+  <span class="na">CUSTOM_TEMPLATE</span><span class="p">:</span> <span class="nx">CustomTemplate</span><span class="p">,</span>
+  <span class="na">GOVTECH_DEMO</span><span class="p">:</span> <span class="nx">GovTechDemoCert</span><span class="p">,</span> <span class="c1">// Added</span>
+  <span class="na">NULL</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Import the govtechDemoCert folder and export it as a key-value pair.
+The key will be used in the .opencerts file later to reference the folder where the templates are stored.
+This key-value pair <strong>MUST NOT</strong> be a duplicate of another existing template’s key.</p>
+
+<h3 id="registering-templates">Registering Templates</h3>
+
+<p>To allow the OpenCerts viewer to detect the new certificate templates, the value used in the <code class="highlighter-rouge">$template.name</code> field <strong>must</strong> equal the key corresponding to the template folder you have created. For example, the unwrapped version of our custom .opencerts file should look like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">certificate</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="s2">"53b75bbe"</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="s2">"Govtech Demo Certificate"</span><span class="p">,</span>
+      <span class="na">issuedOn</span><span class="p">:</span> <span class="s2">"2019-05-29T00:00:00+08:00"</span><span class="p">,</span>
+      <span class="na">$template</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s2">"GOVTECH_DEMO"</span><span class="p">,</span> <span class="c1">// $template.name must corresponding to the key used to reference your template folder</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s2">"EMBEDDED_RENDERER"</span><span class="p">,</span> <span class="c1">// FOLLOW THIS EXACT VALUE</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s2">"https://demo-renderer.opencerts.io/"</span>
+      <span class="p">},</span>
+      <span class="c1">// Other information below</span>
+</code></pre></div></div>
+
+<h3 id="how-about-other-custom-templates">How about other custom templates?</h3>
+
+<p>Simple! Just repeat the steps within the <strong>SAME</strong> repository under a new folder.</p>
+
+<h2 id="teseting-your-ceritificates">Teseting your ceritificates</h2>
+
+<h3 id="testing-using-the-indexhtml-file">Testing using the index.html file</h3>
+
+<p>To test that your custom certificates work, you can use our index.html in the <code class="highlighter-rouge">/test</code> folder found in the root directory.
+In the test folder, open up the <code class="highlighter-rouge">index.html</code> file. Replace <code class="highlighter-rouge">const certificate</code> with your unwrapped certificate shown above.</p>
+
+<p>Then in your terminal, type <code class="highlighter-rouge">yarn start</code>. Wait for the localhost to load before opening the index.html file.
+Click on the <code class="highlighter-rouge">Render Certificate</code> button and you should see your certificate with its respective tabs displayed!</p>
+
+<h2 id="integration-test">Integration test</h2>
+
+<p>To ensure that incremental code change does not break your certificate, each template has to be accompanied by it’s integration test.</p>
+
+<p>Details on the integration test can be found in the <a href="/integration_test.html">next chapter</a>.</p>
+
+<h2 id="hosting-your-renderer-using-netlify">Hosting your renderer using Netlify</h2>
+
+<p>The next step is to host your document renderer on a server for your certificate to reference it in the <code class="highlighter-rouge">$template.url</code> field.</p>
+
+<p>You also have to upload your custom document-renderer to a <strong>public</strong> Github repository.</p>
+
+<h3 id="creating-an-account-with-netlify">Creating an account with Netlify</h3>
+
+<p>Head to <a href="https://www.netlify.com/">https://www.netlify.com/</a> and sign up for a free Netlify account.</p>
+
+<p>Netlify is a platform that offers hosting and serverless backend services for static websites. You can connect your Github repository and deploy your site.</p>
+
+<h3 id="connect-with-git">Connect with Git</h3>
+
+<p>On your Netlify dashboard, click <strong>New site from Git</strong>.</p>
+
+<ol>
+  <li>
+    <p>Connect to Git provider
+<img src="/assets/document-renderer/netlify1.png" alt="Netlify Connect to Git screenshot" /></p>
+  </li>
+  <li>
+    <p>Pick a repository
+Select the document-renderer repository that you have uploaded to Github.
+<img src="/assets/document-renderer/netlify2.png" alt="Netlify Pick a repository screenshot" /></p>
+  </li>
+  <li>
+    <p>Build options, and deploy!
+Follow the image below to configure your build options.
+<img src="/assets/document-renderer/netlify3.png" alt="Netlify Build options screenshot" /></p>
+  </li>
+</ol>
+
+<h3 id="deploying">Deploying</h3>
+
+<p>Once the above steps are completed, you should see this view while waiting for your site to deploy:
+<img src="/assets/document-renderer/netlify4.png" alt="Netlify Waiting to deploy screenshot" /></p>
+
+<h2 id="best-practices-for-hosting-on-netlify">Best Practices for hosting on Netlify</h2>
+
+<h3 id="custom-domain">Custom domain</h3>
+
+<p>With a custom domain, you will not have to change the <code class="highlighter-rouge">$template.url</code> field and re-issue your certificate if netlify is down. Simply host your decentralised renderer on another server using the same custom domain name.</p>
+
+<p>You can also add a custom domain to your site, ie. <code class="highlighter-rouge">$template.url</code>.
+<img src="/assets/document-renderer/netlify5.png" alt="Netlify Custom domain screenshot" /></p>
+
+<p>You will also be provided with a default netlify domain as shown below. <strong>Make sure to copy this default domain</strong>. This is the CNAME to add to the DNS later.
+<img src="/assets/document-renderer/netlify6.png" alt="Netlify Default domain screenshot" /></p>
+
+<p>Then, add this CNAME to your DNS:
+<img src="/assets/document-renderer/netlify7.png" alt="Netlify add CNAME to DNS screenshot" /></p>
+
+<p>Once the DNS successfully propagates, you should see that your custom domain no longer says “Check for DNS configuration”.
+<img src="/assets/document-renderer/netlify8.png" alt="Netlify successful screenshot" /></p>
+
+<h3 id="issue-ssl-to-enable-https">Issue SSL to enable HTTPS</h3>
+
+<p>To secure your site, you can enable HTTPS as shown below:
+<img src="/assets/document-renderer/netlify9.png" alt="Netlify HTTPS screenshot" /></p>
+
+<h2 id="issuing-new-certificate">Issuing new certificate</h2>
+
+<p>Now that you have completed the above steps, you can batch and issue your new certificate with the appropriate <code class="highlighter-rouge">$template</code> fields.</p>
+
+<p>Refer to the chapter on <a href="/batching_certificates.html">batching certificates</a> and <a href="/issuing_certificates.html">issuing certificates</a> on how to do this.</p>
+
+<p>An example of how your final certificate should look like is shown below:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"opencerts/v2.0"</span><span class="p">,</span> <span class="c1">// OpenCerts v2.0</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"cfb83658-7048-4f2c-b439-19298ad9885f:string:53b75bbe"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"9683754a-7ec3-45f0-97d7-66ff2ff8a9fe:string:Govtech Demo Certificate"</span><span class="p">,</span>
+    <span class="s2">"issuedOn"</span><span class="p">:</span> <span class="s2">"d650edd4-96dd-4ae8-acf9-12f3217f7fd7:string:2019-05-29T00:00:00+08:00"</span><span class="p">,</span>
+    <span class="s2">"$template"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"44f85973-dc7f-467c-90c4-5dff3c811d56:string:GOVTECH_DEMO"</span><span class="p">,</span> <span class="c1">// Key of template folder</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"5ba7eb5c-cb18-4d33-8bf8-d3141638a691:string:EMBEDDED_RENDERER"</span><span class="p">,</span> <span class="c1">// Must be EMBEDDED_RENDERER</span>
+      <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"c6bbd4da-7d2b-4006-bd54-63207e730990:string:https://demo-renderer.opencerts.io"</span> <span class="c1">// Custom domain where renderer is hosted</span>
+    <span class="p">},</span>
+      <span class="c1">// Other information below</span>
+</code></pre></div></div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>
