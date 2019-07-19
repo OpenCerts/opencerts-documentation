@@ -29,30 +29,30 @@ In the sample template below you can see how:
 Sample Template:
 
 ```js
-import { get } from "lodash";
-import "./demoStyles.css"; // Import your own CSS styles and include it in the html className
+import { get } from 'lodash'
+import './demoStyles.css' // Import your own CSS styles and include it in the html className
 
 const Template = ({ certificate }) => {
   // Declaring what variables will be available to the template from the certificate
-  const certificateName = get(certificate, "name");
-  const certificateId = get(certificate, "id");
-  const issuedOn = get(certificate, "issuedOn");
-  const expiresOn = get(certificate, "expiresOn");
-  const admissionDate = get(certificate, "admissionDate");
-  const graduationDate = get(certificate, "graduationDate ");
+  const certificateName = get(certificate, 'name')
+  const certificateId = get(certificate, 'id')
+  const issuedOn = get(certificate, 'issuedOn')
+  const expiresOn = get(certificate, 'expiresOn')
+  const admissionDate = get(certificate, 'admissionDate')
+  const graduationDate = get(certificate, 'graduationDate ')
 
-  const recipientName = get(certificate, "recipient.name");
-  const recipientDid = get(certificate, "recipient.did");
-  const recipientEmail = get(certificate, "recipient.email");
-  const recipientPhone = get(certificate, "recipient.phone");
+  const recipientName = get(certificate, 'recipient.name')
+  const recipientDid = get(certificate, 'recipient.did')
+  const recipientEmail = get(certificate, 'recipient.email')
+  const recipientPhone = get(certificate, 'recipient.phone')
 
-  const issuerName = get(certificate, "issuers.0.name");
-  const issuerAddress = get(certificate, "issuers.0.certificateStore");
-  const issuerUrl = get(certificate, "issuers.0.url");
-  const issuerEmail = get(certificate, "issuers.0.email");
-  const issuerDid = get(certificate, "issuers.0.did");
+  const issuerName = get(certificate, 'issuers.0.name')
+  const issuerAddress = get(certificate, 'issuers.0.certificateStore')
+  const issuerUrl = get(certificate, 'issuers.0.url')
+  const issuerEmail = get(certificate, 'issuers.0.email')
+  const issuerDid = get(certificate, 'issuers.0.did')
 
-  const transcriptData = get(certificate, "transcript", []);
+  const transcriptData = get(certificate, 'transcript', [])
 
   // Rendering an array of transcript data
   const transcriptSection = transcriptData.map((t, i) => (
@@ -62,7 +62,7 @@ const Template = ({ certificate }) => {
       <td>{t.grade}</td>
       <td>{t.courseCredit}</td>
     </tr>
-  ));
+  ))
 
   return (
     <div className="container">
@@ -117,10 +117,10 @@ const Template = ({ certificate }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Template;
+export default Template
 ```
 
 ## Integration test
@@ -147,30 +147,34 @@ Example of custom data:
 
 ```js
 {
-  "id": "2018-05-27382748",
-  "$template": "UniversityOfBlockchain-Degree",
-  "issuedOn": "2018-08-01T00:00:00+08:00",
-  "issuers": [
+  id: "2018-05-27382748",
+  $template: {
+        name: "GOVTECH_DEMO",
+        type: "EMBEDDED_RENDERER",
+        url: "https://demo-renderer.opencerts.io/"
+      },
+  issuedOn: "2018-08-01T00:00:00+08:00",
+  issuers: [
    {
      "name": "University of Blockchain",
      "certificateStore": "0xAAAAAAAAAAAAAAAA...AAAAAA"
    }
   ],
-  "recipient": {
+  recipient: {
   	"name": "John Toh"
   },
-  "name": "Bachelor of Blockchain",
-  "additionalData":{
-  	"studentId": "U1234567G",
-  	"signature1": {
-  	  "name": "Mr Tan",
-  	  "designation": "Chairman",
-  	  "signature": "data:image/jpeg;base64,....."
+  name: "Bachelor of Blockchain",
+  additionalData:{
+  	studentId: "U1234567G",
+  	signature1: {
+  	  name: "Mr Tan",
+  	  designation: "Chairman",
+  	  signature: "data:image/jpeg;base64,....."
   	},
-  	"signature2": {
-  	  "name": "Mrs Low",
-  	  "designation": "President",
-  	  "signature": "data:image/jpeg;base64,....."
+  	signature2: {
+  	  name: "Mrs Low",
+  	  designation: "President",
+  	  signature: "data:image/jpeg;base64,....."
   	}
   }
 }
