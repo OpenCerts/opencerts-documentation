@@ -17,6 +17,7 @@
 - [01/10/18 - Technical Training Slides](https://docs.google.com/presentation/d/11QTk76_R_FRc5xrgLrkG-NjsIItYDNcLWG6RgiICm48/edit?usp=sharing)
 - [27/03/19 - Announcements & FAQ](https://docs.google.com/presentation/d/11VDgcPOrhDsXWs_1fVghj138ZxonEDpC-UE39Mx4E30)
 - [12/04/19 - OpenCerts Schema 1.5 update](./announcements/schema1.5.pdf)
+- [25/07/19 - OpenCerts Schema 2.0 update](./schema2_update.md)
 
 ## Table of Content
 
@@ -29,7 +30,7 @@
 | [Creating a Document Renderer](./document_renderer.md)                            |                |       ✅       |
 | [Testing a Document Renderer](./document_renderer_test.md)                        |                |       ✅       |
 | [Custom Certificate Templates for OpenCerts v2](./custom_template_v2.md)          |                |       ✅       |
-| [DNS Identity Proof](./dns_verification.md)          |                |       ✅       |
+| [DNS Identity Proof](./dns_verification.md)                                       |                |       ✅       |
 | [Custom Certificate Templates](./custom_template.md)                              |       ✅       |                |
 | [Testing Custom Certificate Templates](./integration_test.md)                     |       ✅       |                |
 | [Batching Certificates](./batching_certificates.md)                               |       ✅       |       ✅       |
