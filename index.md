@@ -29,6 +29,7 @@
 | [Creating a Document Renderer](./document_renderer.md)                            |                |       ✅       |
 | [Testing a Document Renderer](./document_renderer_test.md)                        |                |       ✅       |
 | [Custom Certificate Templates for OpenCerts v2](./custom_template_v2.md)          |                |       ✅       |
+| [DNS Identity Proof](./dns_verification.md)          |                |       ✅       |
 | [Custom Certificate Templates](./custom_template.md)                              |       ✅       |                |
 | [Testing Custom Certificate Templates](./integration_test.md)                     |       ✅       |                |
 | [Batching Certificates](./batching_certificates.md)                               |       ✅       |       ✅       |
