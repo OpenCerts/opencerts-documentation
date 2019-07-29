@@ -10,17 +10,17 @@ With effect from 31 December 2019, OpenCerts.io will be shifting to the use of a
 
 ### Repository Change
 
-With OpenCerts v2.0, **no** pull requests for adding/modifying certificates should be made to the original github repository at [https://github.com/OpenCerts/opencerts-website](https://github.com/OpenCerts/opencerts-website).
+With OpenCerts v2.0, **no** pull requests for adding/modifying certificates should be made to the original github repository at [https://github.com/OpenCerts/opencerts-website](https://github.com/OpenCerts/opencerts-website) as the templates have been moved. We will proceed to close all pull request for adding or modifying certificates.. 
 
 The process for registering your institution with OpenCerts remains the same.
 
-For any OpenCerts v1.5 and below, pull requests should be made to the decentralised renderer created for these legacy certificates. The new github repository can be found at [https://github.com/OpenCerts/legacy-templates](https://github.com/OpenCerts/legacy-templates).
+For OpenCerts v1.5 and below, pull requests should be made to the decentralised renderer created for these legacy certificates. The new github repository can be found at [https://github.com/OpenCerts/legacy-templates](https://github.com/OpenCerts/legacy-templates). 
 
-**NOTE:** No new templates will be accepted to [https://github.com/OpenCerts/legacy-templates](https://github.com/OpenCerts/legacy-templates), only changes to existing templates will be accepted.
+Issuers of OpenCerts is encouraged to upgrade to v2.0 as soon as possible as we will not support adding of new legacy template after 2019.
 
 ### Cutoff for legacy.opencerts.io
 
-After 31 December 2019, no pull requests for adding certificates to legacy.opencerts.io will be accepted. Instead, institutes will have to create and host their own decentralised renderer to use the OpenCerts platform.
+Institutes using OpenCerts v1.5 may still add templates or make change to existing templates on legacy templates. However, aAfter 31 December 2019, no pull requests for adding certificates to legacy.opencerts.io will be accepted. Instead, institutes will have to create and host their own decentralised renderer to use the OpenCerts platform.
 
 ### Schedule
 
@@ -70,9 +70,9 @@ By allowing the DNS system to be used as an identity registry, we let domain nam
 
 ### Rationale
 
-OpenCerts 1.0 worked on a centralised registry model, governed by SkillsFuture Singapore and administered by GovTech. This created not just a single point of failure but also an unsustainable bottleneck when it came to approvals and identity verification.
+OpenCerts 1.0 worked on a centralised registry model, governed by SkillsFuture Singapore and administered by GovTech. 
 
-OpenCerts 2.0 will continue to use this centralised registry model for the institutions that require a higher level of identity assurance. For issuers without this requirement they will be able to simply tie their issuance to their domain name, (e.g `example.openattestation.com`). When a user views a certificate issued under this model, they will see "Certificate issued by `example.openattestation.com`".
+Moving to OpenCerts 2.0, we will continue to use this centralised registry model for the institutions that require a higher level of identity assurance. For issuers without this requirement they will be able to simply tie their issuance to their domain name, (e.g `exampleschool.com`). The main upgrade is to allow institutes that are able to prove the ownership of a domain to tie the certificate issuer's identity to the domain name. When a user views a certificate issued under this model, they will see "Certificate issued by `exampleschool.com`", 
 
 ### How it works
 
@@ -121,6 +121,6 @@ A deeper technical discussion of this topic can be found at [OpenCerts 2.0 DNS-T
 
 ## Closing
 
-To sum up, OpenCerts 2.0 is going to be awesome for independent issuers! It allows them to now use OpenCerts completely permissionlessly.
+To sum up, OpenCerts 2.0 is going to be awesome for independent issuers! 
 
 If you have any concerns or questions, please hit us up on our [Github Issuer Tracker](https://github.com/OpenCerts/opencerts-documentation/issues) as always :)
