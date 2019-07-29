@@ -129,7 +129,7 @@ const certificate = {
 
 Simple! Just repeat the steps within the **SAME** repository under a new folder.
 
-## Teseting your ceritificates
+## Testing your ceritificates
 
 ### Testing using the index.html file
 
