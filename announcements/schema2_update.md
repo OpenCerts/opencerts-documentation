@@ -121,6 +121,12 @@ A deeper technical discussion of this topic can be found at [OpenCerts 2.0 DNS-T
 
 ## Closing
 
-To sum up, OpenCerts 2.0 is going to be awesome for independent issuers! 
+To sum up, OpenCerts 2.0 is going to be awesome! For independent issuers, you may now proove your identity with DNS and style your certificate look-and-feel. For registered institutes, you may now style your certificates wthout being bottlenecked by the core developers.
 
 If you have any concerns or questions, please hit us up on our [Github Issuer Tracker](https://github.com/OpenCerts/opencerts-documentation/issues) as always :)
+
+## Changelog
+
+- OpenCerts Website has been upgraded to use DNS-TXT verification on top of SSG registry.json
+- OpenCerts Website has been upgraded to use Decentralised Renderer, existing templates have been moved into a legacy repository.
+- OpenCerts CLI will now accept --schema flag to select the version of the schema to be used
