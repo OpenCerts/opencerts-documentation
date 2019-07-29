@@ -50,12 +50,6 @@ Additionally, we recommend prefixing the template descriptor with the year so as
 
 To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair __MUST NOT__ be a duplicate of another existing template's key. The directory structure will be part of the `$template` field, for example: `$template: "sg/gov/tech/2018-OpenCertsAssociate"`
 
-## Template Generator
-
-![CLI for Creating OpenCerts Template](./assets/custom-templates/cli.png)
-
-To facilitate the creation of custom templates the first time, a [CLI tool](https://github.com/OpenCerts/opencerts-website#developer-cli) is provided in the Opencert-Website repository.  
-
 ## Organisation Index
 
 To provide a performant user experience, we have optimised the OpenCerts build process to only load templates that are relevant to the certificate that was loaded into the viewer. For this process to work, each template must be registered in a specific manner.

@@ -1,6 +1,6 @@
 # OpenCerts v1 to v2
 
-![OpenCerts v1 to v2 What you need to know](./assets/schema2-update/schema2-update.png)
+![OpenCerts v1 to v2 What you need to know](../assets/schema2-update/schema2-update.png)
 
 As OpenCerts scales and more institutions use our service, it has been difficult to manage the multitude of pull requests to our github repository. OpenCerts v2.0 resolves that difficulty - no more pull requests and institutions save time by not waiting for pull requests to be approved!
 
@@ -16,17 +16,17 @@ The process for registering your institution with OpenCerts remains the same.
 
 For OpenCerts v1.5 and below, pull requests should be made to the decentralised renderer created for these legacy certificates. The new github repository can be found at [https://github.com/OpenCerts/legacy-templates](https://github.com/OpenCerts/legacy-templates). 
 
-Issuers of OpenCerts is encouraged to upgrade to v2.0 as soon as possible as we will not support adding of new legacy template after 2019.
+Issuers of OpenCerts are encouraged to upgrade to v2.0 as soon as possible as we will not support adding of new legacy template after 2019.
 
 ### Cutoff for legacy.opencerts.io
 
-Institutes using OpenCerts v1.5 may still add templates or make change to existing templates on legacy templates. However, aAfter 31 December 2019, no pull requests for adding certificates to legacy.opencerts.io will be accepted. Instead, institutes will have to create and host their own decentralised renderer to use the OpenCerts platform.
+Institutes using OpenCerts v1.5 may still add templates or make change to existing templates on legacy templates. However, after 31 December 2019, no pull requests for adding certificates to legacy.opencerts.io will be accepted. Instead, institutes will have to create and host their own decentralised renderer to use the OpenCerts platform.
 
 ### Schedule
 
 The timeline below illustrates for institutes, the transition from OpenCerts v1.5 to v2.0.
 
-![OpenCerts v1 to v2 Timeline](./assets/schema2-update/schema2_timeline.png)
+![OpenCerts v1 to v2 Timeline](../assets/schema2-update/schema2_timeline.png)
 
 ## OpenCerts Schema 2.0
 
@@ -48,17 +48,17 @@ The timeline below illustrates for institutes, the transition from OpenCerts v1.
 
 ### What are the key differences?
 
-![OpenCerts v1 to v2 Flow](./assets/schema2-update/schema2_flow.png)
+![OpenCerts v1 to v2 Flow](../assets/schema2-update/schema2_flow.png)
 
 ### Schema Change
 
-![OpenCerts v1 to v2 Schema Difference](./assets/schema2-update/schema2_difference.png)
+![OpenCerts v1 to v2 Schema Difference](../assets/schema2-update/schema2_difference.png)
 
 ### How do I migrate?
 
 We have updated our documentation at [http://docs.opencerts.io](http://docs.opencerts.io) to include information on how to transition to OpenCerts v2.0. The image below highlights the difference in steps between OpenCerts v1.5 and v2.0, from creating to issuing your certificate.
 
-![OpenCerts v2 Documentation Difference](./assets/schema2-update/schema2_docs.jpg)
+![OpenCerts v2 Documentation Difference](../assets/schema2-update/schema2_docs.jpg)
 
 **IMPORTANT** Refer to [http://docs.opencerts.io](http://docs.opencerts.io) for the documentation on OpenCerts v2.0
 
@@ -82,7 +82,7 @@ Only domain name owners (and the registrar that they trust) have the authority t
 
 In an OpenCerts 2.0 DNS-TXT identity proof, we record an OpenCerts Document Store address and the network (e.g Ethereum, Main Net) it is on. In the OpenCert document itself, we declare the domain name to search for the record as well as the Document Store Ethereum address. This forms a bi-directional trust assertion, and if the OpenCert's cryptographic proof is issued on that Document Store - we can say that the domain name owner has endorsed the issuance of this OpenCert document.
 
-![verification-steps.png](./assets/dns-verification/verification-steps.png)
+![verification-steps.png](../assets/dns-verification/verification-steps.png)
 
 A deeper technical discussion of this topic can be found at [OpenCerts 2.0 DNS-TXT Architecture Decision Record](https://github.com/OpenCerts/adr/blob/master/decentralized_identity_proof_DNS-TXT.md)
 
@@ -121,7 +121,7 @@ A deeper technical discussion of this topic can be found at [OpenCerts 2.0 DNS-T
 
 ## Closing
 
-To sum up, OpenCerts 2.0 is going to be awesome! For independent issuers, you may now proove your identity with DNS and style your certificate look-and-feel. For registered institutes, you may now style your certificates wthout being bottlenecked by the core developers.
+To sum up, OpenCerts 2.0 is going to be awesome! For independent issuers, you may now prove your identity with DNS and style your certificate look-and-feel. For registered institutes, you may now style your certificates wthout being bottlenecked by the core developers.
 
 If you have any concerns or questions, please hit us up on our [Github Issuer Tracker](https://github.com/OpenCerts/opencerts-documentation/issues) as always :)
 
