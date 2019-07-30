@@ -47,6 +47,7 @@
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
 - [Appendix: Pull Request Preview](./appendix_pull_request_preview.md)
 - [Appendix: Verifying the Certificate Store Contract](./verifying_contract.md)
+- [Appendix: Viewing Templates during Development (v1.5 vs v2.0)](./appendix_viewing_template_development.md)
 
 ### Developing Your Own Product with OpenCerts
 
