@@ -2,11 +2,11 @@
 
 ![Certificate Data plus React Template equal Certificate Views](./assets/custom-templates/overview.png)
 
-OpenCerts.io is able to render any certificate with data that follows the JSON schema specification using the default template. The default template will render all the issuer and recipient information, certificate name, and transcript information. 
+OpenCerts.io is able to render any certificate with data that follows the JSON schema specification using the default template. The default template will render all the issuer and recipient information, certificate name, and transcript information.
 
-Issuers who would like to customise the looks of the certificates they issue may customise how their certificates is rendered using custom templates. They may also include multiple views of the same certificate if they wish. 
+Issuers who would like to customise the looks of the certificates they issue may customise how their certificates is rendered using custom templates. They may also include multiple views of the same certificate if they wish.
 
-In practice, institutes usually issue two or more types of certificate upon graduation of a student. With multiple views, one OpenCerts file could be used to render multiple different types of views such as the Graduation Certificate, Education Transcript, Co-curriculum Activities Transcript, etc. 
+In practice, institutes usually issue two or more types of certificate upon graduation of a student. With multiple views, one OpenCerts file could be used to render multiple different types of views such as the Graduation Certificate, Education Transcript, Co-curriculum Activities Transcript, etc.
 
 To customise the certificate views, the institute will have to include their rendering template (written in [React.js](https://reactjs.org/)) in the OpenCerts.io's [website Github repository](https://github.com/GovTechSG/opencerts-website).
 
@@ -19,6 +19,7 @@ To customise the certificate views, the institute will have to include their ren
 - yarn
 
 ### Running the website locally
+
 ```bash
 # Clone the repository
 git clone https://github.com/GovTechSG/opencerts-website.git
@@ -39,7 +40,7 @@ open http://localhost:3000
 All the certificate templates are stored in the folder `/components/CertificateTemplates/`. Institutes adding new templates will store their template files in the path derived from their institute's official domain name. The derivation is simply using [reverse domain name notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) as a prefix.
 
 | Organisation                      | Domain Name          | Directory Structure                       |
-|-----------------------------------|----------------------|-------------------------------------------|
+| --------------------------------- | -------------------- | ----------------------------------------- |
 | GovTech                           | tech.gov.sg          | /sg/gov/tech/TEMPLATE_DESCRIPTOR          |
 | Ngee Ann Polytechnic              | np.edu.sg            | /sg/edu/np/TEMPLATE_DESCRIPTOR            |
 | Singapore Institute of Technology | singaporetech.edu.sg | /sg/edu/singaporetech/TEMPLATE_DESCRIPTOR |
@@ -48,7 +49,9 @@ Additionally, we recommend prefixing the template descriptor with the year so as
 
 ## Registering Templates
 
-To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair __MUST NOT__ be a duplicate of another existing template's key. The directory structure will be part of the `$template` field, for example: `$template: "sg/gov/tech/2018-OpenCertsAssociate"`
+To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template` field must be present in the object exported by `/components/CertificateTemplates/index.js`. The key-value pair must be exported from your organisation's folder's index.js and be propagated upwards. This key-value pair **MUST NOT** be a duplicate of another existing template's key.
+
+**The directory structure will be part of the `$template` field, for example: `$template: "sg/gov/tech/2018-OpenCertsAssociate"`**
 
 ## Organisation Index
 
@@ -75,7 +78,6 @@ export default {
 Ensure that the value for `webbpackChunkName` is the same across all your templates to ensure that they are all bundled together in the build output.
 
 For each individual template, add it to the exports with the `TEMPLATE_DESCRIPTOR` value as the key in the exported object.
-
 
 ## Writing Certificate Templates
 
@@ -115,7 +117,7 @@ const Template = ({ certificate }) => {
   const issuerDid = get(certificate, "issuers.0.did");
 
   const transcriptData = get(certificate, "transcript", []);
-  
+
   // Rendering an array of transcript data
   const transcriptSection = transcriptData.map((t, i) => (
     <tr key={i}>
@@ -161,7 +163,6 @@ const Template = ({ certificate }) => {
           {issuerEmail && <div>Email: {issuerEmail}</div>}
         </div>
       </div>
-      
       // Rendering of transcript data if available
       {transcriptData !== [] && (
         <div className="row mb-4">
@@ -188,7 +189,7 @@ export default Template;
 
 ## Template's index.js
 
-In each template folder, there will be the `index.js` file that describes the views present in the template. 
+In each template folder, there will be the `index.js` file that describes the views present in the template.
 
 An example of a template with a certificate and transcript view:
 
@@ -221,10 +222,9 @@ const GovTechCert = () => (
 export default GovTechCert;
 ```
 
-In the example above, all certificates rendered using this template will have two views, namely `Certificate` and `Transcript` view. 
+In the example above, all certificates rendered using this template will have two views, namely `Certificate` and `Transcript` view.
 
 These two views are imported from the template `./certificate` and `./transcript` respectively, and rendered by the `<MultiCertificateRenderer>` component.
-
 
 ## Address whitelisting
 
@@ -234,11 +234,11 @@ If no whitelist is provided, anyone can use your certificate template.
 
 ## Coding standards
 
-The team is currently using `eslint` to ensure consistency of the coding standards in the repository. 
+The team is currently using `eslint` to ensure consistency of the coding standards in the repository.
 
-Prior to submitting a pull request, be sure to run `yarn lint --fix` or `npm run lint --fix`. 
+Prior to submitting a pull request, be sure to run `yarn lint --fix` or `npm run lint --fix`.
 
-Kindly fix all the errors and warnings flagged by eslint. 
+Kindly fix all the errors and warnings flagged by eslint.
 
 ## Integration test
 
@@ -256,7 +256,7 @@ Once you have review your code change against the checklist, you can submit a pu
 
 ### Refactor your templates
 
-One of the most common issues is repeated code. These components can be functions, constants, and even segments of the templates. 
+One of the most common issues is repeated code. These components can be functions, constants, and even segments of the templates.
 
 Try to refactor the common components of the template files to a common folder if necessary.
 
@@ -268,15 +268,15 @@ Do take note that the source code of the website is publicly available. Be sure 
 
 ### Rendering Logic
 
-As the template is written in javascript, you can use custom application logic to render the certificates. 
+As the template is written in javascript, you can use custom application logic to render the certificates.
 
-One such example is to group modules in the same semester together. 
+One such example is to group modules in the same semester together.
 
-Do note that the [lodash](https://lodash.com) library is available and that functions such as `groupby` might come in useful. 
+Do note that the [lodash](https://lodash.com) library is available and that functions such as `groupby` might come in useful.
 
 ### Additional data
 
-OpenCerts specifies the certificate schema to allow all certificates to be computer readable. However, it is understood that there might be data that cannot be fitted into the existing schema. To include additional data, simply put these additional data into the `additionalData` field in the certificate. These additional data are also made available to the template. However, do note that while it is human readable (via the OpenCerts viewer) it may not be understood by all computers. 
+OpenCerts specifies the certificate schema to allow all certificates to be computer readable. However, it is understood that there might be data that cannot be fitted into the existing schema. To include additional data, simply put these additional data into the `additionalData` field in the certificate. These additional data are also made available to the template. However, do note that while it is human readable (via the OpenCerts viewer) it may not be understood by all computers.
 
 Example of custom data:
 
@@ -311,20 +311,17 @@ Example of custom data:
 }
 ```
 
-
 ### Template data in certificate
 
-There are some occasions where it makes sense to have images in the certificate data. One example of this is for signature fields. These signatures can be added to the certificate data in `base64` format, together with the signer designation and name. This will allow the institute to reuse the template for different departments and not change the template when the signer leaves the office. 
-
+There are some occasions where it makes sense to have images in the certificate data. One example of this is for signature fields. These signatures can be added to the certificate data in `base64` format, together with the signer designation and name. This will allow the institute to reuse the template for different departments and not change the template when the signer leaves the office.
 
 See example in Additional Data for a sample of where image of the signature can be inserted.
 
-
 ### Rendering for Mobile
 
-Some of the users will be viewing these certificates from mobile devices, you might want to make sure the template is mobile responsive. 
+Some of the users will be viewing these certificates from mobile devices, you might want to make sure the template is mobile responsive.
 
-The certificate template could be optimised for mobile using various classes from bootstrap. 
+The certificate template could be optimised for mobile using various classes from bootstrap.
 
 ### Data obfuscation
 
