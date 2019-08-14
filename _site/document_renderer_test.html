@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Integration Test | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Integration Test" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/document_renderer_test.html" />
+<meta property="og:url" content="http://localhost:4000/document_renderer_test.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"description":"Documentations for opencerts","url":"http://localhost:4000/document_renderer_test.html","@type":"WebPage","headline":"Integration Test","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=4e0e25ed019354cc178bbf557718eeb811810b3b">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="integration-test">Integration Test</h1>
+
+<p>Integration tests are added to the document renderer to ensure that incremental changes made to the renderer’s repository (whether by core developers or other template developers) do not break your certificates.</p>
+
+<h2 id="running-the-integration-test-visually">Running the integration test (visually)</h2>
+
+<p><img src="/assets/integration-test/running_test.png" alt="Running Integration Test" /></p>
+
+<p>To run the integration test to see how the test navigates around the application, simply run the web application AND the integration test in two separate shells.</p>
+
+<p>Running the web application</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yarn start
+</code></pre></div></div>
+
+<p>Running the integration test (with chrome)</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run integration
+</code></pre></div></div>
+
+<h2 id="running-the-integration-test-headless-on-built-application">Running the integration test (headless, on built application)</h2>
+
+<p>The code is automatically tested using on Travis. The application is first built and then the integration test will run in the headless (no browser UI) mode. The command to replicate the same test process is:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run integration:headless
+</code></pre></div></div>
+
+<p>* The full travis script can be found in the file <code class="highlighter-rouge">.travis.yml</code> in the document-renderer repository.</p>
+
+<h2 id="writing-the-integration-test">Writing the integration test</h2>
+
+<p>The integration test is written with <a href="https://devexpress.github.io/testcafe/">TestCafe</a>, in javascript. You may refer to the <a href="https://devexpress.github.io/testcafe/documentation/getting-started/">Getting Started</a> guide by TestCafe to get started or when in doubt.</p>
+
+<h3 id="file-structure">File Structure</h3>
+
+<p><img src="/assets/integration-test/folder_structure.png" alt="Folder Structure" /></p>
+
+<p>Integration test files in the repository have <code class="highlighter-rouge">.spec.js</code> file extensions. These will be picked up and run by testcafe automatically.</p>
+
+<p>We recommend having the test file in the same place as the template file, together with a corresponding sample of the <code class="highlighter-rouge">.opencert/.json</code> file.</p>
+
+<p>Use the <strong>unwrapped</strong> .json file as the test cert, ie.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"53b75bbe"</span><span class="p">,</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Govtech Demo Certificate"</span><span class="p">,</span>
+  <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"Govtech Demo Certificate"</span><span class="p">,</span>
+  <span class="s2">"issuedOn"</span><span class="p">:</span> <span class="s2">"2019-05-29T00:00:00+08:00"</span><span class="p">,</span>
+  <span class="s2">"$template"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"GOVTECH_DEMO"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"EMBEDDED_RENDERER"</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://demo-renderer.opencerts.io"</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+</code></pre></div></div>
+
+<h3 id="code-stucture">Code Stucture</h3>
+
+<p>Below is a sample code for testing our OpenCerts demo certificate with three template tabs - the certificate, transcript, and media.</p>
+
+<p>The test checks for the presence of specific text that are rendered with the certificate template. You may include test for other aspects of the certificate not limited to the presence of text.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Selector</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"testcafe"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">readFileSync</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"fs"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">join</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"path"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">getData</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@govtechsg/open-attestation"</span><span class="p">;</span>
+
+<span class="nx">fixture</span><span class="p">(</span><span class="s2">"Frameless Viewer"</span><span class="p">).</span><span class="nx">page</span><span class="s2">`http://localhost:3000/`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Certificate</span> <span class="o">=</span> <span class="s2">"./Ropsten-Demo-unwrapped.json"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">RenderedCertificate</span> <span class="o">=</span> <span class="nx">Selector</span><span class="p">(</span><span class="s2">"#rendered-certificate"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">Media</span> <span class="o">=</span> <span class="nx">Selector</span><span class="p">(</span><span class="s2">"#youtube-vid"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">validateTextContent</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">component</span><span class="p">,</span> <span class="nx">texts</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="nx">texts</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span>
+    <span class="k">async</span> <span class="p">(</span><span class="nx">_prev</span><span class="p">,</span> <span class="nx">curr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">t</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">textContent</span><span class="p">).</span><span class="nx">contains</span><span class="p">(</span><span class="nx">curr</span><span class="p">),</span>
+    <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()</span>
+  <span class="p">);</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s2">"Govtech Demo certificate is rendered correctly"</span><span class="p">,</span> <span class="k">async</span> <span class="nx">t</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Inject javascript and execute window.openAttestation.renderDocument</span>
+  <span class="kd">const</span> <span class="nx">certificateContent</span> <span class="o">=</span> <span class="nx">getData</span><span class="p">(</span>
+    <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">Certificate</span><span class="p">)).</span><span class="nx">toString</span><span class="p">())</span>
+  <span class="p">);</span>
+  <span class="kr">await</span> <span class="nx">t</span><span class="p">.</span><span class="kr">eval</span><span class="p">(</span>
+    <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openAttestation</span><span class="p">.</span><span class="nx">renderDocument</span><span class="p">(</span><span class="nx">certificateContent</span><span class="p">),</span>
+    <span class="p">{</span>
+      <span class="na">dependencies</span><span class="p">:</span> <span class="p">{</span> <span class="nx">certificateContent</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+
+  <span class="c1">// Check content of window.openAttestation.templates</span>
+  <span class="kr">await</span> <span class="nx">t</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">templates</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">t</span><span class="p">.</span><span class="kr">eval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openAttestation</span><span class="p">.</span><span class="nx">getTemplates</span><span class="p">());</span>
+  <span class="kr">await</span> <span class="nx">t</span>
+    <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">templates</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">eql</span><span class="p">([</span>
+      <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"certificate"</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="s2">"Certificate"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"transcript"</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="s2">"Transcript"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"media"</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="s2">"Media"</span> <span class="p">}</span>
+    <span class="p">]);</span>
+
+  <span class="c1">// Validate content of first tab</span>
+  <span class="kr">await</span> <span class="nx">validateTextContent</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">RenderedCertificate</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">"This is to certify that"</span><span class="p">,</span>
+    <span class="s2">"Your Name"</span><span class="p">,</span>
+    <span class="s2">"has successfully completed the"</span><span class="p">,</span>
+    <span class="s2">"OpenCerts Demo"</span><span class="p">,</span>
+    <span class="s2">"certification through training administered by"</span>
+  <span class="p">]);</span>
+
+  <span class="c1">// Navigate to next tab using window.openAttestation.selectTemplateTab</span>
+  <span class="kr">await</span> <span class="nx">t</span><span class="p">.</span><span class="kr">eval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openAttestation</span><span class="p">.</span><span class="nx">selectTemplateTab</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+
+  <span class="c1">// Validate content of second tab</span>
+  <span class="kr">await</span> <span class="nx">validateTextContent</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">RenderedCertificate</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">"CS 1110"</span><span class="p">,</span>
+    <span class="s2">"Introduction to Programming"</span><span class="p">,</span>
+    <span class="s2">"SXXXXXXXY"</span><span class="p">,</span>
+    <span class="s2">"53b75bbe"</span>
+  <span class="p">]);</span>
+
+  <span class="c1">// Navigate to next tab using window.openAttestation.selectTemplateTab</span>
+  <span class="kr">await</span> <span class="nx">t</span><span class="p">.</span><span class="kr">eval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">openAttestation</span><span class="p">.</span><span class="nx">selectTemplateTab</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+
+  <span class="c1">// Validate content of third tab</span>
+  <span class="kr">await</span> <span class="nx">t</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="kr">await</span> <span class="nx">t</span><span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="nx">Media</span><span class="p">.</span><span class="nx">visible</span><span class="p">).</span><span class="nx">ok</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

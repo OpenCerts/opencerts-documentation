@@ -53,12 +53,6 @@ To allow the OpenCerts viewer to detect the new certificate templates, the value
 
 **The directory structure will be part of the `$template` field, for example: `$template: "sg/gov/tech/2018-OpenCertsAssociate"`**
 
-## Template Generator
-
-To create a custom template, first create a template folder in the appropriate directory. For example, an organisation with a domain `tech.gov.sg` and a custom template folder called `Govtech-Demo-Cert` would be listed as shown below:
-
-![Template Directory](./assets/custom-templates/template-directory.png)
-
 ## Organisation Index
 
 To provide a performant user experience, we have optimised the OpenCerts build process to only load templates that are relevant to the certificate that was loaded into the viewer. For this process to work, each template must be registered in a specific manner.
