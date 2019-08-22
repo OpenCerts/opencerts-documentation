@@ -32,27 +32,27 @@ Sample Template:
 import { get } from "lodash";
 import "./demoStyles.css"; // Import your own CSS styles and include it in the html className
 
-const Template = ({ certificate }) => {
+const Template = ({ document }) => {
   // Declaring what variables will be available to the template from the certificate
-  const certificateName = get(certificate, "name");
-  const certificateId = get(certificate, "id");
-  const issuedOn = get(certificate, "issuedOn");
-  const expiresOn = get(certificate, "expiresOn");
-  const admissionDate = get(certificate, "admissionDate");
-  const graduationDate = get(certificate, "graduationDate ");
+  const certificateName = get(document, "name");
+  const certificateId = get(document, "id");
+  const issuedOn = get(document, "issuedOn");
+  const expiresOn = get(document, "expiresOn");
+  const admissionDate = get(document, "admissionDate");
+  const graduationDate = get(document, "graduationDate ");
 
-  const recipientName = get(certificate, "recipient.name");
-  const recipientDid = get(certificate, "recipient.did");
-  const recipientEmail = get(certificate, "recipient.email");
-  const recipientPhone = get(certificate, "recipient.phone");
+  const recipientName = get(document, "recipient.name");
+  const recipientDid = get(document, "recipient.did");
+  const recipientEmail = get(document, "recipient.email");
+  const recipientPhone = get(document, "recipient.phone");
 
-  const issuerName = get(certificate, "issuers.0.name");
-  const issuerAddress = get(certificate, "issuers.0.certificateStore");
-  const issuerUrl = get(certificate, "issuers.0.url");
-  const issuerEmail = get(certificate, "issuers.0.email");
-  const issuerDid = get(certificate, "issuers.0.did");
+  const issuerName = get(document, "issuers.0.name");
+  const issuerAddress = get(document, "issuers.0.certificateStore");
+  const issuerUrl = get(document, "issuers.0.url");
+  const issuerEmail = get(document, "issuers.0.email");
+  const issuerDid = get(document, "issuers.0.did");
 
-  const transcriptData = get(certificate, "transcript", []);
+  const transcriptData = get(document, "transcript", []);
 
   // Rendering an array of transcript data
   const transcriptSection = transcriptData.map((t, i) => (
