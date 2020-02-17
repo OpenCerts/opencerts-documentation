@@ -17,6 +17,7 @@
 - [01/10/18 - Technical Training Slides](https://docs.google.com/presentation/d/11QTk76_R_FRc5xrgLrkG-NjsIItYDNcLWG6RgiICm48/edit?usp=sharing)
 - [27/03/19 - Announcements & FAQ](https://docs.google.com/presentation/d/11VDgcPOrhDsXWs_1fVghj138ZxonEDpC-UE39Mx4E30)
 - [12/04/19 - OpenCerts Schema 1.5 update](./announcements/schema1.5.pdf)
+- [25/07/19 - OpenCerts Schema 2.0 update](./announcements/schema2_update.md)
 
 ## Table of Content
 
@@ -29,6 +30,7 @@
 | [Creating a Document Renderer](./document_renderer.md)                            |                |       ✅       |
 | [Testing a Document Renderer](./document_renderer_test.md)                        |                |       ✅       |
 | [Custom Certificate Templates for OpenCerts v2](./custom_template_v2.md)          |                |       ✅       |
+| [DNS Identity Proof](./dns_verification.md)                                       |                |       ✅       |
 | [Custom Certificate Templates](./custom_template.md)                              |       ✅       |                |
 | [Testing Custom Certificate Templates](./integration_test.md)                     |       ✅       |                |
 | [Batching Certificates](./batching_certificates.md)                               |       ✅       |       ✅       |
@@ -39,12 +41,12 @@
 ### Appendix
 
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
-- [Appendix: Sample Certificate / Custom Template (WIP)](./appendix_samples.md)
 - [Appendix: Data Obfuscation](./appendix_data_obfuscation.md)
 - [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
 - [Appendix: Pull Request Preview](./appendix_pull_request_preview.md)
 - [Appendix: Verifying the Certificate Store Contract](./verifying_contract.md)
+- [Appendix: Viewing Templates during Development (v1.5 vs v2.0)](./appendix_viewing_template_development.md)
 
 ### Developing Your Own Product with OpenCerts
 
@@ -73,6 +75,9 @@ This is a channel where the core developers behind OpenCerts can reach out to yo
 - New features
 - Best practice for development
 - Breaking changes
+
+## Legacy documentation
+- [Opencerts v1](./v1)
 
 ## Getting Help
 

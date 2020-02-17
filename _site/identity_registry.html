@@ -16,10 +16,10 @@
 <meta property="og:url" content="http://localhost:4000/identity_registry.html" />
 <meta property="og:site_name" content="opencerts-documentation" />
 <script type="application/ld+json">
-{"description":"Documentations for opencerts","url":"http://localhost:4000/identity_registry.html","@type":"WebPage","headline":"Identity Registry","@context":"http://schema.org"}</script>
+{"@type":"WebPage","headline":"Identity Registry","url":"http://localhost:4000/identity_registry.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=4e0e25ed019354cc178bbf557718eeb811810b3b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -33,11 +33,15 @@
 
 <p>The registry currently a flat .json file located at <a href="https://opencerts.io/static/registry.json">https://opencerts.io/static/registry.json</a></p>
 
+<h2 id="application-to-skillsfuture-singapore">Application to SkillsFuture Singapore</h2>
+
+<p>The registry is maintained by <a href="https://www.skillsfuture.sg/">SkillsFuture Singapore</a> and serve to provide accreditation to institutes. Certificates issued by institutes in this registry will show <code class="highlighter-rouge">Accredited by SSG</code> in their verification status. To apply for your institute to be listed in the registry, kindly fill in <a href="https://form.gov.sg/5cd5141c02d207001007e322">this form</a>.</p>
+
 <h2 id="identity-verification">Identity Verification</h2>
 
 <p>Anyone can deploy their own certificate store, therefore it is not suffcient to check the certificate store name on the smart contract.</p>
 
-<p>To ensure that certificates are issued by the right identity, we conduct additional check on the owner of the certificate store. This is done by checking against the flat file.</p>
+<p>To ensure that certificates are issued by the right identity, we conduct additional check on the owner of the certificate store. This is done by checking against the registry file and on the <a href="/dns_verification.html">DNS records</a>.</p>
 
 <p><img src="/assets/identity-registry/unregistered-institute-warning.png" alt="Unregistered Institution Warning" /></p>
 
@@ -56,12 +60,6 @@
     <p>Make a PR to our repository.</p>
   </li>
 </ol>
-
-<h2 id="a-work-in-progress">A Work in Progress</h2>
-
-<p>The team behind OpenCerts believe that associating identities in a decentralised world is a work-in-progress. We are actively seeking to find a balance between decentralisation and providing trusted content for our user.</p>
-
-<p>If you have suggestions on how to do it better, do let us know by opening an issue or <a href="https://ethernaut.gdshive.io/">join us</a>!</p>
 
 
       

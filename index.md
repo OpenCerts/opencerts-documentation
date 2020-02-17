@@ -41,7 +41,6 @@
 ### Appendix
 
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
-- [Appendix: Sample Certificate / Custom Template (WIP)](./appendix_samples.md)
 - [Appendix: Data Obfuscation](./appendix_data_obfuscation.md)
 - [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
 - [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
@@ -76,6 +75,9 @@ This is a channel where the core developers behind OpenCerts can reach out to yo
 - New features
 - Best practice for development
 - Breaking changes
+
+## Legacy documentation
+- [Opencerts v1](./v1)
 
 ## Getting Help
 

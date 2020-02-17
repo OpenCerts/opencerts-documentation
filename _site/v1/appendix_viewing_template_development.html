@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Appendix - Viewing Certificate Template Locally During Development | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Appendix - Viewing Certificate Template Locally During Development" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/v1/appendix_viewing_template_development.html" />
+<meta property="og:url" content="http://localhost:4000/v1/appendix_viewing_template_development.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"Appendix - Viewing Certificate Template Locally During Development","url":"http://localhost:4000/v1/appendix_viewing_template_development.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="appendix---viewing-certificate-template-locally-during-development">Appendix - Viewing Certificate Template Locally During Development</h1>
+
+<p>For institutes using the legacy renderers prior to v2.0 changes, certificate templates have been moved from the Opencerts-Website repository to the <a href="https://github.com/OpenCerts/legacy-templates">Legacy-Templates repository</a>.</p>
+
+<p>Previously, template developers will have to first issue the certificate before the template could be developed. We have upgraded the experience allow developers to work on unissued certificates to reduce the feedback cycle.</p>
+
+<p>To run the legacy template project:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install
+npm run dev
+</code></pre></div></div>
+
+<p>The project will now run at <code class="highlighter-rouge">localhost:3000</code>. However, that page will be a blank page as certificate data has not been passed into the page.</p>
+
+<p><img src="/v1/assets/appendix-viewing-certificates/legacy-file-structure.png" alt="File Structure for Legacy Templates" /></p>
+
+<p>To do so, we have included a helper html file to help you inject your certificate into the page. You can find the file at <code class="highlighter-rouge">/test/index.html</code>.</p>
+
+<p><img src="/v1/assets/appendix-viewing-certificates/legacy-render-certificate.png" alt="Certificate Code" /></p>
+
+<p>To do so, we have included a helper html file to help you inject your certificate into the page. You can find the file at <code class="highlighter-rouge">/test/index.html</code>. You will be able to click on the <code class="highlighter-rouge">Render Certificate</code> button to render a certificate.</p>
+
+<p><img src="/v1/assets/appendix-viewing-certificates/legacy-certificate-to-replace.png" alt="Certificate Code" /></p>
+
+<p>The test file includes a demo certificate, to develop on your institute’s certificate simply change the certificate file to your institute’s. Do take note that the <code class="highlighter-rouge">certificate</code> constants is using the certificate data <em>prior to batch processing them</em>.</p>
+
+<p>For details on how to develop the template, continue to refer to the <a href="/v1/custom_template.html">guide</a>.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

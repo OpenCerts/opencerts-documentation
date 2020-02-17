@@ -16,10 +16,10 @@
 <meta property="og:url" content="http://localhost:4000/custom_template_v2.html" />
 <meta property="og:site_name" content="opencerts-documentation" />
 <script type="application/ld+json">
-{"description":"Documentations for opencerts","url":"http://localhost:4000/custom_template_v2.html","@type":"WebPage","headline":"Custom Templates for Certificates (OpenCerts v2)","@context":"http://schema.org"}</script>
+{"@type":"WebPage","headline":"Custom Templates for Certificates (OpenCerts v2)","url":"http://localhost:4000/custom_template_v2.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=4e0e25ed019354cc178bbf557718eeb811810b3b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -62,27 +62,27 @@
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="kd">get</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"lodash"</span><span class="p">;</span>
 <span class="k">import</span> <span class="s2">"./demoStyles.css"</span><span class="p">;</span> <span class="c1">// Import your own CSS styles and include it in the html className</span>
 
-<span class="kd">const</span> <span class="nx">Template</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">certificate</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">Template</span> <span class="o">=</span> <span class="p">({</span> <span class="nb">document</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// Declaring what variables will be available to the template from the certificate</span>
-  <span class="kd">const</span> <span class="nx">certificateName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">certificateId</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">issuedOn</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"issuedOn"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">expiresOn</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"expiresOn"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">admissionDate</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"admissionDate"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">graduationDate</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"graduationDate "</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">certificateName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">certificateId</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"id"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">issuedOn</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"issuedOn"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">expiresOn</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"expiresOn"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">admissionDate</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"admissionDate"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">graduationDate</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"graduationDate "</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">recipientName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"recipient.name"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">recipientDid</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"recipient.did"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">recipientEmail</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"recipient.email"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">recipientPhone</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"recipient.phone"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">recipientName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"recipient.name"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">recipientDid</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"recipient.did"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">recipientEmail</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"recipient.email"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">recipientPhone</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"recipient.phone"</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">issuerName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"issuers.0.name"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">issuerAddress</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"issuers.0.certificateStore"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">issuerUrl</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"issuers.0.url"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">issuerEmail</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"issuers.0.email"</span><span class="p">);</span>
-  <span class="kd">const</span> <span class="nx">issuerDid</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"issuers.0.did"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">issuerName</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"issuers.0.name"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">issuerAddress</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"issuers.0.certificateStore"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">issuerUrl</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"issuers.0.url"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">issuerEmail</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"issuers.0.email"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">issuerDid</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"issuers.0.did"</span><span class="p">);</span>
 
-  <span class="kd">const</span> <span class="nx">transcriptData</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"transcript"</span><span class="p">,</span> <span class="p">[]);</span>
+  <span class="kd">const</span> <span class="nx">transcriptData</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"transcript"</span><span class="p">,</span> <span class="p">[]);</span>
 
   <span class="c1">// Rendering an array of transcript data</span>
   <span class="kd">const</span> <span class="nx">transcriptSection</span> <span class="o">=</span> <span class="nx">transcriptData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">t</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>

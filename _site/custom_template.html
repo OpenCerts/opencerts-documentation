@@ -16,10 +16,10 @@
 <meta property="og:url" content="http://localhost:4000/custom_template.html" />
 <meta property="og:site_name" content="opencerts-documentation" />
 <script type="application/ld+json">
-{"description":"Documentations for opencerts","url":"http://localhost:4000/custom_template.html","@type":"WebPage","headline":"Custom Templates for Certificates","@context":"http://schema.org"}</script>
+{"@type":"WebPage","headline":"Custom Templates for Certificates","url":"http://localhost:4000/custom_template.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=4e0e25ed019354cc178bbf557718eeb811810b3b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -50,6 +50,7 @@
 </ul>
 
 <h3 id="running-the-website-locally">Running the website locally</h3>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone the repository</span>
 git clone https://github.com/GovTechSG/opencerts-website.git
 <span class="nb">cd </span>opencerts-website
@@ -99,13 +100,9 @@ open http://localhost:3000
 
 <h2 id="registering-templates">Registering Templates</h2>
 
-<p>To allow the OpenCerts viewer to detect the new certificate templates, the value used in the <code class="highlighter-rouge">$template</code> field must be present in the object exported by <code class="highlighter-rouge">/components/CertificateTemplates/index.js</code>. The key-value pair must be exported from your organisation’s folder’s index.js and be propagated upwards. This key-value pair <strong>MUST NOT</strong> be a duplicate of another existing template’s key. The directory structure will be part of the <code class="highlighter-rouge">$template</code> field, for example: <code class="highlighter-rouge">$template: "sg/gov/tech/2018-OpenCertsAssociate"</code></p>
+<p>To allow the OpenCerts viewer to detect the new certificate templates, the value used in the <code class="highlighter-rouge">$template</code> field must be present in the object exported by <code class="highlighter-rouge">/components/CertificateTemplates/index.js</code>. The key-value pair must be exported from your organisation’s folder’s index.js and be propagated upwards. This key-value pair <strong>MUST NOT</strong> be a duplicate of another existing template’s key.</p>
 
-<h2 id="template-generator">Template Generator</h2>
-
-<p><img src="/assets/custom-templates/cli.png" alt="CLI for Creating OpenCerts Template" /></p>
-
-<p>To facilitate the creation of custom templates the first time, a <a href="https://github.com/OpenCerts/opencerts-website#developer-cli">CLI tool</a> is provided in the Opencert-Website repository.</p>
+<p><strong>The directory structure will be part of the <code class="highlighter-rouge">$template</code> field, for example: <code class="highlighter-rouge">$template: "sg/gov/tech/2018-OpenCertsAssociate"</code></strong></p>
 
 <h2 id="organisation-index">Organisation Index</h2>
 
@@ -171,7 +168,7 @@ open http://localhost:3000
   <span class="kd">const</span> <span class="nx">issuerDid</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"issuers.0.did"</span><span class="p">);</span>
 
   <span class="kd">const</span> <span class="nx">transcriptData</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nx">certificate</span><span class="p">,</span> <span class="s2">"transcript"</span><span class="p">,</span> <span class="p">[]);</span>
-  
+
   <span class="c1">// Rendering an array of transcript data</span>
   <span class="kd">const</span> <span class="nx">transcriptSection</span> <span class="o">=</span> <span class="nx">transcriptData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">t</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
     <span class="o">&lt;</span><span class="nx">tr</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="o">&gt;</span>
@@ -217,8 +214,7 @@ open http://localhost:3000
 </span>          <span class="p">{</span><span class="nx">issuerEmail</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Email</span><span class="p">:</span> <span class="p">{</span><span class="nx">issuerEmail</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">}
 </span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span>      
-      <span class="c1">// Rendering of transcript data if available</span>
+</span>      <span class="c1">// Rendering of transcript data if available</span>
       <span class="p">{</span><span class="nx">transcriptData</span> <span class="o">!==</span> <span class="p">[]</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
         <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"row mb-4"</span><span class="o">&gt;</span>
           <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">Transcript</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;

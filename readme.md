@@ -4,6 +4,14 @@
 
 Now on [https://docs.opencerts.io](https://docs.opencerts.io)
 
+## Prerequisite
+- Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+- Install [Bundler](https://bundler.io/)
+- Install dependencies
+```bash
+bundle install
+```
+
 ## Run locally
 
 We use jekyll to run a local copy of the site.

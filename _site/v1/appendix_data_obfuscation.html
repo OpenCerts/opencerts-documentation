@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Data Obfuscation in Custom Certificate Template | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Data Obfuscation in Custom Certificate Template" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="http://localhost:4000/v1/appendix_data_obfuscation.html" />
+<meta property="og:url" content="http://localhost:4000/v1/appendix_data_obfuscation.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"Data Obfuscation in Custom Certificate Template","url":"http://localhost:4000/v1/appendix_data_obfuscation.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">opencerts-documentation</a></h1>
+      
+
+      <h1 id="data-obfuscation-in-custom-certificate-template">Data Obfuscation in Custom Certificate Template</h1>
+
+<p>OpenCerts allow users to take control of what type of data they will like to share with others. For instance, a student can choose to share only the certificate and hide his transcript if he is only required to submit a proof of graduation.</p>
+
+<p>To facilitate this, certificate templates can expose this function to their users. Developers of the certificate templates will have discretion on the granularity of the controls. For instance, a button can be created to hide the entire transcript or a delete button can be added to each field to remove only one value.</p>
+
+<h2 id="example---default-certificate">Example - Default Certificate</h2>
+
+<p><img src="/v1/assets/data-obfuscation/data-obfuscation-default-certificate.png" alt="Data Obfuscation in Default Certificate" /></p>
+
+<p>To enable editing, click on the edit button on the banner.</p>
+
+<p>To obfuscate values from the transcript, click on the red crosses beside the individual values in the transcript.</p>
+
+<p>The new certificate with obfuscated values can be downloaded with the download button above the “View another” button.</p>
+
+<h2 id="implementing-privacy-filter">Implementing Privacy Filter</h2>
+
+<p><code class="highlighter-rouge">SimplePrivacyFilterBanner.js</code></p>
+
+<p>This is the privacy banner that allows the user to toggle the editable state.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">PropTypes</span> <span class="k">from</span> <span class="s2">"prop-types"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FontAwesomeIcon</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@fortawesome/react-fontawesome"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faEdit</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@fortawesome/free-solid-svg-icons"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">SimplePrivacyFilterBanner</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">toggleEditable</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"banner-privacy-filter"</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"screen-only"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"row"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"h4"</span><span class="o">&gt;</span><span class="nx">OpenCerts</span> <span class="nx">Privacy</span> <span class="nx">Filter</span> <span class="nx">Enabled</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+          <span class="nx">Edit</span> <span class="k">this</span> <span class="nx">certificate</span> <span class="nx">by</span> <span class="nx">removing</span> <span class="nx">sensitive</span> <span class="nx">information</span> <span class="nx">by</span> <span class="nx">clicking</span> <span class="nx">on</span>
+          <span class="nx">the</span> <span class="nx">edit</span> <span class="nx">button</span><span class="p">.</span> <span class="nx">Downloaded</span> <span class="nx">certificate</span> <span class="nx">remains</span> <span class="nx">valid</span><span class="o">!</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">div</span>
+        <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">toggleEditable</span><span class="p">}</span> <span class="c1">// function to toggle the state to enable/disable editing</span>
+      <span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">FontAwesomeIcon</span> <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">faEdit</span><span class="p">}</span> <span class="nx">cursor</span><span class="o">=</span><span class="s2">"pointer"</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="nx">SimplePrivacyFilterBanner</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">toggleEditable</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">SimplePrivacyFilterBanner</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">ObfuscatableValue.js</code></p>
+
+<p>The handleObfuscation function is passed as a <code class="highlighter-rouge">prop</code> into this component and obfuscates the corresponding field if the editable state is true.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">PropTypes</span> <span class="k">from</span> <span class="s2">"prop-types"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">css</span> <span class="k">from</span> <span class="s2">"./obfuscatableValueStyles.scss"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FontAwesomeIcon</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@fortawesome/react-fontawesome"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faTimes</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@fortawesome/free-solid-svg-icons"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ObfuscatableValue</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">field</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">handleObfuscation</span><span class="p">,</span> <span class="nx">editable</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">value</span> <span class="p">?</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span>
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">editable</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">handleObfuscation</span><span class="p">(</span><span class="nx">field</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}}</span>
+    <span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">value</span><span class="p">}{</span><span class="s2">" "</span><span class="p">}</span>
+      <span class="p">{</span><span class="nx">editable</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">FontAwesomeIcon</span>
+          <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">faTimes</span><span class="p">}</span>
+          <span class="nx">cursor</span><span class="o">=</span><span class="s2">"pointer"</span>
+          <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="s2">`</span><span class="p">${</span><span class="nx">css</span><span class="p">[</span><span class="s2">"remove-icon"</span><span class="p">]}</span><span class="s2">`</span><span class="p">}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">)</span> <span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="nx">ObfuscatableValue</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">field</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
+  <span class="na">value</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">oneOfType</span><span class="p">([</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">]),</span>
+  <span class="na">handleObfuscation</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">,</span>
+  <span class="na">editable</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">bool</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">ObfuscatableValue</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="using-the-handleobfuscation-method">Using the handleObfuscation method</h3>
+
+<p>To enable the privacy filter for your certificate, ensure that <code class="highlighter-rouge">handleObfuscation</code> method is passed into the <strong>template you want to enable obfuscation</strong> when registering the certificate template. This will pass the <code class="highlighter-rouge">handleObfuscation</code> method into your certificate template which can be used to obfuscate data on the certificate. An example is shown below:</p>
+
+<p><code class="highlighter-rouge">transcript.js</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Template</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">editable</span><span class="p">:</span> <span class="kc">false</span> <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">editable</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nb">document</span><span class="p">,</span> <span class="nx">handleObfuscation</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+    <span class="c1">/// Other information below</span>
+</code></pre></div></div>
+
+<p>Using the <code class="highlighter-rouge">ObfuscateValue</code> component is easy. Passing in the path of the data you like to remove will remove that value or all elements in that object.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+   <span class="c1">// Other information above</span>
+    <span class="kd">const</span> <span class="nx">transcriptData</span> <span class="o">=</span> <span class="kd">get</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"transcript"</span><span class="p">,</span> <span class="p">[]);</span>
+
+    <span class="kd">const</span> <span class="nx">transcriptSection</span> <span class="o">=</span> <span class="nx">transcriptData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">t</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">tr</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">ObfuscatableValue</span> <span class="o">/&gt;</span>
+            <span class="nx">editable</span><span class="o">=</span><span class="p">{</span><span class="nx">editable</span><span class="p">}</span>
+            <span class="nx">field</span><span class="o">=</span><span class="p">{</span><span class="s2">`transcript[</span><span class="p">${</span><span class="nx">i</span><span class="p">}</span><span class="s2">].courseCode`</span><span class="p">}</span>
+            <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">t</span><span class="p">.</span><span class="nx">courseCode</span><span class="p">}</span>
+            <span class="nx">handleObfuscation</span><span class="o">=</span><span class="p">{</span><span class="nx">handleObfuscation</span><span class="p">}</span>
+          <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>        <span class="p">...</span>
+      <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
+</span>    <span class="p">));</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"container"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">SimplePrivacyFilterBanner</span>
+          <span class="nx">toggleEditable</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">editable</span><span class="p">:</span> <span class="o">!</span><span class="nx">editable</span> <span class="p">})}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">{</span><span class="nx">transcriptSection</span><span class="p">}</span> <span class="c1">// Data with obfuscation enabled passed in here</span>
+</code></pre></div></div>
+
+<p>The full source code example can be found in our transcript.js file for our OpenCerts demo certificate <a href="./files/transcript.js">here</a>.</p>
+
+<h3 id="code-references">Code References</h3>
+
+<p>The implementation of data obfuscation for the demo certificate can be found at <a href="https://github.com/OpenCerts/demo-opencerts-renderer/tree/master/src/components/TemplateCommon/Privacy">https://github.com/OpenCerts/demo-opencerts-renderer/tree/master/src/components/TemplateCommon/Privacy</a>.</p>
+
+<h2 id="design-recommendation">Design Recommendation</h2>
+
+<h3 id="use-stateful-component">Use Stateful Component</h3>
+
+<p>Having a stateful component which tracks if the certificate is <code class="highlighter-rouge">editable</code> will allow two different views of the certificate.</p>
+
+<p>In the default certificate example, we can see it tracking the <code class="highlighter-rouge">editable</code> state. When the <code class="highlighter-rouge">editable</code> flag is set, red crosses will appear beside values that the user can obfuscate. When it is not, the certificate appears to be a normal static certificate.</p>
+
+<h3 id="reuse--contribute-to-common-template-components">Reuse &amp; Contribute to Common Template Components</h3>
+
+<p>During the design of the default certificate, the <code class="highlighter-rouge">ObfuscatableValue</code> and <code class="highlighter-rouge">SimplePrivacyFilterBanner</code> is created to be reused for other certificates.</p>
+
+<p>The <code class="highlighter-rouge">SimplePrivacyFilterBanner</code> component tells the user that the certificate is editable, allow them to toggle the editable state, and disappear upon print.</p>
+
+<p>The <code class="highlighter-rouge">ObfuscatableValue</code> component is a helper function to easily create values that can be removed.</p>
+
+<p>We recommend the use of these components. Should they not fulfill the use case, contribution to the common components found in <code class="highlighter-rouge">src/components/TemplateCommon/Privacy</code> is welcomed.</p>
+
+<h2 id="understanding-the-data-obfuscation-process">Understanding the Data Obfuscation Process</h2>
+
+<p><img src="/v1/assets/data-obfuscation/obfuscated-data-in-privacy.png" alt="Obfuscated Data Hashed in Privacy" /></p>
+
+<p>During data obfuscation, data in the certificate is replaced with an irreversible hash and stored in the <code class="highlighter-rouge">privacy.obfuscatedData</code> section of the new .opencert file.</p>
+
+<p>Storing it in the hashed format allows the certificate’s <code class="highlighter-rouge">targetHash</code> to remain unchanged and prevents reverse engineering of the value (even through rainbow table attacks).</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

@@ -16,10 +16,10 @@
 <meta property="og:url" content="http://localhost:4000/document_renderer.html" />
 <meta property="og:site_name" content="opencerts-documentation" />
 <script type="application/ld+json">
-{"description":"Documentations for opencerts","url":"http://localhost:4000/document_renderer.html","@type":"WebPage","headline":"Document Renderer","@context":"http://schema.org"}</script>
+{"@type":"WebPage","headline":"Document Renderer","url":"http://localhost:4000/document_renderer.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=4e0e25ed019354cc178bbf557718eeb811810b3b">
+    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -31,7 +31,7 @@
 
 <p><img src="/assets/document-renderer/overview.png" alt="Certificate Data plus React Template equal Certificate Views" /></p>
 
-<p>With effect from 31 December 2019, OpenCerts.io will be shifting to the use of an institute’s own decentralised renderer to render their own certificates. This documentation will provide a step-by-step guide of how to setup one’s own document renderer.</p>
+<p>This documentation will provide a step-by-step guide of how to setup one’s own document renderer.</p>
 
 <p>We will be using the Govtech Demo Cert for this tutorial. The code repository can be found at <a href="https://github.com/OpenCerts/demo-opencerts-renderer">https://github.com/OpenCerts/demo-opencerts-renderer</a></p>
 
@@ -147,15 +147,21 @@ This key-value pair <strong>MUST NOT</strong> be a duplicate of another existing
       <span class="na">$template</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">name</span><span class="p">:</span> <span class="s2">"GOVTECH_DEMO"</span><span class="p">,</span> <span class="c1">// $template.name must corresponding to the key used to reference your template folder</span>
         <span class="na">type</span><span class="p">:</span> <span class="s2">"EMBEDDED_RENDERER"</span><span class="p">,</span> <span class="c1">// FOLLOW THIS EXACT VALUE</span>
-        <span class="na">url</span><span class="p">:</span> <span class="s2">"https://demo-cnm.openattestation.com"</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s2">"https://demo-renderer.opencerts.io/"</span>
       <span class="p">},</span>
       <span class="c1">// Other information below</span>
 </code></pre></div></div>
 
+<h3 id="how-about-other-custom-templates">How about other custom templates?</h3>
+
+<p>Simple! Just repeat the steps within the <strong>SAME</strong> repository under a new folder.</p>
+
+<h2 id="testing-your-certificates">Testing your certificates</h2>
+
 <h3 id="testing-using-the-indexhtml-file">Testing using the index.html file</h3>
 
 <p>To test that your custom certificates work, you can use our index.html in the <code class="highlighter-rouge">/test</code> folder found in the root directory.
-In the test folder, open up the <code class="highlighter-rouge">index.html</code> file. Replace <code class="highlighter-rouge">const certificate</code> with your unwrapped certificate.</p>
+In the test folder, open up the <code class="highlighter-rouge">index.html</code> file. Replace <code class="highlighter-rouge">const certificate</code> with your unwrapped certificate shown above.</p>
 
 <p>Then in your terminal, type <code class="highlighter-rouge">yarn start</code>. Wait for the localhost to load before opening the index.html file.
 Click on the <code class="highlighter-rouge">Render Certificate</code> button and you should see your certificate with its respective tabs displayed!</p>
@@ -204,7 +210,11 @@ Follow the image below to configure your build options.
 <p>Once the above steps are completed, you should see this view while waiting for your site to deploy:
 <img src="/assets/document-renderer/netlify4.png" alt="Netlify Waiting to deploy screenshot" /></p>
 
+<h2 id="best-practices-for-hosting-on-netlify">Best Practices for hosting on Netlify</h2>
+
 <h3 id="custom-domain">Custom domain</h3>
+
+<p>With a custom domain, you will not have to change the <code class="highlighter-rouge">$template.url</code> field and re-issue your certificate if netlify is down. Simply host your decentralised renderer on another server using the same custom domain name.</p>
 
 <p>You can also add a custom domain to your site, ie. <code class="highlighter-rouge">$template.url</code>.
 <img src="/assets/document-renderer/netlify5.png" alt="Netlify Custom domain screenshot" /></p>
