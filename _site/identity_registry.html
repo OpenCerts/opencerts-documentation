@@ -19,7 +19,7 @@
 {"@type":"WebPage","headline":"Identity Registry","url":"http://localhost:4000/identity_registry.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1c134727a627eb05a39e39be30a5a02411ece189">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -35,17 +35,13 @@
 
 <h2 id="application-to-skillsfuture-singapore">Application to SkillsFuture Singapore</h2>
 
-<p>The registry is maintained by <a href="https://www.skillsfuture.sg/">SkillsFuture Singapore</a> and serve to provide accreditation to institutes. Certificates issued by institutes in this registry will show <code class="highlighter-rouge">Accredited by SSG</code> in their verification status. To apply for your institute to be listed in the registry, kindly fill in <a href="https://form.gov.sg/5cd5141c02d207001007e322">this form</a>.</p>
+<p>The registry is maintained by <a href="https://www.skillsfuture.sg/">SkillsFuture Singapore</a> and serve to provide accreditation to institutes. Certificates issued by institutes in this registry will show <code class="highlighter-rouge">Certificate issuer is in the SkillsFuture Singapore registry for Opencerts</code> in their verification status. To apply for your institute to be listed in the registry, kindly fill in <a href="https://form.gov.sg/5cd5141c02d207001007e322">this form</a>.</p>
 
 <h2 id="identity-verification">Identity Verification</h2>
 
-<p>Anyone can deploy their own certificate store, therefore it is not suffcient to check the certificate store name on the smart contract.</p>
+<p>Anyone can deploy their own document store, therefore it is not sufficient to check the document store name on the smart contract.</p>
 
-<p>To ensure that certificates are issued by the right identity, we conduct additional check on the owner of the certificate store. This is done by checking against the registry file and on the <a href="/dns_verification.html">DNS records</a>.</p>
-
-<p><img src="/assets/identity-registry/unregistered-institute-warning.png" alt="Unregistered Institution Warning" /></p>
-
-<p>Should identity verification failed, a warning will be presented to the viewer. This warning simply means that the identity of the issuer cannot be verified and should be verified through other means. For example, the issuer may publish their certificate store address on their website for viewers of their certificates to check against.</p>
+<p>To ensure that certificates are issued by the right identity, we conduct additional check on the owner of the document store. This is done by checking against the registry file and on the <a href="/dns_verification.html">DNS records</a>. One of the verification must be valid in order to be able to display a certificate in OpenCerts.</p>
 
 <h2 id="adding-records-to-the-identity-registry">Adding Records to the Identity Registry</h2>
 

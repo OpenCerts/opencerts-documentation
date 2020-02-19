@@ -2,7 +2,10 @@
 
 ![Certificate Data plus React Template equal Certificate Views](./assets/document-renderer/overview.png)
 
+## Disclaimer
 This documentation will provide a step-by-step guide of how to setup one's own document renderer.
+
+We built a [github template](https://github.com/Open-Attestation/decentralized-renderer-react-template) to make it simple for you to create new renderer. All information that you need to create a new renderer are available there. The renderer used below as been built from that template.
 
 We will be using the Govtech Demo Cert for this tutorial. The code repository can be found at [https://github.com/OpenCerts/demo-opencerts-renderer](https://github.com/OpenCerts/demo-opencerts-renderer)
 
@@ -11,22 +14,22 @@ We will be using the Govtech Demo Cert for this tutorial. The code repository ca
 ### Prerequisite
 
 - git
+- npm
 
 ### Clone the document renderer repo
 
 ```bash
 # Clone the repository
-git clone https://github.com/TradeTrust/document-renderer.git
-cd document-renderer
+git clone git@github.com:OpenCerts/demo-opencerts-renderer.git
+cd demo-opencerts-renderer
 
 # Install dependencies
 npm install
 
 # Run the server
-yarn start
+npm run dev
 
-# Open website served at localhost:3000
-open http://localhost:3000
+# Open website served at http://localhost:3010
 ```
 
 You should observe a blank page at this point.
@@ -35,115 +38,93 @@ You should observe a blank page at this point.
 
 ### Template Directory Structure
 
-All the certificate templates are stored in the folder `src/components/templates/`. You should see 2 existing folders - customTemplate and default.
-Institutes adding new templates will store their template files as a folder in the templates folder.
+All the certificate templates are stored in the folder `src/templates`.
 
-Take the below as an example:
-![Custom template index.js screenshot](./assets/document-renderer/directory1.png)
+For instance, you should see 1 existing folder - govtechDemoCert - containing multiple files :
+- Certificate - `certificate.tsx`
+- Transcript - `transcript.tsx`
+- Media - `media.tsx`
 
-In the new custom folder (govtechDemoCert), there will be the corresponding files to its views, ie.
-Certificate - `certificate.js`
-Transcript - `transcript.js`
-Media - `media.js`
+The folder correspond to one template, and the files to the different views for that template. You can use as many templates and views as you want.
 
-Also, notice that there is a `index.js` that you will have to create that will map out these files and enable us to switch between the different views later on the opencerts.io website.
+Also, notice that there is a `src/templates/index.tsx` and `src/templates/govtechDemoCert/index.tsx` that is used for configuration and export of the different templates.
 
 ### Custom Templates
 
-To customize your own certificates and transcripts, refer to the documentation on [creating your custom templates for OpenCerts v2.0](./custom_template_v2.md).
+To customize your own certificates and transcripts, refer to the documentation on [creating your custom templates for OpenCerts](custom_template.md).
 
-### Template index.js
+### Template configuration
 
-Below is an example on how to format your `index.js` file within your custom template folder, in this case the govtechDemoCert folder.
+Below is an example on how to format your `index.tsx` file within your custom template folder, in this case the govtechDemoCert folder.
 
-```javascript
-import DemoCert from "./certificate";
-import DemoTranscript from "./transcript";
-import DemoMedia from "./media";
-
-const templates = [
+```typescript
+import { CertificateTemplate } from "./certificate";
+import { TranscriptTemplate } from "./transcript";
+import { MediaTemplate } from "./media";
+  
+export const templates = [
   {
     id: "certificate",
     label: "Certificate",
-    template: DemoCert
+    template: CertificateTemplate
   },
   {
     id: "transcript",
     label: "Transcript",
-    template: DemoTranscript
+    template: TranscriptTemplate
   },
   {
     id: "media",
     label: "Media",
-    template: DemoMedia
+    template: MediaTemplate
   }
 ];
 
-export default templates;
 ```
 
 In the example above, the document rendered using this template will have three views, namely `Certificate`, `Transcript`, and `Media` view.
 
 These three views are imported from the template `./certificate`, `./transcript`, and `./media` respectively.
 
-### Renderer index.js
+### Register templates
 
-To register the templates within the renderer, we have to add the custom template folder - govtechDemoCert - to the index.js file of the templates folder, which is located here:
-![templates index.js screenshot](./assets/document-renderer/directory2.png)
+To register the templates within the renderer, we have to add the custom template folder - govtechDemoCert - to the `src/templates/index.tsx`
 
-```javascript
-import DefaultTemplate from "./default";
-import CustomTemplate from "./customTemplate";
-import GovTechDemoCert from "./govtechDemoCert"; // Added
-
-export default {
-  default: DefaultTemplate,
-  CUSTOM_TEMPLATE: CustomTemplate,
-  GOVTECH_DEMO: GovTechDemoCert, // Added
-  NULL: []
+```typescript
+import { templates as govtechDemoTemplates } from "./govtechDemoCert";
+import { TemplateRegistry } from "@govtechsg/decentralized-renderer-react-components";
+   
+export const registry: TemplateRegistry<any> = {
+  default: govtechDemoTemplates,
+  GOVTECH_DEMO: govtechDemoTemplates
 };
+
 ```
 
 Import the govtechDemoCert folder and export it as a key-value pair.
 The key will be used in the .opencerts file later to reference the folder where the templates are stored.
 This key-value pair **MUST NOT** be a duplicate of another existing template's key.
 
-### Registering Templates
+### Embedding templates in certificate
 
 To allow the OpenCerts viewer to detect the new certificate templates, the value used in the `$template.name` field **must** equal the key corresponding to the template folder you have created. For example, the unwrapped version of our custom .opencerts file should look like this:
 
 ```javascript
 const certificate = {
-      id: "53b75bbe",
-      description: "Govtech Demo Certificate",
-      issuedOn: "2019-05-29T00:00:00+08:00",
-      $template: {
-        name: "GOVTECH_DEMO", // $template.name must corresponding to the key used to reference your template folder
-        type: "EMBEDDED_RENDERER", // FOLLOW THIS EXACT VALUE
-        url: "https://demo-renderer.opencerts.io/"
-      },
+  id: "53b75bbe",
+  description: "Govtech Demo Certificate",
+  issuedOn: "2019-05-29T00:00:00+08:00",
+  $template: {
+    name: "GOVTECH_DEMO", // $template.name must corresponding to the key used to reference your template folder
+    type: "EMBEDDED_RENDERER", // FOLLOW THIS EXACT VALUE
+    url: "https://demo-renderer.opencerts.io/" // the url your renderer is deployed on
+  }
       // Other information below
 ```
 
 ### How about other custom templates?
 
 Simple! Just repeat the steps within the **SAME** repository under a new folder.
-
-## Testing your certificates
-
-### Testing using the index.html file
-
-To test that your custom certificates work, you can use our index.html in the `/test` folder found in the root directory.
-In the test folder, open up the `index.html` file. Replace `const certificate` with your unwrapped certificate shown above.
-
-Then in your terminal, type `yarn start`. Wait for the localhost to load before opening the index.html file.
-Click on the `Render Certificate` button and you should see your certificate with its respective tabs displayed!
-
-## Integration test
-
-To ensure that incremental code change does not break your certificate, each template has to be accompanied by it's integration test.
-
-Details on the integration test can be found in the [next chapter](./integration_test.md).
 
 ## Hosting your renderer using Netlify
 

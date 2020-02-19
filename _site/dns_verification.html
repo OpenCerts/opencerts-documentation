@@ -19,7 +19,7 @@
 {"@type":"WebPage","headline":"OpenCerts 2.0 DNS-TXT Verification","url":"http://localhost:4000/dns_verification.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1c134727a627eb05a39e39be30a5a02411ece189">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -54,33 +54,38 @@
 <p>A deeper technical discussion of this topic can be found at <a href="https://github.com/OpenCerts/adr/blob/master/decentralized_identity_proof_DNS-TXT.md">OpenCerts 2.0 DNS-TXT Architecture Decision Record</a></p>
 
 <h2 id="actions-to-implement">Actions to Implement</h2>
-<p>### Create DNS TXT Record
-  The issuer will need to add a DNS TXT record to his domain name, the exact steps to achieve this can be confirmed with their domain name registrar.</p>
+<h3 id="create-dns-txt-record">Create DNS TXT Record</h3>
+<p>The issuer will need to add a DNS TXT record to his domain name, the exact steps to achieve this can be confirmed with their domain name registrar.</p>
 
 <p>The TXT record should look like</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">openatts</span> <span class="nx">net</span><span class="o">=</span><span class="nx">ethereum</span> <span class="nx">netId</span><span class="o">=</span><span class="mi">1</span> <span class="nx">addr</span><span class="o">=</span><span class="mh">0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d</span>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openatts net=ethereum netId=1 addr=0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d
 </code></pre></div></div>
+
+<p><code class="highlighter-rouge">netId</code> can hold 2 different values:</p>
+<ul>
+  <li><code class="highlighter-rouge">1</code> for documentStore deployed on the main network (mainnet).</li>
+  <li><code class="highlighter-rouge">3</code> for documentStore deployed on the test network (ropsten).</li>
+</ul>
 
 <p>Optionally, the issuer may also publish an A record at the same address so that the if the certificate viewer clicks on the URL, they can see some helpful text regarding the issuer’s OpenCerts program.</p>
 
-<p>### Certificate Schema Changes</p>
+<h3 id="certificate-schema-changes">Certificate Schema Changes</h3>
 
 <p>In addition to Decentralised Rendering which will also require schema changes in OpenCerts 2.0, DNS verification adds a field <code class="highlighter-rouge">identityProof</code> to the issuer object. The issuer will need to already have deployed a Document Store contract as well as created the DNS TXT record as above.</p>
 
 <p>The identityProof object will look like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  "issuers": [
-    {
-        "network": "ETHEREUM",
-        "documentStore": "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d",
-        "identityProof": {
-            "type": "DNS-TXT",
-            "location": "openattestation.com"
-        }
-    }
-]
-</code></pre></div></div>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"issuers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHEREUM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"documentStore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"identityProof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNS-TXT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openattestation.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div></div>
 
 <h2 id="closing">Closing</h2>
 

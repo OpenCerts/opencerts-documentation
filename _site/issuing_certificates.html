@@ -19,7 +19,7 @@
 {"@type":"WebPage","headline":"Issuing Certificates","url":"http://localhost:4000/issuing_certificates.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1c134727a627eb05a39e39be30a5a02411ece189">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -29,14 +29,14 @@
 
       <h1 id="issuing-certificates">Issuing Certificates</h1>
 
-<p>After you have obtained the Merkle root from the <a href="/batching_certificates.html">previous step</a>, the next step is to publish this Merkle root on the Ethereum public main net. Once this Merkle root is registered on the blockchain, the OpenCerts.io verifier will recognise all the certificates in the batch as issued. They will show as fully valid (unless the <a href="/identity_registry.html">identity of the certificate store owner is unknown</a>). If the certificate store is unknown, a warning will be shown but the certificate will still be viewable.</p>
+<p>After you have obtained the Merkle root from the <a href="/batching_certificates.html">previous step</a>, the next step is to publish this Merkle root on the Ethereum public main net. Once this Merkle root is registered on the blockchain, the OpenCerts.io verifier will recognise all the certificates in the batch as issued. They will show as fully valid (unless the <a href="/identity_registry.html">identity of the document store owner is unknown</a>).</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
 <p>To issue the certificates, please ensure you have:</p>
 
 <ol>
-  <li><a href="/deploying_store.html">Access to a certificate store to issue from</a></li>
+  <li><a href="/deploying_store.html">Access to a document store to issue from</a></li>
   <li><a href="/batching_certificates.html">Merkle root from certificate batch</a></li>
 </ol>
 
@@ -44,7 +44,7 @@
 
 <p><img src="/assets/issuing-certificates/interface.png" alt="Administrator Interface" /></p>
 
-<p>A simple admin interface is provided to allow anyone to issue certificates on their own certificate store on https://admin.opencerts.io .</p>
+<p>A simple admin interface is provided to allow anyone to issue certificates on their own document store on <a href="">https://admin.opencerts.io</a>.</p>
 
 <h2 id="issuing-certificates-1">Issuing Certificates</h2>
 
@@ -56,9 +56,9 @@
 
 <p>If your accounts are not shown, click on the refresh icon beside ‘Current account’ to refresh the status.</p>
 
-<h3 id="selecting-your-certificate-store">Selecting your certificate store</h3>
+<h3 id="selecting-your-document-store">Selecting your document store</h3>
 
-<p>The certificates store address is the smart contract address from the <a href="/deploying_store.html">deploying store</a> step. Do note that this address is NOT your wallet address.</p>
+<p>The document store address is the smart contract address from the <a href="/deploying_store.html">deploying store</a> step. Do note that this address is <strong>NOT</strong> your wallet address.</p>
 
 <p>Enter the store address in the field below ‘Store address’.</p>
 

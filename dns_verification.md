@@ -25,35 +25,38 @@ In an OpenCerts 2.0 DNS-TXT identity proof, we record an OpenCerts Document Stor
 A deeper technical discussion of this topic can be found at [OpenCerts 2.0 DNS-TXT Architecture Decision Record](https://github.com/OpenCerts/adr/blob/master/decentralized_identity_proof_DNS-TXT.md)
 
 ## Actions to Implement
-  ### Create DNS TXT Record
-  The issuer will need to add a DNS TXT record to his domain name, the exact steps to achieve this can be confirmed with their domain name registrar.
+### Create DNS TXT Record
+The issuer will need to add a DNS TXT record to his domain name, the exact steps to achieve this can be confirmed with their domain name registrar.
   
-  The TXT record should look like
+The TXT record should look like
   
-  ```javascript
-  openatts net=ethereum netId=1 addr=0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d
-  ```
-  
-  Optionally, the issuer may also publish an A record at the same address so that the if the certificate viewer clicks on the URL, they can see some helpful text regarding the issuer's OpenCerts program.
-  
-  ### Certificate Schema Changes
+```text
+openatts net=ethereum netId=1 addr=0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d
+```
 
-  In addition to Decentralised Rendering which will also require schema changes in OpenCerts 2.0, DNS verification adds a field `identityProof` to the issuer object. The issuer will need to already have deployed a Document Store contract as well as created the DNS TXT record as above.
+`netId` can hold 2 different values:
+- `1` for documentStore deployed on the main network (mainnet).
+- `3` for documentStore deployed on the test network (ropsten).
+
+Optionally, the issuer may also publish an A record at the same address so that the if the certificate viewer clicks on the URL, they can see some helpful text regarding the issuer's OpenCerts program.
   
-  The identityProof object will look like:
-  
-  ```
-  "issuers": [
-    {
-        "network": "ETHEREUM",
-        "documentStore": "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d",
-        "identityProof": {
-            "type": "DNS-TXT",
-            "location": "openattestation.com"
-        }
-    }
-]
-  ```
+### Certificate Schema Changes
+
+In addition to Decentralised Rendering which will also require schema changes in OpenCerts 2.0, DNS verification adds a field `identityProof` to the issuer object. The issuer will need to already have deployed a Document Store contract as well as created the DNS TXT record as above.
+
+The identityProof object will look like:
+
+```json
+"issuers": [
+{
+  "network": "ETHEREUM",
+  "documentStore": "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d",
+  "identityProof": {
+    "type": "DNS-TXT",
+    "location": "openattestation.com"
+  }
+}]
+```
   
 ## Closing
 

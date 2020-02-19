@@ -54,7 +54,7 @@ Sample output:
 
 Upon successful batching of the certificates, the merkle root for the entire batch will be printed and the signed certificates will be found in the folder `signed_certs`. 
 
-Note the merkle root, it will be [published onto the certficate store](./issuing_certificates.md) in later steps. 
+Note the merkle root, it will be [published onto the document store](./issuing_certificates.md) in later steps. 
 
 ## NPM Package
 

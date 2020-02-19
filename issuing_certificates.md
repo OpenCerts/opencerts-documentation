@@ -1,19 +1,19 @@
 # Issuing Certificates
 
-After you have obtained the Merkle root from the [previous step](./batching_certificates.md), the next step is to publish this Merkle root on the Ethereum public main net. Once this Merkle root is registered on the blockchain, the OpenCerts.io verifier will recognise all the certificates in the batch as issued. They will show as fully valid (unless the [identity of the certificate store owner is unknown](identity_registry.md)). If the certificate store is unknown, a warning will be shown but the certificate will still be viewable.
+After you have obtained the Merkle root from the [previous step](./batching_certificates.md), the next step is to publish this Merkle root on the Ethereum public main net. Once this Merkle root is registered on the blockchain, the OpenCerts.io verifier will recognise all the certificates in the batch as issued. They will show as fully valid (unless the [identity of the document store owner is unknown](identity_registry.md)).
 
 ## Prerequisites
 
 To issue the certificates, please ensure you have:
 
-1. [Access to a certificate store to issue from](./deploying_store.md)
+1. [Access to a document store to issue from](./deploying_store.md)
 2. [Merkle root from certificate batch](./batching_certificates.md)
 
 ## Admin Interface
 
 ![Administrator Interface](./assets/issuing-certificates/interface.png)
 
-A simple admin interface is provided to allow anyone to issue certificates on their own certificate store on https://admin.opencerts.io . 
+A simple admin interface is provided to allow anyone to issue certificates on their own document store on [https://admin.opencerts.io](). 
 
 ## Issuing Certificates
 
@@ -25,9 +25,9 @@ If you are using Ledger Nano, select Ledger Nano from the network selector on th
 
 If your accounts are not shown, click on the refresh icon beside 'Current account' to refresh the status.
 
-### Selecting your certificate store
+### Selecting your document store
 
-The certificates store address is the smart contract address from the [deploying store](./deploying_store.md) step. Do note that this address is NOT your wallet address. 
+The document store address is the smart contract address from the [deploying store](./deploying_store.md) step. Do note that this address is **NOT** your wallet address. 
 
 Enter the store address in the field below 'Store address'. 
 
@@ -55,10 +55,10 @@ In this certificate, the merkle root to be used for the entire batch is `0x0be95
 
 ### Transaction confirmation
 
-Once you have entered the Merkle root hash and click on "Issue", you will have to confirm the transaction either on Metamask or on the Ledger Nano device (depress both left and right buttons). 
+Once you have entered the Merkle root hash and click on "Issue", you will have to confirm the transaction either on Metamask or on the Ledger Nano device (depress both left and right buttons).
 
-Upon confirmation of the transaction, the transaction will be published onto the Ethereum network. You may have to wait a few minutes for the block containing that transaction to be mined. 
+Upon confirmation of the transaction, the transaction will be published onto the Ethereum network. You may have to wait a few minutes for the block containing that transaction to be mined.
 
 ### Certificate check
 
-Once the transaction is mined, you will see that all the certificates in the same batch of certificates is now issued and valid (except in the case of [unidentified issuer](./identity_registry.md)). 
+Once the transaction is mined, you will see that all the certificates in the same batch of certificates is now issued and valid (except in the case of [unidentified issuer](./identity_registry.md)).
