@@ -16,37 +16,30 @@
 
 - [01/10/18 - Technical Training Slides](https://docs.google.com/presentation/d/11QTk76_R_FRc5xrgLrkG-NjsIItYDNcLWG6RgiICm48/edit?usp=sharing)
 - [27/03/19 - Announcements & FAQ](https://docs.google.com/presentation/d/11VDgcPOrhDsXWs_1fVghj138ZxonEDpC-UE39Mx4E30)
-- [12/04/19 - OpenCerts Schema 1.5 update](./announcements/schema1.5.pdf)
 - [25/07/19 - OpenCerts Schema 2.0 update](./announcements/schema2_update.md)
 
 ## Table of Content
 
 ### Issuing and Customising OpenCerts
 
-| Steps                                                                             | OpenCerts v1.5 | OpenCerts v2.0 |
-| --------------------------------------------------------------------------------- | :------------: | :------------: |
-| [Creating Certificates](./creating_certificates.md)                               |       ✅       |       ✅       |
-| [Deploying Certificate Store](./deploying_store.md)                               |       ✅       |       ✅       |
-| [Creating a Document Renderer](./document_renderer.md)                            |                |       ✅       |
-| [Testing a Document Renderer](./document_renderer_test.md)                        |                |       ✅       |
-| [Custom Certificate Templates for OpenCerts v2](./custom_template_v2.md)          |                |       ✅       |
-| [DNS Identity Proof](./dns_verification.md)                                       |                |       ✅       |
-| [Custom Certificate Templates](./custom_template.md)                              |       ✅       |                |
-| [Testing Custom Certificate Templates](./integration_test.md)                     |       ✅       |                |
-| [Batching Certificates](./batching_certificates.md)                               |       ✅       |       ✅       |
-| [Issuing Certificates](./issuing_certificates.md)                                 |       ✅       |       ✅       |
-| [Issuing Certificates (Using MultiSig Wallet)](./issuing_multisig_certificate.md) |       ✅       |       ✅       |
-| [Identity Registry](./identity_registry.md)                                       |       ✅       |       ✅       |
+| Steps                                                                             | 
+| --------------------------------------------------------------------------------- | 
+| [Creating Certificates](./creating_certificates.md)                               | 
+| [Deploying Document Store](./deploying_store.md)                               | 
+| [Creating a Document Renderer](./document_renderer.md)                            |
+| [Custom Certificate Templates](./custom_template.md)          |
+| [DNS Identity Proof](./dns_verification.md)                                       |
+| [Batching Certificates](./batching_certificates.md)                               | 
+| [Issuing Certificates](./issuing_certificates.md)                                 | 
+| [Identity Registry](./identity_registry.md)                                       | 
 
 ### Appendix
 
 - [Appendix: Test Wallet/Ethers](./appendix_test_accounts.md)
 - [Appendix: Data Obfuscation](./appendix_data_obfuscation.md)
 - [Appendix: Ledger Nano S Initialisation](./appendix_ledgerinit.md)
-- [Appendix: Pull Request Checklist](./appendix_pull_request_checklist.md)
 - [Appendix: Pull Request Preview](./appendix_pull_request_preview.md)
-- [Appendix: Verifying the Certificate Store Contract](./verifying_contract.md)
-- [Appendix: Viewing Templates during Development (v1.5 vs v2.0)](./appendix_viewing_template_development.md)
+- [Appendix: Verifying the Document Store Contract](./verifying_contract.md)
 
 ### Developing Your Own Product with OpenCerts
 

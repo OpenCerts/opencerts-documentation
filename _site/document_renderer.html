@@ -19,7 +19,7 @@
 {"@type":"WebPage","headline":"Document Renderer","url":"http://localhost:4000/document_renderer.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1c134727a627eb05a39e39be30a5a02411ece189">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -31,7 +31,10 @@
 
 <p><img src="/assets/document-renderer/overview.png" alt="Certificate Data plus React Template equal Certificate Views" /></p>
 
+<h2 id="disclaimer">Disclaimer</h2>
 <p>This documentation will provide a step-by-step guide of how to setup one’s own document renderer.</p>
+
+<p>We built a <a href="https://github.com/Open-Attestation/decentralized-renderer-react-template">github template</a> to make it simple for you to create new renderer. All information that you need to create a new renderer are available there. The renderer used below as been built from that template.</p>
 
 <p>We will be using the Govtech Demo Cert for this tutorial. The code repository can be found at <a href="https://github.com/OpenCerts/demo-opencerts-renderer">https://github.com/OpenCerts/demo-opencerts-renderer</a></p>
 
@@ -41,22 +44,22 @@
 
 <ul>
   <li>git</li>
+  <li>npm</li>
 </ul>
 
 <h3 id="clone-the-document-renderer-repo">Clone the document renderer repo</h3>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Clone the repository</span>
-git clone https://github.com/TradeTrust/document-renderer.git
-<span class="nb">cd </span>document-renderer
+git clone git@github.com:OpenCerts/demo-opencerts-renderer.git
+<span class="nb">cd </span>demo-opencerts-renderer
 
 <span class="c"># Install dependencies</span>
 npm install
 
 <span class="c"># Run the server</span>
-yarn start
+npm run dev
 
-<span class="c"># Open website served at localhost:3000</span>
-open http://localhost:3000
+<span class="c"># Open website served at http://localhost:3010</span>
 </code></pre></div></div>
 
 <p>You should observe a blank page at this point.</p>
@@ -65,112 +68,92 @@ open http://localhost:3000
 
 <h3 id="template-directory-structure">Template Directory Structure</h3>
 
-<p>All the certificate templates are stored in the folder <code class="highlighter-rouge">src/components/templates/</code>. You should see 2 existing folders - customTemplate and default.
-Institutes adding new templates will store their template files as a folder in the templates folder.</p>
+<p>All the certificate templates are stored in the folder <code class="highlighter-rouge">src/templates</code>.</p>
 
-<p>Take the below as an example:
-<img src="/assets/document-renderer/directory1.png" alt="Custom template index.js screenshot" /></p>
+<p>For instance, you should see 1 existing folder - govtechDemoCert - containing multiple files :</p>
+<ul>
+  <li>Certificate - <code class="highlighter-rouge">certificate.tsx</code></li>
+  <li>Transcript - <code class="highlighter-rouge">transcript.tsx</code></li>
+  <li>Media - <code class="highlighter-rouge">media.tsx</code></li>
+</ul>
 
-<p>In the new custom folder (govtechDemoCert), there will be the corresponding files to its views, ie.
-Certificate - <code class="highlighter-rouge">certificate.js</code>
-Transcript - <code class="highlighter-rouge">transcript.js</code>
-Media - <code class="highlighter-rouge">media.js</code></p>
+<p>The folder correspond to one template, and the files to the different views for that template. You can use as many templates and views as you want.</p>
 
-<p>Also, notice that there is a <code class="highlighter-rouge">index.js</code> that you will have to create that will map out these files and enable us to switch between the different views later on the opencerts.io website.</p>
+<p>Also, notice that there is a <code class="highlighter-rouge">src/templates/index.tsx</code> and <code class="highlighter-rouge">src/templates/govtechDemoCert/index.tsx</code> that is used for configuration and export of the different templates.</p>
 
 <h3 id="custom-templates">Custom Templates</h3>
 
-<p>To customize your own certificates and transcripts, refer to the documentation on <a href="/custom_template_v2.html">creating your custom templates for OpenCerts v2.0</a>.</p>
+<p>To customize your own certificates and transcripts, refer to the documentation on <a href="/custom_template.html">creating your custom templates for OpenCerts</a>.</p>
 
-<h3 id="template-indexjs">Template index.js</h3>
+<h3 id="template-configuration">Template configuration</h3>
 
-<p>Below is an example on how to format your <code class="highlighter-rouge">index.js</code> file within your custom template folder, in this case the govtechDemoCert folder.</p>
+<p>Below is an example on how to format your <code class="highlighter-rouge">index.tsx</code> file within your custom template folder, in this case the govtechDemoCert folder.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">DemoCert</span> <span class="k">from</span> <span class="s2">"./certificate"</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">DemoTranscript</span> <span class="k">from</span> <span class="s2">"./transcript"</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">DemoMedia</span> <span class="k">from</span> <span class="s2">"./media"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">templates</span> <span class="o">=</span> <span class="p">[</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">CertificateTemplate</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./certificate"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">TranscriptTemplate</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./transcript"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MediaTemplate</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./media"</span><span class="p">;</span>
+  
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">templates</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span>
     <span class="na">id</span><span class="p">:</span> <span class="s2">"certificate"</span><span class="p">,</span>
     <span class="na">label</span><span class="p">:</span> <span class="s2">"Certificate"</span><span class="p">,</span>
-    <span class="na">template</span><span class="p">:</span> <span class="nx">DemoCert</span>
+    <span class="na">template</span><span class="p">:</span> <span class="nx">CertificateTemplate</span>
   <span class="p">},</span>
   <span class="p">{</span>
     <span class="na">id</span><span class="p">:</span> <span class="s2">"transcript"</span><span class="p">,</span>
     <span class="na">label</span><span class="p">:</span> <span class="s2">"Transcript"</span><span class="p">,</span>
-    <span class="na">template</span><span class="p">:</span> <span class="nx">DemoTranscript</span>
+    <span class="na">template</span><span class="p">:</span> <span class="nx">TranscriptTemplate</span>
   <span class="p">},</span>
   <span class="p">{</span>
     <span class="na">id</span><span class="p">:</span> <span class="s2">"media"</span><span class="p">,</span>
     <span class="na">label</span><span class="p">:</span> <span class="s2">"Media"</span><span class="p">,</span>
-    <span class="na">template</span><span class="p">:</span> <span class="nx">DemoMedia</span>
+    <span class="na">template</span><span class="p">:</span> <span class="nx">MediaTemplate</span>
   <span class="p">}</span>
 <span class="p">];</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="nx">templates</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>In the example above, the document rendered using this template will have three views, namely <code class="highlighter-rouge">Certificate</code>, <code class="highlighter-rouge">Transcript</code>, and <code class="highlighter-rouge">Media</code> view.</p>
 
 <p>These three views are imported from the template <code class="highlighter-rouge">./certificate</code>, <code class="highlighter-rouge">./transcript</code>, and <code class="highlighter-rouge">./media</code> respectively.</p>
 
-<h3 id="renderer-indexjs">Renderer index.js</h3>
+<h3 id="register-templates">Register templates</h3>
 
-<p>To register the templates within the renderer, we have to add the custom template folder - govtechDemoCert - to the index.js file of the templates folder, which is located here:
-<img src="/assets/document-renderer/directory2.png" alt="templates index.js screenshot" /></p>
+<p>To register the templates within the renderer, we have to add the custom template folder - govtechDemoCert - to the <code class="highlighter-rouge">src/templates/index.tsx</code></p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">DefaultTemplate</span> <span class="k">from</span> <span class="s2">"./default"</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">CustomTemplate</span> <span class="k">from</span> <span class="s2">"./customTemplate"</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">GovTechDemoCert</span> <span class="k">from</span> <span class="s2">"./govtechDemoCert"</span><span class="p">;</span> <span class="c1">// Added</span>
-
-<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">default</span><span class="p">:</span> <span class="nx">DefaultTemplate</span><span class="p">,</span>
-  <span class="na">CUSTOM_TEMPLATE</span><span class="p">:</span> <span class="nx">CustomTemplate</span><span class="p">,</span>
-  <span class="na">GOVTECH_DEMO</span><span class="p">:</span> <span class="nx">GovTechDemoCert</span><span class="p">,</span> <span class="c1">// Added</span>
-  <span class="na">NULL</span><span class="p">:</span> <span class="p">[]</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">templates</span> <span class="k">as</span> <span class="nx">govtechDemoTemplates</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./govtechDemoCert"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">TemplateRegistry</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"@govtechsg/decentralized-renderer-react-components"</span><span class="p">;</span>
+   
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">registry</span><span class="p">:</span> <span class="nx">TemplateRegistry</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">default</span><span class="p">:</span> <span class="nx">govtechDemoTemplates</span><span class="p">,</span>
+  <span class="na">GOVTECH_DEMO</span><span class="p">:</span> <span class="nx">govtechDemoTemplates</span>
 <span class="p">};</span>
+
 </code></pre></div></div>
 
 <p>Import the govtechDemoCert folder and export it as a key-value pair.
 The key will be used in the .opencerts file later to reference the folder where the templates are stored.
 This key-value pair <strong>MUST NOT</strong> be a duplicate of another existing template’s key.</p>
 
-<h3 id="registering-templates">Registering Templates</h3>
+<h3 id="embedding-templates-in-certificate">Embedding templates in certificate</h3>
 
 <p>To allow the OpenCerts viewer to detect the new certificate templates, the value used in the <code class="highlighter-rouge">$template.name</code> field <strong>must</strong> equal the key corresponding to the template folder you have created. For example, the unwrapped version of our custom .opencerts file should look like this:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">certificate</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">id</span><span class="p">:</span> <span class="s2">"53b75bbe"</span><span class="p">,</span>
-      <span class="na">description</span><span class="p">:</span> <span class="s2">"Govtech Demo Certificate"</span><span class="p">,</span>
-      <span class="na">issuedOn</span><span class="p">:</span> <span class="s2">"2019-05-29T00:00:00+08:00"</span><span class="p">,</span>
-      <span class="na">$template</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">name</span><span class="p">:</span> <span class="s2">"GOVTECH_DEMO"</span><span class="p">,</span> <span class="c1">// $template.name must corresponding to the key used to reference your template folder</span>
-        <span class="na">type</span><span class="p">:</span> <span class="s2">"EMBEDDED_RENDERER"</span><span class="p">,</span> <span class="c1">// FOLLOW THIS EXACT VALUE</span>
-        <span class="na">url</span><span class="p">:</span> <span class="s2">"https://demo-renderer.opencerts.io/"</span>
-      <span class="p">},</span>
+  <span class="na">id</span><span class="p">:</span> <span class="s2">"53b75bbe"</span><span class="p">,</span>
+  <span class="na">description</span><span class="p">:</span> <span class="s2">"Govtech Demo Certificate"</span><span class="p">,</span>
+  <span class="na">issuedOn</span><span class="p">:</span> <span class="s2">"2019-05-29T00:00:00+08:00"</span><span class="p">,</span>
+  <span class="na">$template</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"GOVTECH_DEMO"</span><span class="p">,</span> <span class="c1">// $template.name must corresponding to the key used to reference your template folder</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"EMBEDDED_RENDERER"</span><span class="p">,</span> <span class="c1">// FOLLOW THIS EXACT VALUE</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://demo-renderer.opencerts.io/"</span> <span class="c1">// the url your renderer is deployed on</span>
+  <span class="p">}</span>
       <span class="c1">// Other information below</span>
 </code></pre></div></div>
 
 <h3 id="how-about-other-custom-templates">How about other custom templates?</h3>
 
 <p>Simple! Just repeat the steps within the <strong>SAME</strong> repository under a new folder.</p>
-
-<h2 id="testing-your-certificates">Testing your certificates</h2>
-
-<h3 id="testing-using-the-indexhtml-file">Testing using the index.html file</h3>
-
-<p>To test that your custom certificates work, you can use our index.html in the <code class="highlighter-rouge">/test</code> folder found in the root directory.
-In the test folder, open up the <code class="highlighter-rouge">index.html</code> file. Replace <code class="highlighter-rouge">const certificate</code> with your unwrapped certificate shown above.</p>
-
-<p>Then in your terminal, type <code class="highlighter-rouge">yarn start</code>. Wait for the localhost to load before opening the index.html file.
-Click on the <code class="highlighter-rouge">Render Certificate</code> button and you should see your certificate with its respective tabs displayed!</p>
-
-<h2 id="integration-test">Integration test</h2>
-
-<p>To ensure that incremental code change does not break your certificate, each template has to be accompanied by it’s integration test.</p>
-
-<p>Details on the integration test can be found in the <a href="/integration_test.html">next chapter</a>.</p>
 
 <h2 id="hosting-your-renderer-using-netlify">Hosting your renderer using Netlify</h2>
 

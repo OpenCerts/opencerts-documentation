@@ -19,7 +19,7 @@
 {"@type":"WebPage","headline":"Creating Certificates","url":"http://localhost:4000/creating_certificates.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=0aeedae637a611b6155a5fa5889fd8a6f4bce0f5">
+    <link rel="stylesheet" href="/assets/css/style.css?v=1c134727a627eb05a39e39be30a5a02411ece189">
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
@@ -29,19 +29,19 @@
 
       <h1 id="creating-certificates">Creating Certificates</h1>
 
-<p><img src="/assets/creating-certificates/inside-certificate.png" alt="Certificate Store" /></p>
+<p><img src="/assets/creating-certificates/inside-certificate.png" alt="Document Store" /></p>
 
-<p>The OpenCerts file is a <code class="highlighter-rouge">.json</code> file that conforms to the <a href="https://github.com/GovTechSG/open-attestation">OpenAttestation</a> specification.</p>
+<p>The OpenCerts file is a <code class="highlighter-rouge">.json</code> file that conforms to the <a href="https://openattestation.com">OpenAttestation</a> specification.</p>
 
 <p>At the root level, each file contains information on the schema type (OpenCerts), certificate data, hidden data (from privacy filter) and a signature. Details of the OpenAttestation file format can be found on the <a href="https://github.com/GovTechSG/open-attestation">Github page</a>.</p>
 
-<p>What you will be most concern with is the certificate data. All these data are stored in the <code class="highlighter-rouge">data</code> key on the OpenCerts file and conforms to the <a href="https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json">OpenCerts schema</a>.</p>
+<p>What you will be most concern with is the certificate data. All these data are stored in the <code class="highlighter-rouge">data</code> key on the OpenCerts file and conforms to the <a href="https://github.com/OpenCerts/open-certificate/blob/master/schema/2.0/schema.json">OpenCerts schema</a>.</p>
 
 <p>For this section, we will focus on populating the certificate data that conforms to the schema.</p>
 
 <h2 id="opencerts-schema">OpenCerts Schema</h2>
 
-<p>The shape of the certificate object is defined using <a href="https://json-schema.org/">JSON Schema</a>. The definition can be found at <a href="https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json">https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json</a>.</p>
+<p>The shape of the certificate object is defined using <a href="https://json-schema.org/">JSON Schema</a>. The definition can be found at <a href="https://github.com/OpenCerts/open-certificate/blob/master/schema/2.0/schema.json">https://github.com/OpenCerts/open-certificate/blob/master/schema/2.0/schema.json</a>.</p>
 
 <h2 id="using-json-schema-validator">Using JSON Schema Validator</h2>
 
@@ -62,7 +62,7 @@
   </span><span class="s2">"issuers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"University of Blockchain"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"certificateStore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"</span><span class="w">
+      </span><span class="s2">"documentStore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -93,11 +93,13 @@
 
 <h3 id="issuers-field"><code class="highlighter-rouge">issuers</code> field</h3>
 
-<p>The <code class="highlighter-rouge">issuers</code> is an array of the issuer object. The required fields for each issuer is <code class="highlighter-rouge">name</code> and <code class="highlighter-rouge">certificateStore</code>. Other fields such as <code class="highlighter-rouge">did</code>, <code class="highlighter-rouge">url</code>, <code class="highlighter-rouge">email</code> and <code class="highlighter-rouge">phone</code> are also recognised.</p>
+<p>The <code class="highlighter-rouge">issuers</code> is an array of the issuer object. The required fields for each issuer is <code class="highlighter-rouge">name</code>and <code class="highlighter-rouge">documentStore</code>. Other fields such as <code class="highlighter-rouge">did</code>, <code class="highlighter-rouge">url</code>, <code class="highlighter-rouge">email</code>, <code class="highlighter-rouge">identityProof</code> and <code class="highlighter-rouge">phone</code> are also recognised.</p>
 
-<p>The <code class="highlighter-rouge">name</code> specifies the name of the issuing body while the <code class="highlighter-rouge">certificateStore</code> specifies the smart contract address of the certificate store deployed by the issuing body.</p>
+<p>The <code class="highlighter-rouge">name</code> specifies the name of the issuing body while the <code class="highlighter-rouge">documentStore</code> specifies the smart contract address of the document store deployed by the issuing body.</p>
 
-<p>The <code class="highlighter-rouge">certificateStore</code> address can be obtained after <a href="/deploying_store.html">deploying an instance of the smart contract</a>.</p>
+<p>The <code class="highlighter-rouge">documentStore</code> address can be obtained after <a href="/deploying_store.html">deploying an instance of the smart contract</a>.</p>
+
+<p>For legacy reason, <code class="highlighter-rouge">identityProof</code> is not required, however to ensure your OpenCerts document fully conforms to the <a href="https://openattestation.com">OpenAttestation</a> v2 Standards (and therefore allowed to be rendered on OpenAttestation compatible platforms), it’s highly recommended that you use it. More information about <a href="/dns_verification.html">DNS verification</a>.</p>
 
 <h3 id="recipient-field"><code class="highlighter-rouge">recipient</code> field</h3>
 
@@ -115,7 +117,11 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"University of Blockchain"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://universityofblockchain.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"certificateStore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"</span><span class="w">
+      </span><span class="s2">"documentStore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identityProof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DNS-TXT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
