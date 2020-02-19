@@ -8,7 +8,7 @@
 
 # OpenCerts Documentation
 
-<div class="searchbox algolia-autocomplete ds-dropdown-menu">
+<div class="searchbox algolia-autocomplete ds-dropdown-menu" style="display:none">
   <input type="text" placeholder="Search the docs..." aria-label="Search">
 </div>
 
