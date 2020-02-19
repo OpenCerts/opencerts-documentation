@@ -1,18 +1,18 @@
 # Creating Certificates
 
-![Certificate Store](./assets/creating-certificates/inside-certificate.png)
+![Document Store](./assets/creating-certificates/inside-certificate.png)
 
-The OpenCerts file is a `.json` file that conforms to the [OpenAttestation](https://github.com/GovTechSG/open-attestation) specification.
+The OpenCerts file is a `.json` file that conforms to the [OpenAttestation](https://openattestation.com) specification.
 
 At the root level, each file contains information on the schema type (OpenCerts), certificate data, hidden data (from privacy filter) and a signature. Details of the OpenAttestation file format can be found on the [Github page](https://github.com/GovTechSG/open-attestation).
 
-What you will be most concern with is the certificate data. All these data are stored in the `data` key on the OpenCerts file and conforms to the [OpenCerts schema](https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json).
+What you will be most concern with is the certificate data. All these data are stored in the `data` key on the OpenCerts file and conforms to the [OpenCerts schema](https://github.com/OpenCerts/open-certificate/blob/master/schema/2.0/schema.json).
 
 For this section, we will focus on populating the certificate data that conforms to the schema.
 
 ## OpenCerts Schema
 
-The shape of the certificate object is defined using [JSON Schema](https://json-schema.org/). The definition can be found at [https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json](https://github.com/OpenCerts/open-certificate/blob/master/schema/1.5/schema.json).
+The shape of the certificate object is defined using [JSON Schema](https://json-schema.org/). The definition can be found at [https://github.com/OpenCerts/open-certificate/blob/master/schema/2.0/schema.json](https://github.com/OpenCerts/open-certificate/blob/master/schema/2.0/schema.json).
 
 ## Using JSON Schema Validator
 
@@ -34,7 +34,7 @@ You can see that the validation failed because of missing properties on JSON Sch
   "issuers": [
     {
       "name": "University of Blockchain",
-      "certificateStore": "0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"
+      "documentStore": "0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"
     }
   ],
   "recipient": {
@@ -65,11 +65,13 @@ Example of a valid `issuedOn` string is `2018-08-31T23:59:32+08:00`. Where it sp
 
 ### `issuers` field
 
-The `issuers` is an array of the issuer object. The required fields for each issuer is `name` and `certificateStore`. Other fields such as `did`, `url`, `email` and `phone` are also recognised.
+The `issuers` is an array of the issuer object. The required fields for each issuer is `name`and `documentStore`. Other fields such as `did`, `url`, `email`, `identityProof` and `phone` are also recognised.
 
-The `name` specifies the name of the issuing body while the `certificateStore` specifies the smart contract address of the certificate store deployed by the issuing body.
+The `name` specifies the name of the issuing body while the `documentStore` specifies the smart contract address of the document store deployed by the issuing body.
 
-The `certificateStore` address can be obtained after [deploying an instance of the smart contract](./deploying_store.md).
+The `documentStore` address can be obtained after [deploying an instance of the smart contract](./deploying_store.md).
+
+Even if `identityProof` is not required, it's highly recommended to enable it on every certificate. More information about [DNS verification](./dns_verification.md).
 
 ### `recipient` field
 
@@ -88,7 +90,11 @@ Once you are done with the minimal certificate, you can include more data such a
     {
       "name": "University of Blockchain",
       "url": "https://universityofblockchain.com",
-      "certificateStore": "0x1989a05B320186f5fAc590fFf64730FC9099Bc7b"
+      "documentStore": "0x1989a05B320186f5fAc590fFf64730FC9099Bc7b",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "example.com"
+      }
     }
   ],
   "recipient": {
