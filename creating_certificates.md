@@ -71,7 +71,7 @@ The `name` specifies the name of the issuing body while the `documentStore` spec
 
 The `documentStore` address can be obtained after [deploying an instance of the smart contract](./deploying_store.md).
 
-Even if `identityProof` is not required, it's highly recommended to enable it on every certificate. More information about [DNS verification](./dns_verification.md).
+For legacy reason, `identityProof` is not required, however to ensure your OpenCerts document fully conforms to the [OpenAttestation](https://openattestation.com) v2 Standards (and therefore allowed to be rendered on OpenAttestation compatible platforms), it's highly recommended that you use it. More information about [DNS verification](./dns_verification.md).
 
 ### `recipient` field
 

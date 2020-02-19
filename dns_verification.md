@@ -34,6 +34,10 @@ The TXT record should look like
 openatts net=ethereum netId=1 addr=0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d
 ```
 
+`netId` can hold 2 different values:
+- `1` for documentStore deployed on the main network (mainnet).
+- `3` for documentStore deployed on the test network (ropsten).
+
 Optionally, the issuer may also publish an A record at the same address so that the if the certificate viewer clicks on the URL, they can see some helpful text regarding the issuer's OpenCerts program.
   
 ### Certificate Schema Changes
