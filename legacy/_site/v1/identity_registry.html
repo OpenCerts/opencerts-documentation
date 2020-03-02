@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Identity Registry | opencerts-documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Identity Registry" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Documentations for opencerts" />
+<meta property="og:description" content="Documentations for opencerts" />
+<link rel="canonical" href="https://docs.opencerts.io/v1/identity_registry.html" />
+<meta property="og:url" content="https://docs.opencerts.io/v1/identity_registry.html" />
+<meta property="og:site_name" content="opencerts-documentation" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"Identity Registry","url":"https://docs.opencerts.io/v1/identity_registry.html","description":"Documentations for opencerts","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/v1/assets/css/style.css?v=1c134727a627eb05a39e39be30a5a02411ece189">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+
+      <h1><a href="https://docs.opencerts.io/">opencerts-documentation</a></h1>
+
+
+      <h1 id="identity-registry">Identity Registry</h1>
+
+<p>To associate the identity of a contract store owner to that of a physical legal entity, we maintain the records in a registry.</p>
+
+<p>The registry currently a flat .json file located at <a href="https://opencerts.io/static/registry.json">https://opencerts.io/static/registry.json</a></p>
+
+<h2 id="application-to-skillsfuture-singapore">Application to SkillsFuture Singapore</h2>
+
+<p>The registry is maintained by <a href="https://www.skillsfuture.sg/">SkillsFuture Singapore</a> and serve to provide accreditation to institutes. Certificates issued by institutes in this registry will show <code class="highlighter-rouge">Accredited by SSG</code> in their verification status. To apply for your institute to be listed in the registry, kindly fill in <a href="https://form.gov.sg/5cd5141c02d207001007e322">this form</a>.</p>
+
+<h2 id="identity-verification">Identity Verification</h2>
+
+<p>Anyone can deploy their own certificate store, therefore it is not suffcient to check the certificate store name on the smart contract.</p>
+
+<p>To ensure that certificates are issued by the right identity, we conduct additional check on the owner of the certificate store. This is done by checking against the registry file and on the <a href="./dns_verification.md">DNS records</a>.</p>
+
+<p><img src="/v1/assets/identity-registry/unregistered-institute-warning.png" alt="Unregistered Institution Warning" /></p>
+
+<p>Should identity verification failed, a warning will be presented to the viewer. This warning simply means that the identity of the issuer cannot be verified and should be verified through other means. For example, the issuer may publish their certificate store address on their website for viewers of their certificates to check against.</p>
+
+<h2 id="adding-records-to-the-identity-registry">Adding Records to the Identity Registry</h2>
+
+<ol>
+  <li>
+    <p>Checkout the code at <a href="https://github.com/OpenCerts/opencerts-website">OpenCerts Website</a>.</p>
+  </li>
+  <li>
+    <p>Create a new record in the registry file at <code class="highlighter-rouge">static/registry.json</code>.</p>
+  </li>
+  <li>
+    <p>Make a PR to our repository.</p>
+  </li>
+</ol>
+
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+
+  </body>
+</html>
