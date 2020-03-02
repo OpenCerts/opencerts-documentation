@@ -1,0 +1,6 @@
+{
+  "docs": {
+    "OpenCerts": ["index", "transcripts", "registry", "verifier", "legacy"],
+    "API": ["api/verify", "api/status"]
+  }
+}
