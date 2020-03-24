@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-const extlink = require('remarkable-extlink');
+const extlink = require("remarkable-extlink");
 // See https://docusaurus.io/docs/site-config for all the possible
 // site configuration options.
 
@@ -40,7 +40,7 @@ const siteConfig = {
   headerLinks: [
     { label: "v2" },
     { doc: "index", label: "Docs" },
-    { blog: true, label: "Blog" },
+    { blog: true, label: "Blog" }
   ],
 
   // If you have users set above, you add it here:
@@ -54,8 +54,7 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: "#324353",
-    secondaryColor: "#ff9933",
-
+    secondaryColor: "#ff9933"
   },
 
   /* Custom fonts for website */
@@ -108,10 +107,16 @@ const siteConfig = {
   markdownPlugins: [
     function(md) {
       extlink(md, {
-        host: 'docs.opencerts.io', // The hrefs that you DON'T want to be external
+        host: "docs.opencerts.io" // The hrefs that you DON'T want to be external
       });
-    },
+    }
   ],
+  algolia: {
+    apiKey: "7231563d1db842994698da0a519e93c8",
+    indexName: "opencerts",
+
+    algoliaOptions: {} // Optional, if provided by Algolia
+  }
 };
 
 module.exports = siteConfig;
