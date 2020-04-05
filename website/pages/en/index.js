@@ -74,6 +74,17 @@ class HomeSplash extends React.Component {
             </Button>
             <Button href="/docs">Read the doc</Button>
           </PromoSection>
+          <div>
+            <h3>Check out our latest blog post:</h3>
+            <ul>
+              <li>
+                <a href="blog/2020/03/13/new-doc">
+                  13/03/2020: 🎉 Welcome to the brand new OpenCerts
+                  documentation 🎉
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </SplashContainer>
     );
