@@ -10,10 +10,10 @@ In order to create valid OpenCerts transcripts, you need to adhere to [the OpenC
 
 - Create the following folders:
   - `opencerts-transcripts`
-  - `opencerts-transcripts/raw-documents-dir`
+  - `opencerts-transcripts/raw-documents`
 
 ```bash
-mkdir -p opencerts-transcripts/raw-documents-dir
+mkdir -p opencerts-transcripts/raw-documents
 ```
 
 - Download [open-attestation-cli](https://openattestation.com/docs/verifiable-document/document-data#download-binary-from-release-page) for your platform and move it to the previously created `opencerts-transcripts` folder under the name `open-attestation` (don't forget to correctly set the permissions).
@@ -36,7 +36,7 @@ In addition, we will use the `--schema` option to ensure that our documents are 
 
 ## Creating raw document
 
-Create a document called `opencerts.json` in the `raw-documents-dir` folder with the following content:
+Create a document called `opencerts.json` in the `raw-documents` folder with the following content:
 
 ```json
 {
@@ -123,13 +123,13 @@ Create a document called `opencerts.json` in the `raw-documents-dir` folder with
 Let's run the cli over the document:
 
 ```bash
-❯  ./open-attestation wrap raw-documents-dir wrapped-documents-dir --schema https://schema.opencerts.io/transcripts/2.0
+❯  ./open-attestation wrap raw-documents wrapped-documents --schema https://schema.opencerts.io/transcripts/2.0
 ✔  success   Batch Document Root: 0xc5507674eb34c36343d0da6a79a76c7967c5f3b1f7642c74ea822e7cff1b8a69
 ```
-- `raw-documents-dir` is a path parameter that points to the folder containing your raw documents.
-- `wrapped-documents-dir` is a path parameter that points to the folder that will contain your wrapped documents.
+- `raw-documents` is a path parameter that points to the folder containing your raw documents.
+- `wrapped-documents` is a path parameter that points to the folder that will contain your wrapped documents.
 
-🎉 Congratulations! You successfully created your first valid OpenCerts document which is available is the `wrapped-documents-dir` folder. Feel free to explore the schema to check how to create valid OpenCerts documents with the data you would like to fit in.
+🎉 Congratulations! You successfully created your first valid OpenCerts document which is available is the `wrapped-documents` folder. Feel free to explore the schema to check how to create valid OpenCerts documents with the data you would like to fit in.
 
 The rest of the process to issue your document is as explained in [OpenAttestation documentation](https://openattestation.com/docs/verifiable-document/issuing-document).
 

@@ -35,8 +35,8 @@ Once your application to add your document store into the registry has been appr
 As explained above OpenCerts checks that your identity is valid against the registry OR against the DNS records (you need at least one to be valid). However if you use the OpenAttestation CLI to create an OpenCerts document without providing `identityProof` (required for DNS records), you will face an error:
 
 ```bash
-❯  ./open-attestation-linux wrap raw-documents-dir wrapped-documents-dirs --schema https://schema.opencerts.io/transcripts/2.0
-✖  error     Document /path/to/cli/raw-documents-dir/opencerts.json is not valid against open-attestation schema
+❯  ./open-attestation-linux wrap raw-documents wrapped-documents --schema https://schema.opencerts.io/transcripts/2.0
+✖  error     Document /path/to/cli/raw-documents/opencerts.json is not valid against open-attestation schema
 ...
 ✖  error     The required property "issuers[0].identityProof" is missing
 ...
