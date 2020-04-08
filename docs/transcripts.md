@@ -10,10 +10,10 @@ In order to create valid OpenCerts transcripts, you need to adhere to [the OpenC
 
 - Create the following folders:
   - `opencerts-transcripts`
-  - `opencerts-transcripts/unwrapped`
+  - `opencerts-transcripts/raw-documents-dir`
 
 ```bash
-mkdir -p opencerts-transcripts/unwrapped
+mkdir -p opencerts-transcripts/raw-documents-dir
 ```
 
 - Download [open-attestation-cli](https://openattestation.com/docs/verifiable-document/document-data#download-binary-from-release-page) for your platform and move it to the previously created `opencerts-transcripts` folder under the name `open-attestation` (don't forget to correctly set the permissions).
@@ -22,21 +22,21 @@ mkdir -p opencerts-transcripts/unwrapped
 
 # Wrapping OpenCerts document
 
-In order to generate wrapped documents, we will use the `wrap` method from the CLI. This method expects 2 arguments: one folder containing the unwrapped documents, and one folder that it will generate the wrapped documents to:
+In order to generate wrapped documents, we will use the `wrap` method from the CLI. This method expects 2 arguments: one folder containing the raw documents, and one folder that it will generate the wrapped documents to:
 ```bash
-./open-attestation wrap <path_to_unwrapped_documents_folder> <path_to_generated_wrapped_document_folder>
+./open-attestation wrap <path_to_raw_documents_folder> <path_to_generated_wrapped_documents_folder>
 ```
 
 In addition, we will use the `--schema` option to ensure that our documents are valid  OpenCerts documents.
 
 
 ```bash
-./open-attestation wrap <path_to_unwrapped_documents_folder> <path_to_generated_wrapped_document_folder> --schema <url_to_schema>
+./open-attestation wrap <path_to_raw_documents_folder> <path_to_generated_wrapped_documents_folder> --schema <url_to_schema>
 ```
 
-## Creating unwrapped document
+## Creating raw document
 
-Create a document called `opencerts.json` in the `unwrapped` folder with the following content:
+Create a document called `opencerts.json` in the `raw-documents-dir` folder with the following content:
 
 ```json
 {
@@ -119,16 +119,17 @@ Create a document called `opencerts.json` in the `unwrapped` folder with the fol
 
 > Don't forget to replace `$template.url`, `issuers[0].documentStore` and `issuers[0].documentStore.identityProof.location` as explained in OpenAttestation documentation
 
-## Generating wrapped document
+## Generating wrapped documents
 Let's run the cli over the document:
 
 ```bash
-❯  ./open-attestation wrap unwrapped wrapped --schema https://schema.opencerts.io/transcripts/2.0
+❯  ./open-attestation wrap raw-documents-dir wrapped-documents-dir --schema https://schema.opencerts.io/transcripts/2.0
 ✔  success   Batch Document Root: 0xc5507674eb34c36343d0da6a79a76c7967c5f3b1f7642c74ea822e7cff1b8a69
 ```
-- `unwrapped` is a path parameter that points to the folder containing your unwrapped documents.
+- `raw-documents-dir` is a path parameter that points to the folder containing your raw documents.
+- `wrapped-documents-dir` is a path parameter that points to the folder that will contain your wrapped documents.
 
-🎉 Congratulations! You successfully created your first valid OpenCerts document which is available is the `wrapped` folder. Feel free to explore the schema to check how to create valid OpenCerts document with the data you would like to fit in.
+🎉 Congratulations! You successfully created your first valid OpenCerts document which is available is the `wrapped-documents-dir` folder. Feel free to explore the schema to check how to create valid OpenCerts documents with the data you would like to fit in.
 
 The rest of the process to issue your document is as explained in [OpenAttestation documentation](https://openattestation.com/docs/verifiable-document/issuing-document).
 
