@@ -6,13 +6,13 @@ sidebar_label: Multi Issuers
 
 OpenCerts allows documents to have any number of issuers. This can be useful in some cases when there is a collaboration on a degree between multiple universities (Double Degree).
 
-> Please note that the current model is not compatible with W3C Verifiable Credentials (VC) which only allow **one** issuer per VC. We might revisit this use-case in the future.
+> Please note that the current model is not compatible with W3C Verifiable Credentials (VC) which only allows **one** issuer per VC. We might revisit this use-case in the future.
 
 ## Workflow
 
 ![Workflow](/img/docs/multi-issuer/workflow.png)
 
-The workflow is not much different than the common use case:
+The workflow is similar to the common use case:
 
 - The document must contain multiple issuers in the `issuer` property:
 
@@ -56,21 +56,21 @@ There is no change in behavior. The document must not be tampered in order to be
 
 ### Has the document been issued ?
 
-The document will be considered as issued if (an only if) it has been issued by **all** the issuers.
+The document will be considered as issued if (and only if) it has been issued by **all** the issuers.
 
-Meaning that if **at least one** issuer hasn't issue the document, then the document won't be considered as issued.
+Meaning that if **at least one** issuer has not issued the document, then the document won't be considered as issued.
 
 ### Has the document been revoked ?
 
 If **at least one** issuer has revoked the document, then the document will be considered as revoked.
 
-Meaning that the document is considered not revoked as long as nobody revoked it.
+This means that the document is considered not revoked as long as none of the issuers has revoked it.
 
-### Is the identity of the issuers verified ?
+### Is the identity of the issuers valid ?
 
-The issuer identity will be verified for the document, if **at least** one of the following condition is fulfilled:
+The issuer identity will be valid for the document, if **at least** one of the following condition is fulfilled:
 
 1. One of the issuer is in the [registry](/registry). Every issuer can be in the registry, but one is enough.
 1. If no issuer is in the registry, then all issuers must have their identity verified, using any mechanism available from [OpenAttestation](https://openattestation.com/docs/extension/identity-proofs).
 
-In the event the above conditions are not fulfilled, then the issuers identity will not be verified.
+In the event the above conditions are not fulfilled, then the issuers identity will not be valid.
