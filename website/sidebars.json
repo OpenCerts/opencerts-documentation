@@ -1,6 +1,13 @@
 {
   "docs": {
-    "OpenCerts": ["index", "transcripts", "registry", "verifier", "legacy"],
+    "OpenCerts": [
+      "index",
+      "transcripts",
+      "registry",
+      "verifier",
+      "multi-issuer",
+      "legacy"
+    ],
     "API": ["api/verify", "api/status"],
     "Misc": ["help/faq"]
   }
