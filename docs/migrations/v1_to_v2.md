@@ -1,7 +1,7 @@
 ---
 id: v1_to_v2
-title: Getting started
-sidebar_label: Getting started
+title: OpenCerts v1 to v2
+sidebar_label: v1 to v2
 ---
 
 # OpenCerts v1 to v2
