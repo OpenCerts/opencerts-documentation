@@ -11,8 +11,9 @@ The purpose of this API is to provide a simple way to verify a document without 
 - https://api.opencerts.io/verify
 - https://api-ropsten.opencerts.io/verify
 
-## Implementation   
-The API is built using [OpenCerts verifier](/docs/verifier.md). It consists only to return the result returned by `verify` and `isValid` methods. The code is available in [Github](https://github.com/OpenCerts/opencerts-functions/blob/master/src/verify/index.js). 
+## Implementation
+
+The API is built using [OpenCerts verifier](/docs/verifier.md). It consists only to return the result returned by `verify` and `isValid` methods. The code is available in [Github](https://github.com/OpenCerts/opencerts-functions/blob/master/src/verify/index.js).
 
 ## Usage
 
@@ -120,3 +121,50 @@ For example:
   ]
 }
 ```
+
+## Deployment
+
+If you want to have better control over the API and make sure it's always available, we offer scripts that help you to deploy it on your own AWS infrastructure:
+
+### Prerequisite
+
+You will need the following before proceeding to the deployment:
+
+- [git](https://git-scm.com/)
+- [npm](https://nodejs.org/en/)
+- one IAM user with an access key and a secret key. The user must be able to:
+  - create lambda function.
+  - manage api gateway.
+  - manage domains.
+- root domain created and hosted in route 53.
+
+### Steps
+
+> The example below is for demonstration only, you must be careful on the way you expose the secret key and the access key, and you should follow aws security best practices.
+
+```bash
+git clone git@github.com:OpenCerts/opencerts-functions.git
+cd opencerts-functions
+npm install
+
+# set environment variable
+export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY> # user secret key
+export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID> # user access key
+export DOMAIN=some.domain.com # change to the domain you will deploy on
+export CERTIFICATE_DOMAIN=*.domain.com # change to the domain you will deploy on
+
+# create domain, this must be done once only
+npm run create-domain:verify
+
+# deploy for staging
+export stg_NETWORK=ropsten
+npm run deploy:verify -- --stage stg
+
+# deploy for production
+export prd_NETWORK=homestead
+npm run deploy:verify -- --stage prd
+```
+
+The API should then be available under `https://some.domain.com/verify`
+
+> If you wish to deploy the API at the root path, open `src/verify/serverless.yml` and remove `basePath`
