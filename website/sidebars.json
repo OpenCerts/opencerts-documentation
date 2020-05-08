@@ -9,6 +9,7 @@
       "legacy"
     ],
     "API": ["api/verify", "api/status"],
+    "Migrations": ["migrations/v1_to_v2"],
     "Misc": ["help/faq"]
   }
 }
