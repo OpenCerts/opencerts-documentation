@@ -78,6 +78,11 @@ class HomeSplash extends React.Component {
             <h3>Check out our latest blog post:</h3>
             <ul>
               <li>
+                <a href="blog/2020/05/12/multi-issuers">
+                  12/05/2020: Multi issuers and deploy verify API
+                </a>
+              </li>
+              <li>
                 <a href="blog/2020/03/13/new-doc">
                   13/03/2020: 🎉 Welcome to the brand new OpenCerts
                   documentation 🎉
