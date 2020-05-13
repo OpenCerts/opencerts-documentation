@@ -5,8 +5,6 @@ authorURL: https://twitter.com/Nebounet
 authorImageURL: https://lh3.googleusercontent.com/-kb0aLUOV4ek/AAAAAAAAAAI/AAAAAAAAAAA/AKF05nAdhdRMUzxqvrX-aSDCkiILApv-pQ.CMID/s192-c/photo.jpg
 ---
 
-## Documentation organisation
-
 As part of our efforts to ease the adoption of OpenCerts, we have worked on several items for the past weeks.
 
 ### Multi issuers
