@@ -13,7 +13,7 @@ The purpose of this API is to provide a simple way to verify a document without 
 
 ## Implementation
 
-The API is built using [OpenCerts verifier](/docs/verifier.md). It consists only to return the result returned by `verify` and `isValid` methods. The code is available in [Github](https://github.com/OpenCerts/opencerts-functions/blob/master/src/verify/index.js).
+The API is built using [OpenCerts verifier](/docs/verifier). It consists only to return the result returned by `verify` and `isValid` methods. The code is available in [Github](https://github.com/OpenCerts/opencerts-functions/blob/master/src/verify/index.js).
 
 ## Usage
 
