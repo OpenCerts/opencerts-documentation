@@ -10,15 +10,14 @@ OpenCerts is built using [OpenAttestation](https://openattestation.com) standard
 
 One might be confuse to understand the difference between OpenAttestation and OpenCerts:
 - OpenAttestation is a standard that helps to create Verifiable Document.
-- OpenCerts is a specific implementation, using OpenAttestation, whose purpose is to provide universities a way to create Verifiable Certificates.
+- OpenCerts is a specific implementation, using OpenAttestation, whose purpose is to provide institutions a way to create Verifiable Certificates.
 
 # Starting with OpenCerts
 
-The best place to start playing with OpenCerts is to follow instructions about [starting with Verifiable Document on OpenAttestation document](https://openattestation.com/docs/verifiable-document/document-store).
+As OpenCerts is built using OpenAttestation standards, the best place to start playing with OpenCerts is to follow instructions about [starting with Verifiable Document on OpenAttestation documentation](https://openattestation.com/docs/verifiable-document/document-store).
 
 > We strongly recommend people not familiar with OpenCerts to start by reading OpenAttestation documentation.
 
-Here is a list of topics that **won't** be covered by OpenCerts documentation:
 - [How to create and deploy a document store.](https://openattestation.com/docs/verifiable-document/document-store)
 - [How to configure your identity through DNS-TXT.](https://openattestation.com/docs/verifiable-document/dns-proof)
 - [How to develop and deploy templates for your certificates.](https://openattestation.com/docs/verifiable-document/document-template)

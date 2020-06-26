@@ -9,7 +9,7 @@ As part of our efforts to ease the adoption of OpenCerts, we have worked on seve
 
 ### Multi issuers
 
-While having multiple issuers has always been available in OpenCerts, there has been no documentation on this feature, as well how it differs from single issuer documents. The use cases might be rare (for instance when there is a collaboration between multiple universities), but now [we got you covered](/docs/multi-issuer).
+While having multiple issuers has always been available in OpenCerts, there has been no documentation on this feature, as well how it differs from single issuer documents. The use cases might be rare (for instance when there is a collaboration between multiple institutions), but now [we got you covered](/docs/multi-issuer).
 
 ### Deploy verify API
 

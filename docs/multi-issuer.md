@@ -4,7 +4,7 @@ title: Multi Issuers
 sidebar_label: Multi Issuers
 ---
 
-OpenCerts allows documents to have any number of issuers. This can be useful in some cases when there is a collaboration on a degree between multiple universities (Double Degree).
+OpenCerts allows documents to have any number of issuers. This can be useful in some cases when there is a collaboration on a degree between multiple institutions (Double Degree).
 
 > Please note that the current model is not compatible with W3C Verifiable Credentials (VC) which only allows **one** issuer per VC. We might revisit this use-case in the future.
 
