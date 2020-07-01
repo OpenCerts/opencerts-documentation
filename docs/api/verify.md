@@ -157,11 +157,11 @@ export CERTIFICATE_DOMAIN=*.domain.com # change to the domain you will deploy on
 npm run create-domain:verify
 
 # deploy for staging
-export stg_NETWORK=ropsten
+export NETWORK=ropsten
 npm run deploy:verify -- --stage stg
 
 # deploy for production
-export prd_NETWORK=homestead
+export NETWORK=homestead
 npm run deploy:verify -- --stage prd
 ```
 
