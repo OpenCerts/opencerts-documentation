@@ -16,7 +16,7 @@ In order to create valid OpenCerts transcripts, you need to adhere to [the OpenC
 mkdir -p opencerts-transcripts/raw-documents
 ```
 
-- Download [open-attestation-cli](https://openattestation.com/docs/verifiable-document/document-data#download-binary-from-release-page) for your platform and move it to the previously created `opencerts-transcripts` folder under the name `open-attestation` (don't forget to correctly set the permissions).
+- Download [open-attestation-cli](https://openattestation.com/docs/component/open-attestation-cli) for your platform and move it to the previously created `opencerts-transcripts` folder under the name `open-attestation` (don't forget to correctly set the permissions).
 
 > For the rest of this guide, we will assume that every action occur from the `opencerts-transcripts` folder
 

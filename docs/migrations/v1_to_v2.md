@@ -62,7 +62,7 @@ The timeline below illustrates for institutes, the transition from OpenCerts v1.
 
 - `$template` is no longer a string, but an object:
   - `$template.type` will always take the value of `EMBEDDED_RENDERER`.
-  - `$template.name` is the name of the template used to render a given document ([more info](https://openattestation.com/docs/verifiable-document/document-template)).
+  - `$template.name` is the name of the template used to render a given document ([more info](https://openattestation.com/docs/advanced/custom-renderer)).
   - `$template.url` is the url of the renderer to load from OpenCerts.
 - `certificateStore` has been renamed to `documentStore`.
 

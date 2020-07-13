@@ -8,7 +8,7 @@ sidebar_label: Verifier
 
 As we discussed in the previous section, the identity of an OpenCerts is verified through:
 1. [OpenCerts registry](/docs/registry)
-1. [DNS-TXT records](https://openattestation.com/docs/extension/identity-proofs)
+1. [DNS-TXT records](https://openattestation.com/docs/advanced/identity-proofs)
 
 However, OpenCerts registry is not compliant with OpenAttestation standards. It's a specific way, used by OpenCerts, to verify the identity of a certificate. Even if we **strongly** encourage people to use DNS-TXT records, it's not mandatory. The consequence is that a certificate may be identified **only** thanks to the registry.
 

@@ -11,7 +11,7 @@ Here you will find a collection of links that may be useful to help you to start
 ## Document Store
 - [How to create and deploy a document store?](https://openattestation.com/docs/verifiable-document/document-store)
 - [How to configure your identity through DNS-TXT?](https://openattestation.com/docs/verifiable-document/dns-proof)
-- [How to develop and deploy templates for your certificates?](https://openattestation.com/docs/verifiable-document/document-template)
+- [How to develop and deploy templates for your certificates?](https://openattestation.com/docs/advanced/custom-renderer)
 - [How to issue documents?](https://openattestation.com/docs/verifiable-document/issuing-document)
 - [Where is OpenCerts Admin Portal?](https://admin.opencerts.io/)
 

@@ -71,6 +71,6 @@ This means that the document is considered not revoked as long as none of the is
 The issuer identity will be valid for the document, if **at least** one of the following condition is fulfilled:
 
 1. One of the issuer is in the [registry](/registry). Every issuer can be in the registry, but one is enough.
-1. If no issuer is in the registry, then all issuers must have their identity verified, using any mechanism available from [OpenAttestation](https://openattestation.com/docs/extension/identity-proofs).
+1. If no issuer is in the registry, then all issuers must have their identity verified, using any mechanism available from [OpenAttestation](https://openattestation.com/docs/advanced/identity-proofs).
 
 In the event the above conditions are not fulfilled, then the issuers identity will not be valid.
