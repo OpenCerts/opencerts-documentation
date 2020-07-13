@@ -12,7 +12,7 @@ As OpenCerts scales and more institutions use our service, it has been difficult
 
 With effect from 31 December 2019, OpenCerts.io will be shifting to the use of an institute's own decentralised renderer to render their own certificates. This document will provide information on what you need to know to migrate to OpenCerts v2.
 
-## Announcments
+## Announcements
 
 ### Repository Change
 
