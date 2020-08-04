@@ -51,3 +51,17 @@ a {
   font-weight: bold;
   color: #09c;
 }
+
+.checkout-blog-post li {
+  list-style-type: none;
+}
+/*
+override default behaviour by hiding the logo image on screen with width < 1500px
+this is to adjust to a media query on .wrapper which triggers an overflow of the image on smaller screen
+*/
+@media only screen and (max-width: 1500px) {
+  .projectLogo {
+    display: none !important;
+    pointer-events: none;
+  }
+}
