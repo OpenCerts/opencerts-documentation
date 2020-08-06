@@ -22,6 +22,7 @@ As OpenCerts is built using OpenAttestation standards, the best place to start p
 - [How to configure your identity through DNS-TXT.](https://openattestation.com/docs/verifiable-document/dns-proof)
 - [How to develop and deploy templates for your certificates.](https://openattestation.com/docs/advanced/custom-renderer)
 - [How to issue documents.](https://openattestation.com/docs/verifiable-document/issuing-document)
+- [How to revoke documents.](https://openattestation.com/docs/verifiable-document/revoking-document)
 
 Please note that OpenCerts provides it's own portal to create document store and issue documents available at [https://admin.opencerts.io/](https://admin.opencerts.io/).
 
