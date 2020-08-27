@@ -4,8 +4,6 @@ title: OpenCerts v1 to v2
 sidebar_label: v1 to v2
 ---
 
-# OpenCerts v1 to v2
-
 ![OpenCerts v1 to v2 What you need to know](/img/docs/migrations/v1_to_v2/schema2-update.png)
 
 As OpenCerts scales and more institutions use our service, it has been difficult to manage the multitude of pull requests to our github repository. OpenCerts v2.0 resolves that difficulty - no more pull requests and institutions save time by not waiting for pull requests to be approved!
