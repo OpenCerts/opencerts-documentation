@@ -9,7 +9,7 @@
       "legacy"
     ],
     "API": ["api/verify", "api/status"],
-    "Migrations": ["migrations/v1_to_v2"],
+    "Migrations": ["migrations/v1_to_v2", "migrations/migrate_renderer"],
     "Misc": ["help/faq"]
   }
 }
