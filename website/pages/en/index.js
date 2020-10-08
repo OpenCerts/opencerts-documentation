@@ -80,6 +80,11 @@ class HomeSplash extends React.Component {
           <ul>
             <li>
               <a href="blog/2020/05/12/multi-issuers">
+                08/10/2020: New error types for better error handling
+              </a>
+            </li>
+            <li>
+              <a href="blog/2020/05/12/multi-issuers">
                 12/05/2020: Multi issuers and deploy verify API
               </a>
             </li>
