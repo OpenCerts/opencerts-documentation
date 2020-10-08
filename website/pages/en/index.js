@@ -79,7 +79,7 @@ class HomeSplash extends React.Component {
           <h3>Check out our latest blog post:</h3>
           <ul>
             <li>
-              <a href="blog/2020/05/12/multi-issuers">
+              <a href="blog/2020/10/08/new-error-types">
                 08/10/2020: New error types for better error handling
               </a>
             </li>
