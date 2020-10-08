@@ -11,13 +11,15 @@ In this post, we detail some of our recent upgrades to the [`oa-verify`](https:/
 
 ### Introduction
 
-As the adoption of OpenCerts increases over time, we realise that the number of errors that we see are becoming much more complex.
+In the past, our `oa-verify` could only handle just a few types of errors. With the increasing usage of OpenCerts in recent months due to the Covid-19 pandemic, we've seen a wide variety of interesting and funky errors.
 
 For example,
 
 - Infura and Cloudflare would rate-limit you if you try to spam them through our verifier, and thus returns a HTTP 429 Too Many Requests error
 - Cloudflare's Ethereum Gateway would [randomly return](https://community.cloudflare.com/t/ethereum-gateway-random-502-error/195144) a HTTP 502 Bad Gateway error
 - Users will try to _tamper_ with their certificate, just for the fun of it or to test our OpenCerts verifier 😉
+
+For the last point especially, our OpenCerts verifier didn't handle those cases properly and instead, our opencerts.io frontend verifier will say that it's **(a)** not issued and **(b)** revoked at the same time. While such a case can happen, it clearly doesn't reflect the actual error — that is, the user probably tampered with the certificate's `merkleRoot`. I'll describe more later in the [Invalid Argument](#invalid-argument) section.
 
 ### New errors
 
