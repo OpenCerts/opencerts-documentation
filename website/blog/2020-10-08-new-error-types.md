@@ -19,7 +19,9 @@ For example,
 - Cloudflare's Ethereum Gateway would [randomly return](https://community.cloudflare.com/t/ethereum-gateway-random-502-error/195144) a HTTP 502 Bad Gateway error
 - Users will try to _tamper_ with their certificate, just for the fun of it or to test our OpenCerts verifier 😉
 
-For the last point especially, our OpenCerts verifier didn't handle those cases properly and instead, our opencerts.io frontend verifier will say that it's **(a)** not issued and **(b)** revoked at the same time. While such a case can happen, it clearly doesn't reflect the actual error — that is, the user probably tampered with the certificate's `merkleRoot`. I'll describe more later in the [Invalid Argument](#invalid-argument) section.
+For the first two scenarios, our OpenCerts verifier would previously show that the certificate is invalid. That's because we didn't handle HTTP errors in `opencerts-verify`.
+
+For the last scenario, our OpenCerts verifier didn't handle those cases properly and instead, our opencerts.io frontend verifier will say that it's **(a)** not issued and **(b)** revoked at the same time. While such a case can happen, it clearly doesn't reflect the actual error — that is, the user probably tampered with the certificate's `merkleRoot`. I'll describe more later in the [Invalid Argument](#invalid-argument) section.
 
 ### New errors
 
