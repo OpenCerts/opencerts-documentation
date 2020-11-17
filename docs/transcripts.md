@@ -123,7 +123,7 @@ Create a document called `opencerts.json` in the `raw-documents` folder with the
 Let's run the cli over the document:
 
 ```bash
-❯  ./open-attestation wrap raw-documents --output-dir wrapped-documents --schema https://schema.opencerts.io/transcripts/2.0
+❯  ./open-attestation wrap raw-documents --output-dir wrapped-documents --schema https://schema.opencerts.io/transcripts/2.1
 ✔  success   Batch Document Root: 0xc5507674eb34c36343d0da6a79a76c7967c5f3b1f7642c74ea822e7cff1b8a69
 ```
 - `raw-documents` is a path parameter that points to the folder containing your raw documents.
