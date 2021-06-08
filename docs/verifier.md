@@ -4,9 +4,10 @@ title: Verifier
 sidebar_label: Verifier
 ---
 
-> Feel free to reach [OpenAttestation verifier documentation](https://openattestation.com/docs/component/oa-verify) at any time to understand more about this component. 
+> Feel free to reach [OpenAttestation verifier documentation](https://openattestation.com/docs/component/oa-verify) at any time to understand more about this component.
 
 As we discussed in the previous section, the identity of an OpenCerts is verified through:
+
 1. [OpenCerts registry](/docs/registry)
 1. [DNS-TXT records](https://openattestation.com/docs/advanced/identity-proofs)
 
@@ -19,12 +20,15 @@ In order to support those certificates and to verify the identity of issuers, a 
 ## Differences with @govtechsg/oa-verify
 
 ### OpencertsRegistryVerifier
+
 `OpencertsRegistryVerifier` is a new verification method:
+
 - it ensures document `ISSUER_IDENTITY` and works closely with `OpenAttestationDnsTxt` verifier (see [below](#isvalid))
 - it returns a `VALID` fragment if at least one of the issuer is in OpenCerts registry
 - it returns a `SKIPPED` fragment if none of the issuers is in the registry.
 
 ### isValid
+
 With the addition of `OpencertsRegistryVerifier` verification method, different rules apply for `ISSUER_IDENTITY` type fragments:
 
 - `ISSUER_IDENTITY` is valid if at least one issuer is in the registry, i.e. if `OpencertsRegistryVerifier` has status `VALID`
