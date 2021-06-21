@@ -13,8 +13,9 @@ To ensure that certificates are issued by the right identity, OpenAttestation pr
 Additionally, OpenCerts provides a [registry](https://opencerts.io/static/registry.json) to associate the identity of a contract store owner to that of a physical legal entity.
 
 **An OpenCerts certificate will have its identity verified if at least one of the following condition is respected:**
+
 - the issuer identity is registered in the registry.
-- the issuer has a valid DNS-TXT record associated to its document store.  
+- the issuer has a valid DNS-TXT record associated to its document store.
 
 > In the event none of the condition above are fulfilled, the certificate will be declared from coming from an unknown source and thus it wont be declared as valid
 
