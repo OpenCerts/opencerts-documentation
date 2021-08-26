@@ -10,6 +10,6 @@
     ],
     "API": ["api/verify", "api/status"],
     "Migrations": ["migrations/v1_to_v2", "migrations/migrate_renderer"],
-    "Misc": ["help/faq", "admin-website"]
+    "Misc": ["help/faq", "admin-website", "help/linkedin"]
   }
 }
