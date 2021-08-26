@@ -46,7 +46,7 @@ class Footer extends React.Component {
           </div>
           <div>
             <h5>Community</h5>
-            <a href="https://spectrum.chat/openattestation/opencerts?tab=posts" target="_blank" rel="noopener noreferer">Spectrum</a>
+            <a href="https://github.com/OpenCerts/opencerts-website/discussions" target="_blank" rel="noopener noreferer">Discussions</a>
           </div>
           <div>
             <h5>More</h5>
