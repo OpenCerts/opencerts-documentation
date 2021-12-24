@@ -17,7 +17,7 @@ Additionally, OpenCerts provides a [registry](https://opencerts.io/static/regist
 - the issuer identity is registered in the registry.
 - the issuer has a valid DNS-TXT record associated to its document store.
 
-> In the event none of the condition above are fulfilled, the certificate will be declared from coming from an unknown source and thus it wont be declared as valid.<br><br>Please note that we will not be accepting requests to join the OpenCerts registry at the moment.
+> In the event none of the condition above are fulfilled, the certificate will be declared from coming from an unknown source and thus it wont be declared as valid.<br><br>Please note that the OpenCerts registry has been ceased.
 
 ## OpenCerts vs OpenAttestation
 
@@ -58,4 +58,4 @@ With the addition of `OpencertsRegistryVerifier` verification method, different 
 - `ISSUER_IDENTITY` is valid if at least one issuer is in the registry, i.e. if `OpencertsRegistryVerifier` has status `VALID`
 - if `OpencertsRegistryVerifier` doesn't have `VALID` status then all issuers must have valid `DNS-TXT` record.
 
-> Please note that we will not be accepting requests to join the OpenCerts registry at the moment.
+> Please note that the OpenCerts registry has been ceased.
