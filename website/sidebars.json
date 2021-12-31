@@ -3,7 +3,7 @@
     "OpenCerts": [
       "index",
       "transcripts",
-      "registry",
+      "skills-passport",
       "verifier",
       "multi-issuer",
       "legacy"
