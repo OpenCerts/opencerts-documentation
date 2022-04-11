@@ -44,21 +44,21 @@ export interface CustomTemplateCertificate extends v2.OpenAttestationDocument {
 export const customTemplateCertificate: CustomTemplateCertificate = {
   issuers: [
     {
-      name: "institute of blockchain"
-    }
+      name: "institute of blockchain",
+    },
   ],
   $template: {
     name: "custom",
     type: v2.TemplateType.EmbeddedRenderer,
-    url: "http://localhost:3000"
+    url: "http://localhost:3000",
   },
   recipient: {
-    name: "John Doe"
+    name: "John Doe",
   },
   additionalData: {
     startDate: "2019-06-10T00:00:00+08:00",
-    endDate: "2019-06-10T00:00:00+08:00"
-  }
+    endDate: "2019-06-10T00:00:00+08:00",
+  },
 };
 ```
 
@@ -89,7 +89,7 @@ export const customTemplateCertificate: CustomTemplateCertificate = {
 
        ```jsx
        Template.propTypes = {
-         certificate: PropTypes.object.isRequired
+         certificate: PropTypes.object.isRequired,
        };
        export default Template;
        ```
@@ -157,7 +157,7 @@ The legacy renderer is configured to work with [SASS](https://sass-lang.com/) wh
    ```javascript
    config.module.rules.push({
      test: /\.scss$/,
-     use: ["style-loader", "css-loader?modules", "sass-loader"]
+     use: ["style-loader", "css-loader?modules", "sass-loader"],
    });
    ```
 
@@ -213,12 +213,12 @@ export const templates = [
   {
     id: "certificate",
     label: "Certificate",
-    template: CustomTemplate
-  }
+    template: CustomTemplate,
+  },
 ];
 ```
 
-To make sure everything is working, you can start storybook or deploy your renderer as explained in [OpenAttestation documentaton](https://openattestation.com/docs/advanced/custom-renderer).
+To make sure everything is working, you can start storybook or deploy your renderer as explained in [OpenAttestation documentaton](https://www.openattestation.com/docs/advanced/custom-renderer).
 
 After starting storybook the template should look like:
 ![Geekout 2018](/img/docs/migrations/renderer/result.png)

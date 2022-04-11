@@ -2,7 +2,7 @@
 
 ![Document Store](./assets/creating-certificates/inside-certificate.png)
 
-The OpenCerts file is a `.json` file that conforms to the [OpenAttestation](https://openattestation.com) specification.
+The OpenCerts file is a `.json` file that conforms to the [OpenAttestation](https://www.openattestation.com) specification.
 
 At the root level, each file contains information on the schema type (OpenCerts), certificate data, hidden data (from privacy filter) and a signature. Details of the OpenAttestation file format can be found on the [Github page](https://github.com/GovTechSG/open-attestation).
 
@@ -71,7 +71,7 @@ The `name` specifies the name of the issuing body while the `documentStore` spec
 
 The `documentStore` address can be obtained after [deploying an instance of the smart contract](./deploying_store.md).
 
-For legacy reason, `identityProof` is not required, however to ensure your OpenCerts document fully conforms to the [OpenAttestation](https://openattestation.com) v2 Standards (and therefore allowed to be rendered on OpenAttestation compatible platforms), it's highly recommended that you use it. More information about [DNS verification](./dns_verification.md).
+For legacy reason, `identityProof` is not required, however to ensure your OpenCerts document fully conforms to the [OpenAttestation](https://www.openattestation.com) v2 Standards (and therefore allowed to be rendered on OpenAttestation compatible platforms), it's highly recommended that you use it. More information about [DNS verification](./dns_verification.md).
 
 ### `recipient` field
 
