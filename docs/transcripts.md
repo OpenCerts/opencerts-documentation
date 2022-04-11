@@ -133,7 +133,7 @@ Let's run the cli over the document:
 
 🎉 Congratulations! You successfully created your first valid OpenCerts document which is available is the `wrapped-documents` folder. Feel free to explore the schema to check how to create valid OpenCerts documents with the data you would like to fit in.
 
-The rest of the process to issue your document is as explained in [OpenAttestation documentation](https://www.openattestation.com/docs/verifiable-document/issuing-document).
+The rest of the process to issue your document is as explained in [OpenAttestation documentation](https://www.openattestation.com/docs/integrator-section/verifiable-document/ethereum/issuing-document/).
 
 ## Additional information
 

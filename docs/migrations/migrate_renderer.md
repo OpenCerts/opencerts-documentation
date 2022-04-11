@@ -218,7 +218,7 @@ export const templates = [
 ];
 ```
 
-To make sure everything is working, you can start storybook or deploy your renderer as explained in [OpenAttestation documentaton](https://www.openattestation.com/docs/advanced/custom-renderer).
+To make sure everything is working, you can start storybook or deploy your renderer as explained in [OpenAttestation documentaton](https://www.openattestation.com/docs/developer-section/quickstart/create-custom-renderer).
 
 After starting storybook the template should look like:
 ![Geekout 2018](/img/docs/migrations/renderer/result.png)
