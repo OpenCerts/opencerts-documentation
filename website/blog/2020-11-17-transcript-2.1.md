@@ -25,12 +25,6 @@ We added support for skills in [the latest version of OpenCerts transcripts sche
 
 You can add as many skills as needed. You can find a [full example here](https://raw.githubusercontent.com/OpenCerts/open-certificate/master/schema/2.1/example.json)
 
-### Registry page
-
-We have redesigned the [OpenCerts registry page](https://dev.opencerts.io/registry). Information of registry are collated by institution (some institution may own multiplie document store). If you need to contact an institution about your OpenCerts you can click on the details or search using the document store from your certificate.
-
-![Registry page](/img/docs/blog/2020-11-17/registry_page.png)
-
 ### Migration legacy to new renderer
 
 In order to help more institution to adopt the decentralized architecture of OpenCerts v2, we have created a [guide](/docs/migrations/migrate_renderer) to help early adopter to migrate from the legacy render to the decentralized renderer.
