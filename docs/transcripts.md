@@ -16,7 +16,7 @@ In order to create valid OpenCerts transcripts, you need to adhere to [the OpenC
 mkdir -p opencerts-transcripts/raw-documents
 ```
 
-- Download [open-attestation-cli](https://www.openattestation.com/docs/component/open-attestation-cli) for your platform and move it to the previously created `opencerts-transcripts` folder under the name `open-attestation` (don't forget to correctly set the permissions).
+- Download [open-attestation-cli](https://www.openattestation.com/docs/lib-section/remote-files/open-attestation-cli) for your platform and move it to the previously created `opencerts-transcripts` folder under the name `open-attestation` (don't forget to correctly set the permissions).
 
 > For the rest of this guide, we will assume that every action occur from the `opencerts-transcripts` folder
 
@@ -133,7 +133,7 @@ Let's run the cli over the document:
 
 🎉 Congratulations! You successfully created your first valid OpenCerts document which is available is the `wrapped-documents` folder. Feel free to explore the schema to check how to create valid OpenCerts documents with the data you would like to fit in.
 
-The rest of the process to issue your document is as explained in [OpenAttestation documentation](https://www.openattestation.com/docs/integrator-section/verifiable-document/ethereum/issuing-document/).
+The rest of the process to issue your document is as explained in [OpenAttestation documentation](https://www.openattestation.com/docs/ethereum-section/issue-document).
 
 ## Additional information
 
