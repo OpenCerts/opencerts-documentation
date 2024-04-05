@@ -8,7 +8,7 @@ sidebar_label: Verifier
 
 Anyone can deploy their own document store, therefore it is not sufficient to check the document store name on the smart contract to ensure the identity of an issuer.
 
-To ensure that certificates are issued by the right identity, OpenAttestation provides a solution based on [DNS-TXT records](https://www.openattestation.com/docs/docs-section/how-does-it-work/issuance-identity/).
+To ensure that certificates are issued by the right identity, OpenAttestation provides a solution based on [DNS-TXT records](https://www.openattestation.com/docs/verify-section/issuance-identity).
 
 Additionally, OpenCerts provides a [registry](https://opencerts.io/static/registry.json) to associate the identity of a contract store owner to that of a physical legal entity.
 

@@ -26,4 +26,4 @@ We have worked on that and improved it:
 
 When revamping the documentation, we missed the article that covered the migration from v1 to v2. We fixed that problem, and [the documentation is available again](/docs/migrations/v1_to_v2)
 
-> For any feedback, feel free to reach us out on [Github](https://github.com/OpenCerts) or on [Spectrum](https://spectrum.chat/openattestation/opencerts?tab=posts)
+> For any feedback, feel free to reach us out on [Github](https://github.com/OpenCerts).

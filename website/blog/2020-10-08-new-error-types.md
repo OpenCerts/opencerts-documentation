@@ -34,7 +34,7 @@ From `opencerts-verify` version `2.2.0`, we introduced the handling of these few
 
 This error encompasses Ethers's `{ "bad response", "failed response", "missing response" }`.
 
-To recap, 
+To recap,
 
 > A `4xx` code indicates an error caused by the user, whereas `5xx` codes tell the client that they did everything correctly and it's the server itself who caused the problem.
 
@@ -42,7 +42,7 @@ Generally, Ethers classify both `4xx` and `5xx` errors as `bad response`.
 
 (For those who're interested in how Ethers handle HTTP-related errors internally, you might want to take a look at [this](https://github.com/ethers-io/ethers.js/blob/9640e864a68b4a9e84e820f0ceaf1eb56c66715f/packages/web/src.ts/index.ts).)
 
-Instead of checking for Ethers _error messages_ (e.g. bad response, missing response, etc.), we now group them using Ethers _error codes_  (e.g. `SERVER_ERROR`) wherever possible — because there are just too many different error messages to handle.
+Instead of checking for Ethers _error messages_ (e.g. bad response, missing response, etc.), we now group them using Ethers _error codes_ (e.g. `SERVER_ERROR`) wherever possible — because there are just too many different error messages to handle.
 
 Do note that error messages are NOT the same as error codes, you can think of error codes as an umbrella term for many error messages.
 
@@ -69,5 +69,4 @@ For good measure, `61dc9186345e05cc2ae53dc72af880a3b66e2fa7983feaa6254d1518540de
 
 That's all for now!
 
-> For any feedback, feel free to reach us out on [GitHub](https://github.com/OpenCerts) or on [Spectrum](https://spectrum.chat/openattestation/opencerts?tab=posts)
-
+> For any feedback, feel free to reach us out on [GitHub](https://github.com/OpenCerts).

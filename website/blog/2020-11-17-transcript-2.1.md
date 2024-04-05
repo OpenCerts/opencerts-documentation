@@ -7,7 +7,7 @@ authorImageURL: https://lh3.googleusercontent.com/-kb0aLUOV4ek/AAAAAAAAAAI/AAAAA
 
 ### Transcript v2.1
 
-We added support for skills in [the latest version of OpenCerts transcripts schema](https://schema.opencerts.io/transcripts/2.1). The skills will enrich your OpenCerts using the definition provided by [WSG skills framework](https://www.skillsfuture.sg/skills-framework). A skill looks like:
+We added support for skills in [the latest version of OpenCerts transcripts schema](https://schema.opencerts.io/transcripts/2.1). The skills will enrich your OpenCerts using the definition provided by [WSG skills framework](https://www.skillsfuture.gov.sg/skills-framework). A skill looks like:
 
 ```json
 {
@@ -23,7 +23,7 @@ We added support for skills in [the latest version of OpenCerts transcripts sche
 }
 ```
 
-You can add as many skills as needed. You can find a [full example here](https://raw.githubusercontent.com/OpenCerts/open-certificate/master/schema/2.1/example.json)
+You can add as many skills as needed. You can find a [full example here](https://raw.githubusercontent.com/OpenCerts/open-certificate/master/schema/transcripts/2.1/example.json)
 
 ### Migration legacy to new renderer
 
