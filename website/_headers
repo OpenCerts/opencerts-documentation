@@ -1,0 +1,2 @@
+X-Frame-Options: DENY
+Content-Security-Policy: default-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com buttons.github.io; frame-ancestors 'none';
