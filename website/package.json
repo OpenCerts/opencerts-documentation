@@ -2,7 +2,7 @@
   "scripts": {
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
-    "build": "docusaurus-build && cp -R ../legacy/_site/v1 build/opencerts-documentation && cp ./_redirects build/opencerts-documentation/",
+    "build": "docusaurus-build && cp -R ../legacy/_site/v1 build/opencerts-documentation && cp ./_redirects build/opencerts-documentation/ && cp ./_headers build/opencerts-documentation/",
     "publish-gh-pages": "docusaurus-publish",
     "write-translations": "docusaurus-write-translations",
     "version": "docusaurus-version",
