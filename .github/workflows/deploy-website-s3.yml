@@ -5,9 +5,9 @@ on:
     branches:
       - imda
     paths:
-      - 'website/**'
-      - 'docs/**'
-      - 'legacy/**'
+      - "website/**"
+      - "docs/**"
+      - "legacy/**"
   workflow_dispatch:
 
 concurrency:
@@ -32,8 +32,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: "18"
+          cache: "npm"
           cache-dependency-path: website/package-lock.json
 
       - name: Install dependencies
@@ -54,10 +54,10 @@ jobs:
           aws s3 sync 'build/opencerts-documentation' "s3://${{ secrets.S3_BUCKET }}/" --delete
 
       - name: Invalidate CloudFront (optional)
-      env:
+        env:
           CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
         if: ${{ env.CLOUDFRONT_DISTRIBUTION_ID != '' }}
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --distribution-id "${{ env.CLOUDFRONT_DISTRIBUTION_ID }}" \
             --paths "/*"
