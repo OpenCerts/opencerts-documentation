@@ -1,21 +1,18 @@
-name: Build and Deploy Website to S3
+name: Build and Deploy Website to S3 (Dev)
 
 on:
   push:
     branches:
-      - imda
-    paths:
-      - "website/**"
-      - ".github/workflows/**"
+      - develop
   workflow_dispatch:
 
 concurrency:
-  group: website-s3-${{ github.ref }}
+  group: website-s3-dev-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build-deploy:
-    name: Build and Deploy
+    name: Build and Deploy (Dev)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -44,17 +41,17 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Sync build to S3
         run: |
-          aws s3 sync 'build/opencerts-documentation' "s3://${{ secrets.S3_BUCKET }}/" --delete
+          aws s3 sync 'build/opencerts-documentation' "s3://${{ secrets.S3_BUCKET_DEV }}/" --delete
 
       - name: Invalidate CloudFront (optional)
         env:
-          CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID_DEV }}
         if: ${{ env.CLOUDFRONT_DISTRIBUTION_ID != '' }}
         run: |
           aws cloudfront create-invalidation \

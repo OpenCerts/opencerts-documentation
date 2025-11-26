@@ -22,3 +22,7 @@ Here you will find a collection of links that may be useful to help you to start
 - [How does Decentralized Renderer works?](https://github.com/Open-Attestation/adr/blob/master/decentralised_rendering.md)
 - [How does DNS-TXT identity proof works?](https://github.com/Open-Attestation/adr/blob/master/decentralized_identity_proof_DNS-TXT.md)
 - [Does OpenCerts verifier follow a specification?](https://github.com/Open-Attestation/adr/blob/master/verifier.md)
+
+## Implementation Help
+
+- [Technical Query](https://form.gov.sg/5f27a104fe4c140011c0c544)
