@@ -25,4 +25,4 @@ Here you will find a collection of links that may be useful to help you to start
 
 ## Implementation Help
 
-- [Technical Query](https://form.gov.sg/5f27a104fe4c140011c0c544)
+- [Technical Query](https://form.gov.sg/692580cf75241c91db4ef3da)
