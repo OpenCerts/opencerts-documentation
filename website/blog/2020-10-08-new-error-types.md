@@ -1,8 +1,9 @@
 ---
 title: New error types for better error handling
-author: Jia Jian Goi
-authorURL: https://www.linkedin.com/in/jiajian/
-authorImageURL: https://lh3.googleusercontent.com/ogw/ADGmqu_9HzINF5cbSsYkYuo-PztvTbj6_xHJm_sGRKVH=s192-c-mo
+authors:
+  - name: Jia Jian Goi
+    url: https://www.linkedin.com/in/jiajian/
+    image_url: https://lh3.googleusercontent.com/ogw/ADGmqu_9HzINF5cbSsYkYuo-PztvTbj6_xHJm_sGRKVH=s192-c-mo
 ---
 
 A good part of software engineering [is to handle errors](https://medium.com/swlh/getting-error-handling-right-9a1d39da0fa3) that arise from your application. At GovTech, we understand the importance of having good error handling practices too.
@@ -21,7 +22,7 @@ For example,
 
 For the first two scenarios, our OpenCerts verifier would previously show that the certificate is invalid. That's because we didn't handle HTTP errors in `opencerts-verify`.
 
-For the last scenario, our OpenCerts verifier didn't handle those cases properly and instead, our opencerts.io frontend verifier will say that it's **(a)** not issued and **(b)** revoked at the same time. While such a case can happen, it clearly doesn't reflect the actual error — that is, the user probably tampered with the certificate's `merkleRoot`. I'll describe more later in the [Invalid Argument](#invalid-argument) section.
+For the last scenario, our OpenCerts verifier didn't handle those cases properly and instead, our opencerts.io frontend verifier will say that it's **(a)** not issued and **(b)** revoked at the same time. While such a case can happen, it clearly doesn't reflect the actual error — that is, the user probably tampered with the certificate's `merkleRoot`. I'll describe more later in the [Invalid Argument](#invalid_argument) section.
 
 ### New errors
 

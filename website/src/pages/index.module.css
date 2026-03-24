@@ -1,0 +1,88 @@
+.heroBanner {
+  padding: 4rem 0;
+  background-color: #fff;
+  color: #324353;
+  position: relative;
+}
+
+.heroText {
+  text-align: center;
+}
+
+.heroLogo {
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.heroLogo img {
+  max-width: 300px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #324353;
+  font-weight: 400;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.blogPosts {
+  margin-top: 2rem;
+}
+
+.blogPosts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.blogPosts li {
+  margin: 0.5rem 0;
+}
+
+.featureSection {
+  padding: 3rem 0;
+}
+
+.featureDark {
+  background: #324353;
+  color: #fff;
+}
+
+.featureImage {
+  max-width: 80%;
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 1500px) {
+  .heroLogo {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+}

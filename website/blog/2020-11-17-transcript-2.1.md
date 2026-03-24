@@ -1,8 +1,9 @@
 ---
 title: Transcript v2.1
-author: Laurent Maillet
-authorURL: https://twitter.com/Nebounet
-authorImageURL: https://lh3.googleusercontent.com/-kb0aLUOV4ek/AAAAAAAAAAI/AAAAAAAAAAA/AKF05nAdhdRMUzxqvrX-aSDCkiILApv-pQ.CMID/s192-c/photo.jpg
+authors:
+  - name: Laurent Maillet
+    url: https://twitter.com/Nebounet
+    image_url: https://lh3.googleusercontent.com/-kb0aLUOV4ek/AAAAAAAAAAI/AAAAAAAAAAA/AKF05nAdhdRMUzxqvrX-aSDCkiILApv-pQ.CMID/s192-c/photo.jpg
 ---
 
 ### Transcript v2.1
@@ -27,4 +28,4 @@ You can add as many skills as needed. You can find a [full example here](https:/
 
 ### Migration legacy to new renderer
 
-In order to help more institution to adopt the decentralized architecture of OpenCerts v2, we have created a [guide](/docs/migrations/migrate_renderer) to help early adopter to migrate from the legacy render to the decentralized renderer.
+In order to help more institution to adopt the decentralized architecture of OpenCerts v2, we have created a [guide](/docs/v2/migrations/migrate_renderer) to help early adopter to migrate from the legacy render to the decentralized renderer.

@@ -1,0 +1,289 @@
+:root {
+  --ifm-background-color: #fff;
+  --ifm-color-primary: #324353;
+  --ifm-color-primary-dark: #2b3a48;
+  --ifm-color-primary-darker: #293744;
+  --ifm-color-primary-darkest: #222d38;
+  --ifm-color-primary-light: #394c5e;
+  --ifm-color-primary-lighter: #3b4f62;
+  --ifm-color-primary-lightest: #445c72;
+  --ifm-link-color: #ff9933;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #7ab0d4;
+  --ifm-color-primary-dark: #60a1cb;
+  --ifm-color-primary-darker: #5399c7;
+  --ifm-color-primary-darkest: #3683b6;
+  --ifm-color-primary-light: #94bfdd;
+  --ifm-color-primary-lighter: #a1c7e1;
+  --ifm-color-primary-lightest: #c5deee;
+  --ifm-link-color: #ffad5c;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.title-orange {
+  color: #ff9933;
+}
+
+.title-blue {
+  color: #09c;
+}
+
+.hero__title .title-orange,
+.hero__title .title-blue {
+  font-size: inherit;
+}
+
+.darkBackground {
+  background: #324353;
+  color: #fff;
+}
+
+.checkout-blog-post li {
+  list-style-type: none;
+}
+
+/* V1-style buttons */
+.pluginRowBlock {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pluginWrapper.buttonWrapper .button {
+  background-color: transparent;
+  border: 2px solid #324353;
+  border-radius: 3px;
+  color: #324353;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.pluginWrapper.buttonWrapper .button:hover {
+  background-color: #324353;
+  color: #fff;
+}
+
+@media only screen and (max-width: 480px) {
+  .pluginRowBlock {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .projectLogo {
+    display: none !important;
+    pointer-events: none;
+  }
+}
+
+footer.footer {
+  background: #324353;
+}
+
+.navbar {
+  background-color: #324353;
+}
+
+.navbar__title,
+.navbar__link {
+  color: #fff;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: #ff9933;
+}
+
+.navbar .DocSearch-Button {
+  background-color: #222d38;
+  color: #fff;
+}
+
+.navbar .DocSearch-Button .DocSearch-Search-Icon {
+  color: #fff;
+}
+
+.navbar .DocSearch-Button-Placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar .DocSearch-Button-Keys kbd {
+  background-color: #394c5e;
+  color: rgba(255, 255, 255, 0.7);
+  border-color: #445c72;
+}
+
+.footer__links {
+  flex-wrap: nowrap !important;
+}
+
+@media only screen and (max-width: 996px) {
+  .footer__links {
+    flex-wrap: wrap !important;
+  }
+
+  .footer__col:first-child {
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+}
+
+.footer__col:first-child {
+  flex: 0 0 auto !important;
+  max-width: none !important;
+  width: auto !important;
+  padding-right: 0;
+  margin-right: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer__logo-link {
+  display: inline-block;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.footer__logo-link:hover {
+  opacity: 1;
+}
+
+/* Inline code styling to match Docusaurus V1 */
+code {
+  background-color: rgba(27, 31, 35, 0.05);
+  color: inherit;
+  border: none;
+  border-radius: 3px;
+  padding: 3.2px 6.4px;
+  font-size: 85%;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+[data-theme="dark"] code {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Blockquote styling to match Docusaurus V1 */
+blockquote {
+  background-color: rgba(255, 229, 100, 0.3);
+  border-left: 8px solid #ffe564;
+  color: #6a737d;
+  font-size: 16px;
+  padding: 15px 30px 15px 15px;
+  margin: 0 0 16px;
+}
+
+[data-theme="dark"] blockquote {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left-color: #555;
+  color: #aaa;
+}
+
+/* Code block styling to match Docusaurus V1 */
+.prism-code {
+  background-color: #3c3c3c !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 3px;
+  font-size: 85%;
+  padding: 1.25rem 1.5rem !important;
+  line-height: 1.5;
+}
+
+.prism-code .token.string,
+.prism-code .token.attr-value {
+  color: #e8a0a0 !important;
+}
+
+.prism-code .token.property,
+.prism-code .token.attr-name,
+.prism-code .token.keyword {
+  color: #ffffff !important;
+}
+
+.prism-code .token.punctuation,
+.prism-code .token.operator {
+  color: #ffffff !important;
+}
+
+.prism-code .token.number {
+  color: #e8a0a0 !important;
+}
+
+.prism-code .token.comment {
+  color: #999 !important;
+  font-style: italic;
+}
+
+.prism-code .token.tag {
+  color: #e8a0a0 !important;
+}
+
+/* Ensure all other tokens default to white */
+.prism-code .token {
+  color: #ffffff !important;
+}
+
+.prism-code .token.string,
+.prism-code .token.attr-value,
+.prism-code .token.number,
+.prism-code .token.tag {
+  color: #e8a0a0 !important;
+}
+
+[data-theme="dark"] .prism-code {
+  background-color: #2d2d2d !important;
+  color: #f8f8f2 !important;
+}
+
+div[class*="codeBlockContainer"] {
+  border: none;
+  box-shadow: none;
+}
+
+div[class*="codeBlockTitle"] {
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+}
+
+[data-theme="dark"] div[class*="codeBlockTitle"] {
+  background-color: #333;
+  border-bottom: 1px solid #444;
+}
+
+@media only screen and (max-width: 996px) {
+  .navbar__toggle {
+    background-color: #222d38;
+    border: 1px solid #fff;
+    border-radius: 0.5rem;
+    padding: 0;
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar__toggle svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .navbar__toggle:hover {
+    background-color: #222d38;
+    color: #fff;
+  }
+}
+

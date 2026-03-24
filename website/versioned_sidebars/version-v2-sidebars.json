@@ -1,0 +1,31 @@
+{
+  "docs": [
+    {
+      "type": "category",
+      "label": "OpenCerts",
+      "items": [
+        "index",
+        "transcripts",
+        "skills-passport",
+        "verifier",
+        "multi-issuer",
+        "legacy"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API",
+      "items": ["api/verify", "api/status"]
+    },
+    {
+      "type": "category",
+      "label": "Migrations",
+      "items": ["migrations/v1_to_v2", "migrations/migrate_renderer"]
+    },
+    {
+      "type": "category",
+      "label": "Misc",
+      "items": ["help/faq", "admin-website", "help/linkedin"]
+    }
+  ]
+}

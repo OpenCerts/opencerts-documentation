@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "22"
           cache: "npm"
           cache-dependency-path: website/package-lock.json
 
@@ -47,7 +47,7 @@ jobs:
 
       - name: Sync build to S3
         run: |
-          aws s3 sync 'build/opencerts-documentation' "s3://${{ secrets.S3_BUCKET_DEV }}/" --delete
+          aws s3 sync 'build' "s3://${{ secrets.S3_BUCKET_DEV }}/" --delete
 
       - name: Invalidate CloudFront (optional)
         env:

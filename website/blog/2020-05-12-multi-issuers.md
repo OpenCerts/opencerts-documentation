@@ -1,8 +1,9 @@
 ---
 title: Multi issuers and deploy verify API
-author: Laurent Maillet
-authorURL: https://twitter.com/Nebounet
-authorImageURL: https://lh3.googleusercontent.com/-kb0aLUOV4ek/AAAAAAAAAAI/AAAAAAAAAAA/AKF05nAdhdRMUzxqvrX-aSDCkiILApv-pQ.CMID/s192-c/photo.jpg
+authors:
+  - name: Laurent Maillet
+    url: https://twitter.com/Nebounet
+    image_url: https://lh3.googleusercontent.com/-kb0aLUOV4ek/AAAAAAAAAAI/AAAAAAAAAAA/AKF05nAdhdRMUzxqvrX-aSDCkiILApv-pQ.CMID/s192-c/photo.jpg
 ---
 
 As part of our efforts to ease the adoption of OpenCerts, we have worked on several items for the past weeks.
@@ -24,6 +25,6 @@ We have worked on that and improved it:
 
 ### Migration from v1 to v2
 
-When revamping the documentation, we missed the article that covered the migration from v1 to v2. We fixed that problem, and [the documentation is available again](/docs/migrations/v1_to_v2)
+When revamping the documentation, we missed the article that covered the migration from v1 to v2. We fixed that problem, and [the documentation is available again](/docs/v2/migrations/v1_to_v2)
 
 > For any feedback, feel free to reach us out on [Github](https://github.com/OpenCerts).
