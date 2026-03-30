@@ -115,7 +115,7 @@ const resultFragments = await verifyDocument(signedCredential);
 
 ## Migrating from v2
 
-If you are currently using OpenCerts v2 with the OpenAttestation library directly, refer to the [Migration Guide](./migrations/oa_to_trustvc.md) for step-by-step instructions on migrating to W3C Verifiable Credentials with TrustVC. Note that TrustVC also supports OpenAttestation documents, so existing v2 certificates will continue to work.
+If you are currently using OpenCerts v2 with the OpenAttestation library directly, refer to the [Migration Guide](./migrations/oa_to_trustvc.md) for step-by-step instructions on migrating to W3C Verifiable Credentials with TrustVC.
 
 ## Resources
 
