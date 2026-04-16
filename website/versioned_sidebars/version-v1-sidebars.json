@@ -1,0 +1,32 @@
+{
+  "docs": [
+    {
+      "type": "category",
+      "label": "Issuing OpenCerts",
+      "items": [
+        "index",
+        "creating_certificates",
+        "deploying_store",
+        "custom_template",
+        "integration_test",
+        "batching_certificates",
+        "issuing_certificates",
+        "issuing_multisig_certificate",
+        "identity_registry"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Appendix",
+      "items": [
+        "appendix_test_accounts",
+        "appendix_data_obfuscation",
+        "appendix_ledgerinit",
+        "appendix_pull_request_checklist",
+        "appendix_pull_request_preview",
+        "verifying_contract",
+        "appendix_viewing_template_development"
+      ]
+    }
+  ]
+}
