@@ -14,11 +14,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "API",
-      items: ["api/verify", "api/status"],
-    },
-    {
-      type: "category",
       label: "Migrations",
       items: [
         "migrations/oa_to_trustvc",
@@ -28,7 +23,7 @@ const sidebars = {
     {
       type: "category",
       label: "Misc",
-      items: ["help/faq", "admin-website", "help/linkedin"],
+      items: ["admin-website", "help/linkedin"],
     },
   ],
 };

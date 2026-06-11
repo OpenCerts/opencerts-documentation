@@ -7,10 +7,10 @@ const config = {
   tagline: "An easy way to check and verify your certificates",
   favicon: "img/favicon.svg",
 
-  url: "https://opencerts.io",
+  url: "https://docs.opencerts.io",
   baseUrl: "/",
 
-  organizationName: "Govtech",
+  organizationName: "IMDA",
   projectName: "opencerts-documentation",
 
   onBrokenLinks: "warn",
@@ -51,11 +51,7 @@ const config = {
             },
           },
         },
-        blog: {
-          showReadingTime: true,
-          onInlineAuthors: "ignore",
-          onUntruncatedBlogPosts: "ignore",
-        },
+        blog: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -75,16 +71,9 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "index",
-            position: "left",
-            label: "Docs",
-          },
-          {
             type: "docsVersionDropdown",
             position: "right",
           },
-          { to: "/blog", label: "Blog", position: "left" },
         ],
       },
       footer: {
@@ -112,10 +101,6 @@ const config = {
                 label: "Getting Started",
                 to: "/docs",
               },
-              {
-                label: "APIs Reference",
-                to: "/docs/api/verify",
-              },
             ],
           },
           {
@@ -131,10 +116,6 @@ const config = {
             title: "More",
             items: [
               {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
                 label: "GitHub",
                 href: "https://github.com/Opencerts",
               },
@@ -148,8 +129,8 @@ const config = {
         darkTheme: themes.dracula,
       },
       algolia: {
-        appId: "BH4D9OD16A",
-        apiKey: "7231563d1db842994698da0a519e93c8",
+        appId: "HCPQ0M479I",
+        apiKey: "3ad9c57c64dde8b6e48aaf70e0e7b979",
         indexName: "opencerts",
       },
       colorMode: {
