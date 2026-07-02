@@ -18,6 +18,7 @@ const sidebars = {
       items: [
         "migrations/oa_to_trustvc",
         "migrations/renderer_w3c_vc",
+        "migrations/oa_cli_to_tvc_cli",
       ],
     },
     {
