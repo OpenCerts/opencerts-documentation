@@ -76,7 +76,7 @@ Prompts you for the path to `keypair.json`, the same cryptosuite, your domain, a
 
 ## Step 3: Create and host your own `@context`
 
-If your certificate has custom fields (e.g. course name, grade, additional data beyond a generic credential), define your own JSON-LD `@context` file describing them and host it at a URL you control — `trustvc-cli` doesn't generate or host this for you.
+If your certificate has custom fields (e.g. course name, grade, additional data beyond a generic credential), define your own JSON-LD `@context` file describing them and host it at a URL you control — `trustvc-cli` doesn't generate or host this for you. See [Working with Contexts](https://docs.trustvc.io/docs/how-tos/contexts) for a guide on how to author your own `@context`.
 
 A signed VC references one or more contexts as an array; typically the base VC context plus your own:
 
@@ -171,4 +171,4 @@ Your certificate's decentralised renderer was built to read the OA document stru
 
 ## Step 8: Verify
 
-Once signed and rendered, verification works the same way it always did for your recipients — go to [opencerts.io](https://opencerts.io) and upload or drag in `signed_vc.json`. Verification for W3C VCs resolves your `did:web` identity and (if you set one up) checks your hosted status list automatically; no Document Store lookup is involved.
+Once signed and rendered, verification works the same way it always did for your recipients — go to [opencerts.io](https://opencerts.io) and upload or drag in `signed_vc.json`. Verification for W3C VCs resolves your `did:web` identity and (if you set one up) checks your hosted bitstring status list automatically; no Document Store lookup is involved.
