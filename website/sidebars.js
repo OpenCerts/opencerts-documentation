@@ -4,13 +4,7 @@ const sidebars = {
     {
       type: "category",
       label: "OpenCerts",
-      items: [
-        "index",
-        "transcripts",
-        "skills-passport",
-        "verifier",
-        "multi-issuer",
-      ],
+      items: ["index", "transcripts", "skills-passport", "verifier"],
     },
     {
       type: "category",
