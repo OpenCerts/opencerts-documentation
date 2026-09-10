@@ -78,17 +78,18 @@ Prompts you for the path to `keypair.json`, the same cryptosuite, your domain, a
 
 If your certificate has custom fields (e.g. course name, grade, additional data beyond a generic credential), define your own JSON-LD `@context` file describing them and host it at a URL you control — `trustvc-cli` doesn't generate or host this for you. See [Working with Contexts](https://docs.trustvc.io/docs/how-tos/contexts) for a guide on how to author your own `@context`.
 
-A signed VC references one or more contexts as an array; typically the base VC context plus your own:
+A signed VC references one or more contexts as an array; typically the base VC context, TrustVC's render method context (see Step 4), and your own:
 
 ```json
 "@context": [
   "https://www.w3.org/ns/credentials/v2",
   "https://w3id.org/security/data-integrity/v2",
+  "https://trustvc.io/context/render-method-context-v2.json",
   "https://your-domain.com/context/your-certificate-context.json"
 ]
 ```
 
-Host `your-certificate-context.json` on your own domain (or any static file host) over HTTPS, with CORS enabled, the same way you host your DID document.
+Host `your-certificate-context.json` on your own domain (or any static file host) over HTTPS, with CORS enabled, the same way you host your DID document. The other three are already hosted — TrustVC bundles them, so they resolve without a network fetch.
 
 ## Step 4: Author your unsigned W3C VC
 
@@ -97,7 +98,7 @@ Using the data recovered in Step 1, author an unsigned VC JSON. Key field mappin
 | OA VD | W3C VC |
 |---|---|
 | `issuers[].name` / `identityProof` / `documentStore` | `issuer` (your `did:web:...` from Step 2) |
-| `$template` | your renderer's own configuration (see Step 6) |
+| `$template` | `renderMethod` (see below) |
 | top-level certificate data fields | `credentialSubject` |
 | n/a | `@context` (your context from Step 3) |
 | n/a (revocation was on-chain) | `credentialStatus` (only if you need revocation — see Step 6) |
@@ -107,17 +108,42 @@ Using the data recovered in Step 1, author an unsigned VC JSON. Key field mappin
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://w3id.org/security/data-integrity/v2",
+    "https://trustvc.io/context/render-method-context-v2.json",
     "https://your-domain.com/context/your-certificate-context.json"
   ],
   "type": ["VerifiableCredential"],
   "issuer": "did:web:your-domain.com",
   "validFrom": "2024-01-01T00:00:00Z",
+  "renderMethod": [
+    {
+      "id": "https://your-renderer.your-domain.com",
+      "type": "EMBEDDED_RENDERER",
+      "templateName": "YOUR_TEMPLATE"
+    }
+  ],
   "credentialSubject": {
     "name": "John Doe",
     "course": "Bachelor of Science"
   }
 }
 ```
+
+### Replacing `$template` with `renderMethod`
+
+`renderMethod` is the W3C VC equivalent of OA's `$template`, and it maps across field for field:
+
+| OA `$template` | TrustVC `renderMethod` |
+|---|---|
+| `url` | `id` |
+| `type` (`EMBEDDED_RENDERER`) | `type` (`EMBEDDED_RENDERER`) |
+| `name` | `templateName` |
+
+Two things to watch out for, because both fail with the same unhelpful `Safe mode validation error` at signing time:
+
+- **`https://trustvc.io/context/render-method-context-v2.json` must be in your `@context`.** The `renderMethod` property itself comes from the base VC v2 context, but the `EMBEDDED_RENDERER` type and its `templateName` are defined by TrustVC's render method context. Omitting it fails even if the rest of the document is correct.
+- **`EMBEDDED_RENDERER` is the only renderer type TrustVC defines.** Anything else (`SVG_RENDERER`, a type of your own) is an undefined term and will not sign.
+
+`renderMethod` accepts either an array or a single object. Use the v2 context above with the VC v2 base context; `render-method-context.json` (without the `-v2`) is the VC v1 variant and is not interchangeable.
 
 ## Step 5: Sign with `trustvc-cli`
 
@@ -168,6 +194,8 @@ For the full picture (including the underlying SDK calls), see [Setting Up Crede
 ## Step 7: Update your renderer
 
 Your certificate's decentralised renderer was built to read the OA document structure (`issuers`, `$template`, top-level fields). It needs to be updated to read the W3C VC structure (`issuer`, `credentialSubject`) instead — see the [Decentralised Renderer - W3C VC Support](./renderer_w3c_vc.md) guide for the full walkthrough.
+
+The renderer is still loaded from the URL you put in `renderMethod[0].id`, exactly as it was loaded from `$template.url` before, so you can keep pointing at the same deployment while you update it.
 
 ## Step 8: Verify
 
