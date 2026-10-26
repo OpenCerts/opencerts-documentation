@@ -147,6 +147,8 @@ const resultFragments = await verifyDocument(signedDocument);
 
 Your decentralised renderer must be updated to handle the W3C VC document structure. See the [Decentralised Renderer W3C VC Update](./renderer_w3c_vc.md) guide for details.
 
+Alternatively, skip hosting a renderer altogether by embedding the template directly in the certificate — see [Inline HTML Renderer](./inline_html_renderer.md) (currently in beta).
+
 ## Setting Up `did:web` Identity
 
 OpenCerts v3 uses [`did:web`](https://w3c-ccg.github.io/did-method-web/) to identify issuers. You will need to generate a DID document and host it on your domain.
